@@ -70,14 +70,24 @@ export const useSprintStore = create<SprintState>((set, get) => ({
   },
 
   completeSprint: async () => {
-    set((state) => {
-      if (!state.activeSprint) return state;
-      const completedSprint = { ...state.activeSprint, isActive: false, isCompleted: true };
-      return {
+    const { activeSprint } = get();
+    if (!activeSprint) return;
+
+    set({ isLoading: true });
+    try {
+      const completedSprint = { ...activeSprint, isActive: false, isCompleted: true };
+      
+      set((state) => ({
         activeSprint: null,
         sprints: state.sprints.map((s) => (s.id === completedSprint.id ? completedSprint : s)),
-      };
-    });
+      }));
+
+      await api.updateSprint(activeSprint.id, { isActive: false, isCompleted: true });
+    } catch (error) {
+      console.error('Failed to complete sprint:', error);
+    } finally {
+      set({ isLoading: false });
+    }
   },
 
   getDailyTracking: (date) => {

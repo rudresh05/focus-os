@@ -33,3 +33,26 @@ export async function POST(request: Request) {
   return NextResponse.json(data);
 }
 
+export async function PATCH(request: Request) {
+  const body = await request.json();
+  const { id, ...updates } = body;
+
+  if (!id) return NextResponse.json({ error: 'ID required' }, { status: 400 });
+
+  // Map camelCase from frontend to snake_case for DB if necessary
+  const dbUpdates: any = {};
+  if (updates.isActive !== undefined) dbUpdates.is_active = updates.isActive;
+  if (updates.isCompleted !== undefined) dbUpdates.is_completed = updates.isCompleted;
+  if (updates.name !== undefined) dbUpdates.name = updates.name;
+  if (updates.goal !== undefined) dbUpdates.goal = updates.goal;
+
+  const { data, error } = await supabaseAdmin
+    .from('focus_sprints')
+    .update(dbUpdates)
+    .eq('id', id)
+    .select()
+    .single();
+
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  return NextResponse.json(data);
+}

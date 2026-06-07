@@ -14,6 +14,15 @@ export async function createSprint(sprint: any) {
   return res.json();
 }
 
+export async function updateSprint(id: string, updates: any) {
+  const res = await fetch(`${API_BASE}/sprints`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id, ...updates }),
+  });
+  return res.json();
+}
+
 export async function saveTracking(tracking: any) {
   const res = await fetch(`${API_BASE}/tracking`, {
     method: 'POST',
