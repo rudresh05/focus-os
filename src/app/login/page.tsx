@@ -227,7 +227,7 @@ export default function LoginPage() {
             <p className="text-center text-xs text-muted-foreground font-medium italic">
                Join the high-integrity execution network.
             </p>
-            <Link href="/" className="inline-flex items-center justify-center gap-3 text-xs font-bold text-muted-foreground hover:text-foreground transition-colors group">
+            <Link href="https://rudreshp.me" className="inline-flex items-center justify-center gap-3 text-xs font-bold text-muted-foreground hover:text-foreground transition-colors group">
               <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
               Return to landing page
             </Link>
