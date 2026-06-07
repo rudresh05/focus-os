@@ -23,6 +23,11 @@ export async function saveTracking(tracking: any) {
   return res.json();
 }
 
+export async function fetchTracking() {
+  const res = await fetch(`${API_BASE}/tracking`);
+  return res.json();
+}
+
 export async function fetchIdeas() {
   const res = await fetch(`${API_BASE}/ideas`);
   return res.json();

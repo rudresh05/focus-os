@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin } from '@/lib/supabase';
 
 export async function GET() {
-  const { data, error } = await supabase
+  const { data, error } = await supabaseAdmin
     .from('focus_reviews')
     .select('*')
     .order('created_at', { ascending: false });
@@ -13,7 +13,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const body = await request.json();
-  const { data, error } = await supabase
+  const { data, error } = await supabaseAdmin
     .from('focus_reviews')
     .insert([
       {
@@ -32,3 +32,4 @@ export async function POST(request: Request) {
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   return NextResponse.json(data);
 }
+

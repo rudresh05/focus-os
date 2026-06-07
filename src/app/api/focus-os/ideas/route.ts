@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin } from '@/lib/supabase';
 
 export async function GET() {
-  const { data, error } = await supabase
+  const { data, error } = await supabaseAdmin
     .from('focus_ideas')
     .select('*')
     .order('created_at', { ascending: false });
@@ -13,7 +13,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const body = await request.json();
-  const { data, error } = await supabase
+  const { data, error } = await supabaseAdmin
     .from('focus_ideas')
     .insert([
       {
@@ -35,7 +35,7 @@ export async function DELETE(request: Request) {
   
   if (!id) return NextResponse.json({ error: 'ID required' }, { status: 400 });
 
-  const { error } = await supabase
+  const { error } = await supabaseAdmin
     .from('focus_ideas')
     .delete()
     .eq('id', id);
@@ -43,3 +43,4 @@ export async function DELETE(request: Request) {
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   return NextResponse.json({ success: true });
 }
+

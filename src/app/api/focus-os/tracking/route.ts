@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin } from '@/lib/supabase';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const date = searchParams.get('date');
 
-  let query = supabase.from('focus_tracking').select('*');
+  let query = supabaseAdmin.from('focus_tracking').select('*');
   if (date) query = query.eq('date', date);
 
   const { data, error } = await query;
@@ -16,7 +16,7 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   const body = await request.json();
-  const { data, error } = await supabase
+  const { data, error } = await supabaseAdmin
     .from('focus_tracking')
     .upsert([
       {
@@ -31,3 +31,4 @@ export async function POST(request: Request) {
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   return NextResponse.json(data);
 }
+

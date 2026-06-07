@@ -9,6 +9,9 @@ import { useEffect, useState } from "react";
 import { useTheme } from "@/components/providers/theme-provider";
 import { motion, AnimatePresence } from "framer-motion";
 
+import { useSprintStore } from "@/store/useSprintStore";
+import { useIdeaStore } from "@/store/useIdeaStore";
+
 export function AppWrapper({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
   const { theme } = useTheme();
@@ -18,9 +21,19 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
   const isAuthenticated = !loading && user;
   const [mounted, setMounted] = useState(false);
 
+  const syncSprints = useSprintStore(s => s.syncData);
+  const syncIdeas = useIdeaStore(s => s.syncIdeas);
+
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      syncSprints();
+      syncIdeas();
+    }
+  }, [isAuthenticated, syncSprints, syncIdeas]);
 
   useEffect(() => {
     if (!loading && !user && !isLoginPage) {
