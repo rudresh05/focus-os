@@ -45,6 +45,21 @@ create table if not exists public.focus_reviews (
   updated_at timestamptz not null default now()
 );
 
+create table if not exists public.focus_settings (
+  key text primary key,
+  value jsonb not null,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create table if not exists public.journals (
+  id uuid primary key default gen_random_uuid(),
+  date date not null unique,
+  data jsonb not null default '{}'::jsonb,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
 -- 2. Safely add columns if the tables already existed before (Migration)
 ALTER TABLE public.focus_sprints ADD COLUMN IF NOT EXISTS tasks jsonb NOT NULL DEFAULT '[]'::jsonb;
 
@@ -53,12 +68,16 @@ alter table public.focus_sprints enable row level security;
 alter table public.focus_ideas enable row level security;
 alter table public.focus_tracking enable row level security;
 alter table public.focus_reviews enable row level security;
+alter table public.focus_settings enable row level security;
+alter table public.journals enable row level security;
 
 -- 4. Safely setup policies (drop existing ones first to avoid "already exists" errors)
 drop policy if exists "Public read focus_sprints" on public.focus_sprints;
 drop policy if exists "Public read focus_ideas" on public.focus_ideas;
 drop policy if exists "Public read focus_tracking" on public.focus_tracking;
 drop policy if exists "Public read focus_reviews" on public.focus_reviews;
+drop policy if exists "Public read focus_settings" on public.focus_settings;
+drop policy if exists "Public read journals" on public.journals;
 
 drop policy if exists "Admin insert focus_sprints" on public.focus_sprints;
 drop policy if exists "Admin update focus_sprints" on public.focus_sprints;
@@ -68,11 +87,17 @@ drop policy if exists "Admin insert focus_tracking" on public.focus_tracking;
 drop policy if exists "Admin update focus_tracking" on public.focus_tracking;
 drop policy if exists "Admin insert focus_reviews" on public.focus_reviews;
 drop policy if exists "Admin update focus_reviews" on public.focus_reviews;
+drop policy if exists "Admin insert focus_settings" on public.focus_settings;
+drop policy if exists "Admin update focus_settings" on public.focus_settings;
+drop policy if exists "Admin insert journals" on public.journals;
+drop policy if exists "Admin update journals" on public.journals;
 
 create policy "Public read focus_sprints" on public.focus_sprints for select using (true);
 create policy "Public read focus_ideas" on public.focus_ideas for select using (true);
 create policy "Public read focus_tracking" on public.focus_tracking for select using (true);
 create policy "Public read focus_reviews" on public.focus_reviews for select using (true);
+create policy "Public read focus_settings" on public.focus_settings for select using (true);
+create policy "Public read journals" on public.journals for select using (true);
 
 create policy "Admin insert focus_sprints" on public.focus_sprints for insert with check (true);
 create policy "Admin update focus_sprints" on public.focus_sprints for update using (true);
@@ -82,6 +107,10 @@ create policy "Admin insert focus_tracking" on public.focus_tracking for insert 
 create policy "Admin update focus_tracking" on public.focus_tracking for update using (true);
 create policy "Admin insert focus_reviews" on public.focus_reviews for insert with check (true);
 create policy "Admin update focus_reviews" on public.focus_reviews for update using (true);
+create policy "Admin insert focus_settings" on public.focus_settings for insert with check (true);
+create policy "Admin update focus_settings" on public.focus_settings for update using (true);
+create policy "Admin insert journals" on public.journals for insert with check (true);
+create policy "Admin update journals" on public.journals for update using (true);
 
 -- 5. Force schema cache reload
 NOTIFY pgrst, 'reload schema';

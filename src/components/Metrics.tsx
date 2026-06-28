@@ -17,9 +17,9 @@ export function Metrics() {
   const currentStreak = calculateStreak(dailyTracking);
 
   const stats = [
-    { label: 'Integrity', value: `${integrity}%`, icon: Shield, color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-500/10' },
-    { label: 'Streak', value: currentStreak, icon: Zap, color: 'text-purple-600 dark:text-purple-400', bg: 'bg-purple-500/10' },
-    { label: 'Today', value: `${dailyScore}%`, icon: Activity, color: 'text-orange-600 dark:text-orange-400', bg: 'bg-orange-500/10' },
+    { label: 'Integrity', value: `${integrity}%`, icon: Shield, color: 'text-accent', bg: 'bg-accent/10' },
+    { label: 'Streak', value: currentStreak, icon: Zap, color: 'text-accent-alt', bg: 'bg-accent-alt/10' },
+    { label: 'Today', value: `${dailyScore}%`, icon: Activity, color: 'text-accent-action', bg: 'bg-accent-action/10' },
   ];
 
   return (

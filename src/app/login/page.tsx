@@ -69,7 +69,7 @@ export default function LoginPage() {
     <main className="min-h-screen w-full bg-background flex flex-col lg:flex-row overflow-hidden">
       
       {/* Left Side: Hero / Landing Content */}
-      <section className="relative flex-1 hidden lg:flex flex-col justify-between p-16 xl:p-24 bg-[#030712] overflow-hidden">
+      <section className="relative flex-1 hidden lg:flex flex-col justify-between p-16 xl:p-24 bg-bg-soft overflow-hidden">
         {/* Animated Background Gradients */}
         <div className="absolute inset-0 z-0">
            <div className="absolute top-[-10%] right-[-10%] w-[80%] h-[80%] bg-accent/20 blur-[140px] rounded-full animate-pulse" />
@@ -82,7 +82,7 @@ export default function LoginPage() {
               <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center text-white shadow-lg">
                 <LayoutDashboard className="h-6 w-6" />
               </div>
-              <span className="font-bold text-xl tracking-tight text-white">Focus OS</span>
+              <span className="font-bold text-xl tracking-tight text-foreground">Focus OS</span>
            </div>
 
            <div className="max-w-2xl space-y-8">
@@ -94,7 +94,7 @@ export default function LoginPage() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-accent text-[10px] font-bold uppercase tracking-widest mb-6">
                   <Sparkles className="h-3 w-3" /> System Version 2.0
                 </div>
-                <h1 className="text-6xl xl:text-7xl font-bold text-white tracking-tighter leading-[0.9]">
+                <h1 className="text-6xl xl:text-7xl font-bold text-foreground tracking-tighter leading-[0.9]">
                    Master your time. <br/>
                    <span className="text-accent">Execute</span> your goals.
                 </h1>
@@ -112,10 +112,10 @@ export default function LoginPage() {
                 {features.map((f, i) => (
                   <div key={i} className="flex gap-5 group">
                     <div className="w-12 h-12 shrink-0 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-accent group-hover:border-accent">
-                      <f.icon className="h-6 w-6 text-white transition-all group-hover:scale-110" />
+                      <f.icon className="h-6 w-6 text-accent transition-all group-hover:scale-110" />
                     </div>
                     <div className="space-y-1">
-                      <h3 className="font-bold text-white text-lg">{f.title}</h3>
+                      <h3 className="font-bold text-foreground text-lg">{f.title}</h3>
                       <p className="text-muted-foreground text-sm leading-relaxed">{f.desc}</p>
                     </div>
                   </div>
@@ -126,7 +126,7 @@ export default function LoginPage() {
 
         <div className="relative z-10 flex items-center gap-8 text-[10px] font-bold text-muted-foreground uppercase tracking-widest opacity-50">
            <span>Precision Crafted</span>
-           <div className="w-8 h-[1px] bg-white/20" />
+           <div className="w-8 h-[1px] bg-foreground/20" />
            <span>Continuous Delivery</span>
         </div>
       </section>
@@ -159,7 +159,7 @@ export default function LoginPage() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="bg-rose-50 border border-rose-100 text-rose-600 p-4 rounded-xl text-sm font-semibold flex items-center gap-3 shadow-sm"
+                  className="bg-rose-500/10 border border-rose-500/20 text-rose-500 p-4 rounded-xl text-sm font-semibold flex items-center gap-3"
                 >
                   <AlertCircle className="h-4 w-4 shrink-0" />
                   {error}
@@ -168,7 +168,7 @@ export default function LoginPage() {
             </AnimatePresence>
 
             {!configured && (
-              <div className="bg-amber-50 border border-amber-100 text-amber-700 p-4 rounded-xl text-xs font-semibold">
+              <div className="bg-accent/10 border border-accent/20 text-accent p-4 rounded-xl text-xs font-semibold">
                 Configuration missing. Check your environment variables.
               </div>
             )}

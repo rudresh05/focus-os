@@ -71,3 +71,44 @@ export async function saveReview(review: any) {
   });
   return res.json();
 }
+
+export async function fetchSettings(key?: string) {
+  const url = key ? `${API_BASE}/settings?key=${key}` : `${API_BASE}/settings`;
+  const res = await fetch(url);
+  return res.json();
+}
+
+export async function saveSetting(key: string, value: any) {
+  const res = await fetch(`${API_BASE}/settings`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ key, value }),
+  });
+  return res.json();
+}
+
+export async function fetchJournals() {
+  const res = await fetch(`${API_BASE}/journals`);
+  return res.json();
+}
+
+export async function saveJournal(journal: { date: string; data: Record<string, string> }) {
+  const res = await fetch(`${API_BASE}/journals`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(journal),
+  });
+  return res.json();
+}
+
+export async function deleteJournal(id: string) {
+  const res = await fetch(`${API_BASE}/journals?id=${id}`, {
+    method: 'DELETE',
+  });
+  return res.json();
+}
+
+export async function fetchAIAnalysis() {
+  const res = await fetch(`${API_BASE}/ai-analysis`);
+  return res.json();
+}
