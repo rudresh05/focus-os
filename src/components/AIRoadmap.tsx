@@ -387,19 +387,21 @@ const difficultyStyles = {
   }
 };
 
-const pythonProjectIcons: Record<number, (props: IconProps) => JSX.Element> = {
-  1: IconFolderGit,
-  2: IconShield,
-  3: IconReceipt,
-  4: IconServer,
-  5: IconLock,
-  6: IconLink2,
-  7: IconConnect,
-  8: IconTrendingUp,
-  9: IconMap,
-  10: IconBot,
-  11: IconBrain,
-  12: IconTrophy
+const phaseIcons: Record<string, (props: IconProps) => JSX.Element> = {
+  "Phase 1 — Python Engineering": IconPython,
+  "Phase 2 — Data Engineering": IconDataScience,
+  "Phase 3 — Machine Learning": IconML,
+  "Phase 4 — Deep Learning": IconDeepLearning,
+  "Phase 5 — Computer Vision": IconTarget,
+  "Phase 6 — NLP": IconBook,
+  "Phase 7 — Reinforcement Learning": IconDSA,
+  "Phase 8 — LLM Engineering": IconBrain,
+  "Phase 9 — Agentic AI": IconBot,
+  "Phase 10 — Generative AI": IconLightbulb,
+  "Phase 11 — MLOps": IconServer,
+  "Phase 12 — Distributed Systems": IconConnect,
+  "Phase 13 — System Design": IconSystemDesign,
+  "Phase 14 — Research Reproduction": IconTrophy
 };
 
 const getTotalTopics = () => stages.reduce((acc, s) => acc + s.topics.length, 0);
@@ -624,11 +626,11 @@ export function AIRoadmap() {
   const currentPythonLevel = (() => {
     const pyLevels = [
       { name: "Python Hatchling", minXp: 0, Icon: IconPython, desc: "Welcome to Python! You are taking your first steps." },
-      { name: "Scripting Apprentice", minXp: 300, Icon: IconFolderGit, desc: "You write solid scripts and understand OOP fundamentals." },
-      { name: "Automation Squire", minXp: 800, Icon: IconServer, desc: "You automate systems and interact with web APIs." },
-      { name: "API Craftsman", minXp: 1800, Icon: IconLink2, desc: "You build web APIs and concurrency-based servers." },
-      { name: "Data & AI Conjurer", minXp: 3000, Icon: IconBrain, desc: "You parse data, build ML dashboards, and chat with PDFs." },
-      { name: "Python Archmage", minXp: 4500, Icon: IconTrophy, desc: "You build production-grade architectures and complex systems." }
+      { name: "Scripting Apprentice", minXp: 2000, Icon: IconFolderGit, desc: "You write solid scripts and understand OOP fundamentals." },
+      { name: "Automation Squire", minXp: 8000, Icon: IconServer, desc: "You automate systems and interact with web APIs." },
+      { name: "API Craftsman", minXp: 18000, Icon: IconLink2, desc: "You build web APIs and concurrency-based servers." },
+      { name: "Data & AI Conjurer", minXp: 30000, Icon: IconBrain, desc: "You parse data, build ML dashboards, and chat with PDFs." },
+      { name: "Python Archmage", minXp: 40000, Icon: IconTrophy, desc: "You build production-grade architectures and complex systems." }
     ];
     let activeLevel = pyLevels[0];
     for (const lvl of pyLevels) {
@@ -1044,7 +1046,7 @@ export function AIRoadmap() {
                           
                           // Accents configuration
                           const accent = difficultyStyles[proj.level];
-                          const ProjIcon = pythonProjectIcons[proj.id] || IconPython;
+                          const ProjIcon = phaseIcons[proj.phase] || IconPython;
 
                           return (
                             <button
@@ -1280,7 +1282,7 @@ export function AIRoadmap() {
                         <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 hidden sm:flex"
                           style={{ background: accent.bg, color: accent.color }}>
                           {(() => {
-                            const ProjIcon = pythonProjectIcons[selectedPythonProject.id] || IconPython;
+                            const ProjIcon = phaseIcons[selectedPythonProject.phase] || IconPython;
                             return <ProjIcon className="w-4.5 h-4.5" />;
                           })()}
                         </div>
