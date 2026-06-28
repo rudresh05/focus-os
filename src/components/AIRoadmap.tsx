@@ -295,6 +295,7 @@ export function AIRoadmap() {
   const [chatHistory, setChatHistory] = useState<Array<{ role: "user" | "assistant"; text: string }>>([]);
   const [userInput, setUserInput] = useState("");
   const [loadingChat, setLoadingChat] = useState(false);
+  const [mobileView, setMobileView] = useState<"list" | "detail">("list");
 
   useEffect(() => {
     try {
@@ -406,7 +407,10 @@ export function AIRoadmap() {
     <div className="flex h-full w-full overflow-hidden bg-background">
 
       {/* ── LEFT PANEL ────────────────────────────────────────────── */}
-      <aside className="w-72 flex-shrink-0 flex flex-col border-r border-line overflow-hidden bg-background">
+      <aside className={cn(
+        "w-full lg:w-72 flex-shrink-0 flex-col border-r border-line overflow-hidden bg-background lg:flex",
+        mobileView === "list" ? "flex" : "hidden"
+      )}>
 
         {/* Header */}
         <div className="px-5 py-5 border-b border-line flex-shrink-0">
@@ -475,7 +479,7 @@ export function AIRoadmap() {
             return (
               <button
                 key={stage.id}
-                onClick={() => { setSelectedStage(stage); setSelectedTopic(""); setCustomTopic(""); }}
+                onClick={() => { setSelectedStage(stage); setSelectedTopic(""); setCustomTopic(""); setMobileView("detail"); }}
                 className={cn(
                   "w-full text-left p-3 rounded-xl border transition-all duration-200",
                   isSelected ? "bg-bg-soft" : "border-line hover:bg-bg-soft"
@@ -531,7 +535,10 @@ export function AIRoadmap() {
       </aside>
 
       {/* ── RIGHT PANEL ───────────────────────────────────────────── */}
-      <div className="flex-1 flex flex-col overflow-hidden bg-background">
+      <div className={cn(
+        "flex-1 flex-col overflow-hidden bg-background lg:flex",
+        mobileView === "detail" ? "flex" : "hidden"
+      )}>
         {!selectedStage ? (
           <div className="flex-1 flex items-center justify-center text-muted-foreground/30 text-sm">
             ← Select a stage to begin
@@ -541,16 +548,26 @@ export function AIRoadmap() {
           return (
             <>
               {/* Right panel header */}
-              <div className="px-8 py-5 border-b border-line flex-shrink-0 flex items-center justify-between">
-                <div>
-                  <h2 className="font-black text-xl text-foreground flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                      style={{ background: selectedStage.color + "18", color: selectedStage.color }}>
-                      <StageIcon className="w-4.5 h-4.5" />
-                    </div>
-                    {selectedStage.title}
-                  </h2>
-                  <p className="text-[11px] text-muted-foreground mt-1 ml-10">{selectedStage.desc}</p>
+              <div className="px-5 sm:px-8 py-5 border-b border-line flex-shrink-0 flex items-center justify-between">
+                <div className="flex items-center min-w-0">
+                  <button
+                    onClick={() => setMobileView("list")}
+                    className="lg:hidden mr-3 p-2 border border-line rounded-xl bg-bg-soft text-muted-foreground hover:text-foreground cursor-pointer flex-shrink-0"
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                      <line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" />
+                    </svg>
+                  </button>
+                  <div>
+                    <h2 className="font-black text-lg sm:text-xl text-foreground flex items-center gap-2.5 truncate">
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 hidden sm:flex"
+                        style={{ background: selectedStage.color + "18", color: selectedStage.color }}>
+                        <StageIcon className="w-4.5 h-4.5" />
+                      </div>
+                      {selectedStage.title}
+                    </h2>
+                    <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-1 sm:ml-10 truncate max-w-[200px] sm:max-w-md">{selectedStage.desc}</p>
+                  </div>
                 </div>
                 <div className="text-right">
                   <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-muted-foreground">Duration</p>
