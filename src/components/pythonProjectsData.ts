@@ -33,57 +33,59 @@ export const pythonProjects: PythonProject[] = [
   {
     "id": 1,
     "phase": "Phase 1 — Python Engineering",
-    "title": "Linux Command Clone",
+    "title": "File Indexer",
     "level": "Beginner",
     "xp": 100,
-    "desc": "Design and build a production-ready \"Linux Command Clone\" as part of your Phase 1 — Python Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "desc": "Build a high-performance local File Indexer using Python's pathlib module. Create a custom indexer that parses files recursively, handles permission errors gracefully, and stores metadata (size, extension, modification time) in an optimized JSON storage for rapid search querying.",
     "concepts": [
-      "CLI",
-      "pathlib",
-      "argparse",
-      "Exceptions"
+      "pathlib.Path",
+      "Generators & yield",
+      "Exception Handling",
+      "JSON Serialization"
     ],
     "features": [
-      "Implement core interface and execution logic for Linux Command Clone.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Traverse files and subdirectories recursively using pathlib.rglob.",
+      "Extract and parse metadata like file size, extension, and modification time.",
+      "Store indices in memory and support serialization to/from local JSON database.",
+      "Filter indexing based on file patterns, exclusions, and extension lists.",
+      "Gracefully handle permission errors and missing paths without crashing the scanner."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Initialize workspace and implement directory scanner using pathlib.",
+      "Create file metadata parser module with robust edge-case handling.",
+      "Build memory indexing cache and write serialization logic to local storage.",
+      "Implement search querying engine supporting keyword matching and filter parameters.",
+      "Write pytest tests verifying path scanning robustness and query filters."
     ],
     "libraries": [
       {
         "name": "pathlib",
-        "desc": "Filesystem paths."
+        "desc": "Object-oriented filesystem paths utility."
       },
       {
-        "name": "argparse",
-        "desc": "CLI argument parser."
+        "name": "fnmatch",
+        "desc": "Unix filename pattern matching utility."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Linux Command Clone\" project using standard patterns in Phase 1 — Python Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "linux_command_clone_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Help me implement a robust local File Indexer in Python. Explain how to scan files recursively using pathlib while handling access errors without crashing, and how to build a search interface.",
+    "fileStructure": "file_indexer/\n├── main.py\n├── core/\n│   ├── scanner.py\n│   └── storage.py\n└── tests/\n    └── test_indexer.py",
+    "architecture": "Directory Input -> Recursive Path Scanner -> Metadata Extractor -> Cache Storage -> Search Query Filter",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Linux Command Clone?",
+        "question": "Which pathlib method is best suited for recursive file searching using patterns?",
         "options": [
-          "CLI (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "path.glob()",
+          "path.rglob() (Correct)",
+          "path.iterdir()"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Linux Command Clone?",
+        "question": "How should permission errors during traversal be handled?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "Let the program crash",
+          "Catch PermissionError and log/skip (Correct)",
+          "Restart the scan"
         ],
         "correct": 1
       }
@@ -92,57 +94,59 @@ export const pythonProjects: PythonProject[] = [
   {
     "id": 2,
     "phase": "Phase 1 — Python Engineering",
-    "title": "File Indexer",
+    "title": "FastAPI Starter",
     "level": "Beginner",
     "xp": 100,
-    "desc": "Design and build a production-ready \"File Indexer\" as part of your Phase 1 — Python Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "desc": "Build a production-ready REST API starter template using FastAPI. Learn to structure your endpoints, define robust request/response models using Pydantic, leverage dependency injection, and handle validation errors elegantly.",
     "concepts": [
-      "CLI",
-      "pathlib",
-      "argparse",
-      "Exceptions"
+      "RESTful API design",
+      "Pydantic Validation",
+      "Dependency Injection",
+      "Structured Exceptions"
     ],
     "features": [
-      "Implement core interface and execution logic for File Indexer.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Define standard CRUD endpoints with proper HTTP status codes.",
+      "Validate query parameters, path variables, and body inputs with Pydantic.",
+      "Implement dependency injection for shared resources like config and database sessions.",
+      "Create custom exception handlers mapping validation errors to clean JSON responses.",
+      "Generate auto-documentation pages (Swagger UI / ReDoc)."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Initialize FastAPI application and configure the development uvicorn server.",
+      "Design data models and request schemas using Pydantic.",
+      "Build router endpoints with query parameters and path verification.",
+      "Implement custom middleware and exception handling filters.",
+      "Write endpoint integration tests using TestClient and pytest."
     ],
     "libraries": [
       {
-        "name": "pathlib",
-        "desc": "Filesystem paths."
+        "name": "fastapi",
+        "desc": "Modern, fast (high-performance) web framework."
       },
       {
-        "name": "argparse",
-        "desc": "CLI argument parser."
+        "name": "pydantic",
+        "desc": "Data validation and settings management using python type annotations."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"File Indexer\" project using standard patterns in Phase 1 — Python Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "file_indexer_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Guide me through building a FastAPI starter. Show me how to structure endpoints, validate requests with Pydantic, use dependencies, and write integration tests.",
+    "fileStructure": "fastapi_starter/\n├── app/\n│   ├── main.py\n│   ├── schemas.py\n│   ├── routes/\n│   │   └── items.py\n│   └── dependencies.py\n└── tests/\n    └── test_api.py",
+    "architecture": "Client Request -> FastAPI Router -> Pydantic Validation -> Dependency Injection -> Endpoint Controller -> JSON Response",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building File Indexer?",
+        "question": "How does FastAPI generate automatic Swagger documentation?",
         "options": [
-          "CLI (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "By parsing Pydantic schemas and Python type hints (Correct)",
+          "By manually reading source comments",
+          "By connecting to an external docs registry"
         ],
         "correct": 0
       },
       "q2": {
-        "question": "What is a main implementation challenge for File Indexer?",
+        "question": "What is the primary benefit of FastAPI's Dependency Injection system?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It compiles code to binary files",
+          "It allows reusing database sessions, security checks, and logic parameters (Correct)",
+          "It replaces the Python interpreter"
         ],
         "correct": 1
       }
@@ -151,57 +155,59 @@ export const pythonProjects: PythonProject[] = [
   {
     "id": 3,
     "phase": "Phase 1 — Python Engineering",
-    "title": "Log Analyzer",
-    "level": "Beginner",
-    "xp": 100,
-    "desc": "Design and build a production-ready \"Log Analyzer\" as part of your Phase 1 — Python Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "title": "Authentication Service",
+    "level": "Intermediate",
+    "xp": 200,
+    "desc": "Design and build a secure authentication API service using JWT, Bcrypt, and OAuth2 standard patterns. Implement password salting/hashing, user register/login pathways, JWT token generation, verification, and expiration controls.",
     "concepts": [
-      "CLI",
-      "pathlib",
-      "argparse",
-      "Exceptions"
+      "JWT (JSON Web Tokens)",
+      "Bcrypt Hashing",
+      "OAuth2 Scopes",
+      "Token Lifecycle"
     ],
     "features": [
-      "Implement core interface and execution logic for Log Analyzer.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Hash passwords securely using Bcrypt salting strategies.",
+      "Create JWT authentication tokens containing claims and expiration timestamps.",
+      "Implement route protection middleware verifying bearer tokens in HTTP headers.",
+      "Support token validation, revocation, and basic blacklisting.",
+      "Implement sign-up, login, and secure user profile routing."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Configure cryptographically secure password salting and hashing classes.",
+      "Build login and registration routes with schema validations.",
+      "Implement JWT signing, decoding, and custom verification middleware.",
+      "Secure FastAPI endpoint logic using OAuth2PasswordBearer flows.",
+      "Create pytest files validating auth scopes, token expiry, and incorrect passwords."
     ],
     "libraries": [
       {
-        "name": "pathlib",
-        "desc": "Filesystem paths."
+        "name": "passlib",
+        "desc": "Password hashing library supporting Bcrypt algorithms."
       },
       {
-        "name": "argparse",
-        "desc": "CLI argument parser."
+        "name": "pyjwt",
+        "desc": "JSON Web Token implementation in Python."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Log Analyzer\" project using standard patterns in Phase 1 — Python Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "log_analyzer_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Help me implement a robust Auth Service. Explain password hashing with Bcrypt, JWT token creation/verification, and how to restrict FastAPI routes to logged-in users.",
+    "fileStructure": "auth_service/\n├── app/\n│   ├── main.py\n│   ├── auth_utils.py\n│   ├── database.py\n│   └── routes/\n│       └── auth.py\n└── tests/\n    └── test_auth.py",
+    "architecture": "Client Credentials -> Hashing Check -> Token Generator -> JWT -> Authorization Middleware -> Protected Route Access",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Log Analyzer?",
+        "question": "Why is it important to hash passwords with salt using Bcrypt?",
         "options": [
-          "CLI (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "To speed up database lookup times",
+          "To prevent rainbow table attacks by ensuring identical passwords have unique hashes (Correct)",
+          "To compress the password length"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Log Analyzer?",
+        "question": "Where should the JWT token signature verification happen?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "Exclusively on the client side",
+          "On the server side during middleware verification of the Bearer token (Correct)",
+          "Inside the user's web browser cookies"
         ],
         "correct": 1
       }
@@ -210,57 +216,59 @@ export const pythonProjects: PythonProject[] = [
   {
     "id": 4,
     "phase": "Phase 1 — Python Engineering",
-    "title": "FastAPI Starter",
-    "level": "Intermediate",
-    "xp": 200,
-    "desc": "Design and build a production-ready \"FastAPI Starter\" as part of your Phase 1 — Python Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "title": "Async Web Crawler",
+    "level": "Advanced",
+    "xp": 300,
+    "desc": "Develop a fast, concurrent web crawler using Python's asyncio and aiohttp. Implement asynchronous page fetching, parsing links with BeautifulSoup, domain-level rate limiting, depth-restricted scanning, and robust connection error recovery.",
     "concepts": [
-      "CLI",
-      "pathlib",
-      "argparse",
-      "Exceptions"
+      "asyncio Event Loop",
+      "Non-blocking I/O",
+      "HTML Parsing",
+      "Rate Limiting"
     ],
     "features": [
-      "Implement core interface and execution logic for FastAPI Starter.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Fetch web pages concurrently using non-blocking aiohttp ClientSessions.",
+      "Parse and extract relative/absolute anchor URLs using BeautifulSoup.",
+      "Enforce maximum traversal depth and handle redirect loops.",
+      "Implement host-based rate limiting and concurrent request semaphore controls.",
+      "Track visited URLs dynamically to prevent redundant indexing loops."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Initialize async framework and set up aiohttp connection clients.",
+      "Implement async queue manager coordinating tasks and crawl queues.",
+      "Create parsing utility to extract valid web links and document metadata.",
+      "Apply semaphores to cap maximum concurrent HTTP connections.",
+      "Write async test suites mocking network responses with aresponses."
     ],
     "libraries": [
       {
-        "name": "pathlib",
-        "desc": "Filesystem paths."
+        "name": "aiohttp",
+        "desc": "Asynchronous HTTP client/server framework."
       },
       {
-        "name": "argparse",
-        "desc": "CLI argument parser."
+        "name": "beautifulsoup4",
+        "desc": "Screen-scraping library for extracting data from HTML."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"FastAPI Starter\" project using standard patterns in Phase 1 — Python Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "fastapi_starter_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain how to build an async crawler using asyncio and aiohttp. Detail queue management, handling connection timeouts, and implementing rate limits per domain.",
+    "fileStructure": "async_crawler/\n├── crawler.py\n├── queue_mgr.py\n├── parser.py\n└── tests/\n    └── test_crawler.py",
+    "architecture": "Async Queue -> Semaphore Guard -> aiohttp Requester -> HTML Parser -> Link Deduplicator -> Queue Appender",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building FastAPI Starter?",
+        "question": "Which asyncio construct is best suited to limit concurrent network tasks?",
         "options": [
-          "CLI (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "asyncio.Semaphore (Correct)",
+          "asyncio.Event",
+          "asyncio.Lock"
         ],
         "correct": 0
       },
       "q2": {
-        "question": "What is a main implementation challenge for FastAPI Starter?",
+        "question": "Why is aiohttp preferred over requests for large scale scraping?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It executes JavaScript natively",
+          "It uses non-blocking HTTP requests, allowing one thread to handle thousands of concurrent queries (Correct)",
+          "It automatically bypasses CAPTCHAs"
         ],
         "correct": 1
       }
@@ -269,57 +277,59 @@ export const pythonProjects: PythonProject[] = [
   {
     "id": 5,
     "phase": "Phase 1 — Python Engineering",
-    "title": "Authentication Service",
-    "level": "Intermediate",
-    "xp": 200,
-    "desc": "Design and build a production-ready \"Authentication Service\" as part of your Phase 1 — Python Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "title": "Mini Redis",
+    "level": "Expert",
+    "xp": 400,
+    "desc": "Write a lightweight, concurrent TCP socket server that implements a subset of the Redis database. Design a custom byte parser for the Redis Serialization Protocol (RESP), support fundamental commands (GET, SET, DEL, EXPIRE), and manage multi-client concurrency using Python selectors.",
     "concepts": [
-      "CLI",
-      "pathlib",
-      "argparse",
-      "Exceptions"
+      "Socket Programming",
+      "RESP Protocol Parsing",
+      "Event-driven I/O selectors",
+      "In-memory storage & TTL"
     ],
     "features": [
-      "Implement core interface and execution logic for Authentication Service.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Create a raw TCP socket server handling multiple concurrent client channels.",
+      "Parse incoming network bytes according to Redis RESP protocol formatting.",
+      "Implement key-value commands: GET, SET, DEL, and EXPIRE with millisecond TTL.",
+      "Support data types: Simple Strings, Bulk Strings, Integers, and Errors.",
+      "Enforce passive/active memory eviction routines for expired database keys."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Implement network socket startup, listener setups, and basic read/write selectors.",
+      "Build byte parser classes decoding bulk strings and arrays of RESP format.",
+      "Develop in-memory database storage core mapping keys to values and TTL attributes.",
+      "Write connection loop dispatcher parsing commands and routing responses.",
+      "Create client-side test automation validating protocol compatibility."
     ],
     "libraries": [
       {
-        "name": "pathlib",
-        "desc": "Filesystem paths."
+        "name": "socket",
+        "desc": "Low-level networking interface."
       },
       {
-        "name": "argparse",
-        "desc": "CLI argument parser."
+        "name": "selectors",
+        "desc": "High-level I/O multiplexing selector utilities."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Authentication Service\" project using standard patterns in Phase 1 — Python Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "authentication_service_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Help me build a Mini Redis socket server. Teach me how the RESP protocol parses arrays/bulk strings, how selectors handle client concurrency, and how expired keys are deleted.",
+    "fileStructure": "mini_redis/\n├── server.py\n├── protocol.py\n├── storage.py\n└── tests/\n    └── test_server.py",
+    "architecture": "Client Connection -> Selectors Event Loop -> Socket Read -> RESP Parser -> Storage Command Engine -> RESP Encoder -> Socket Write",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Authentication Service?",
+        "question": "How is network data framed in the Redis Serialization Protocol (RESP)?",
         "options": [
-          "CLI (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "Using XML schemas",
+          "Using prefixes like '+' for strings, '$' for bulk data, and ending with '\\r\\n' (Correct)",
+          "Using flat binary buffers without dividers"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Authentication Service?",
+        "question": "What role does python's selectors module play in Mini Redis?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It compresses memory schemas",
+          "It multiplexes socket events, letting a single thread monitor multiple read/write buffers (Correct)",
+          "It compiles python classes to machine code"
         ],
         "correct": 1
       }
@@ -328,57 +338,59 @@ export const pythonProjects: PythonProject[] = [
   {
     "id": 6,
     "phase": "Phase 1 — Python Engineering",
-    "title": "URL Shortener",
-    "level": "Intermediate",
-    "xp": 200,
-    "desc": "Design and build a production-ready \"URL Shortener\" as part of your Phase 1 — Python Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "title": "Dockerized Backend",
+    "level": "Beginner",
+    "xp": 100,
+    "desc": "Containerize a python web application using Docker and Docker Compose. Learn multi-stage build optimizations, configuring isolated virtual networks, container environment variables, and binding volumes for live development reloading.",
     "concepts": [
-      "CLI",
-      "pathlib",
-      "argparse",
-      "Exceptions"
+      "Multi-stage Dockerfiles",
+      "Docker Compose orchestration",
+      "Volume Mounts",
+      "Isolated Networks"
     ],
     "features": [
-      "Implement core interface and execution logic for URL Shortener.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Write multi-stage Dockerfiles separating build dependencies from runtime environments.",
+      "Configure docker-compose.yml to run backend services alongside databases.",
+      "Manage sensitive environment variables securely using external .env configurations.",
+      "Implement local bind-mounting to enable immediate hot-reloading during editing.",
+      "Configure container healthchecks to monitor application statuses."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Write optimized, multi-stage Dockerfile using Alpine or slim Python baselines.",
+      "Design docker-compose templates linking web containers with database instances.",
+      "Configure local environment bindings and external host volumes.",
+      "Build networking profiles separating internal services from public ports.",
+      "Test build speeds, image sizes, and container initialization parameters."
     ],
     "libraries": [
       {
-        "name": "pathlib",
-        "desc": "Filesystem paths."
+        "name": "dockerfile",
+        "desc": "Standard specification for compiling containers."
       },
       {
-        "name": "argparse",
-        "desc": "CLI argument parser."
+        "name": "docker-compose",
+        "desc": "Multi-container orchestration engine."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"URL Shortener\" project using standard patterns in Phase 1 — Python Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "url_shortener_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Guide me through containerizing my application. Show me a multi-stage Dockerfile, docker-compose configuration with DB dependency, volumes, and healthchecks.",
+    "fileStructure": "dockerized_backend/\n├── app/\n│   └── main.py\n├── Dockerfile\n├── docker-compose.yml\n├── .env.example\n└── requirements.txt",
+    "architecture": "Host Docker Engine -> Docker Compose -> Virtual Network -> Configured Containers -> Volume Mount & Port Bind",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building URL Shortener?",
+        "question": "What is a major advantage of using multi-stage Docker builds?",
         "options": [
-          "CLI (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "It reduces final image sizes by leaving compilation tools out of the execution layer (Correct)",
+          "It speeds up execution speeds by 500%",
+          "It eliminates the need for requirements.txt"
         ],
         "correct": 0
       },
       "q2": {
-        "question": "What is a main implementation challenge for URL Shortener?",
+        "question": "What does a docker bind mount do during development?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It compiles application code into static libraries",
+          "It links a host directory to a container path, enabling local code changes to reflect immediately (Correct)",
+          "It establishes an encrypted network tunnel"
         ],
         "correct": 1
       }
@@ -386,58 +398,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 7,
-    "phase": "Phase 1 — Python Engineering",
-    "title": "Async Web Crawler",
+    "phase": "Phase 2 — Data Engineering",
+    "title": "CSV Analytics Engine",
     "level": "Intermediate",
-    "xp": 250,
-    "desc": "Design and build a production-ready \"Async Web Crawler\" as part of your Phase 1 — Python Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "xp": 200,
+    "desc": "Build an analytical parsing engine that processes multi-gigabyte CSV files using Pandas chunking. Handle missing values, parse dates dynamically, execute complex aggregations, filter metrics, and export summarized reports to parquet formats.",
     "concepts": [
-      "CLI",
-      "pathlib",
-      "argparse",
-      "Exceptions"
+      "Pandas Chunking",
+      "Memory Optimization",
+      "Data Aggregations",
+      "Parquet Storage Format"
     ],
     "features": [
-      "Implement core interface and execution logic for Async Web Crawler.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Process large CSV files in chunks to maintain low memory footprints.",
+      "Handle missing values using median filling or context-driven dropping.",
+      "Perform grouping, pivot tables, and rolling aggregations on selected columns.",
+      "Detect and log schema anomalies or parsing failures.",
+      "Write data partitions to optimized, columnar Parquet files."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Implement CSV parser core with dynamic chunk size configurations.",
+      "Build data cleaning pipeline converting schemas, handling NaN metrics, and parsing dates.",
+      "Create analytical aggregator mapping statistical functions onto groups.",
+      "Configure Parquet writer partitions mapping keys to output directories.",
+      "Validate processing speeds and peak memory limits using memory-profiler."
     ],
     "libraries": [
       {
-        "name": "pathlib",
-        "desc": "Filesystem paths."
+        "name": "pandas",
+        "desc": "High-performance data manipulation and analysis tool."
       },
       {
-        "name": "argparse",
-        "desc": "CLI argument parser."
+        "name": "pyarrow",
+        "desc": "Python bindings for Apache Arrow, enabling parquet export."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Async Web Crawler\" project using standard patterns in Phase 1 — Python Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "async_web_crawler_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Help me write a CSV Analytics Engine using Pandas. Teach me to load data in chunks, clean missing values, aggregate groups, and output parquet datasets.",
+    "fileStructure": "csv_analytics/\n├── engine.py\n├── aggregations.py\n├── config.py\n└── tests/\n    └── test_analytics.py",
+    "architecture": "CSV Input -> Pandas Chunk Reader -> Cleaning Middleware -> Aggregation Processor -> Parquet Export",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Async Web Crawler?",
+        "question": "Why should we use chunksize when loading huge CSV files in pandas?",
         "options": [
-          "CLI (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "To translate the data to SQL queries",
+          "To read file subsets iteratively, keeping memory consumption low and constant (Correct)",
+          "To automatically compress files"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Async Web Crawler?",
+        "question": "What is the benefit of storing structured datasets in Parquet over CSV?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "Parquet is human-readable in plain text editors",
+          "Parquet uses columnar storage and compression, providing faster queries and smaller sizes (Correct)",
+          "Parquet supports CSS formatting"
         ],
         "correct": 1
       }
@@ -445,117 +459,121 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 8,
-    "phase": "Phase 1 — Python Engineering",
-    "title": "Mini Redis",
-    "level": "Intermediate",
-    "xp": 250,
-    "desc": "Design and build a production-ready \"Mini Redis\" as part of your Phase 1 — Python Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 2 — Data Engineering",
+    "title": "Airflow Pipeline",
+    "level": "Advanced",
+    "xp": 300,
+    "desc": "Design and build a robust ETL workflow orchestrated by Apache Airflow. Create Directed Acyclic Graphs (DAGs) implementing task dependencies, custom PythonOperators, database connections, task retries, and slack error notifications.",
     "concepts": [
-      "CLI",
-      "pathlib",
-      "argparse",
-      "Exceptions"
+      "Airflow DAGs",
+      "PythonOperators",
+      "Task Dependencies",
+      "XCom Data Passing"
     ],
     "features": [
-      "Implement core interface and execution logic for Mini Redis.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Define modular data pipelines with strict Directed Acyclic Graph (DAG) structures.",
+      "Execute tasks dynamically using Custom Airflow Operators and hooks.",
+      "Pass lightweight metadata parameters between tasks using XCom variables.",
+      "Implement robust failure behaviors with auto-retries, backoffs, and callback alerts.",
+      "Integrate database hook bindings to interface with storage layers."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Set up local Airflow environments using docker containers or pip installations.",
+      "Create DAG profiles specifying execution intervals and configuration defaults.",
+      "Write pipeline tasks executing data extraction, translation, and loader operations.",
+      "Implement hook bindings loading processed indicators to postgres targets.",
+      "Verify task orchestration, dependency flows, and log collection in UI panels."
     ],
     "libraries": [
       {
-        "name": "pathlib",
-        "desc": "Filesystem paths."
+        "name": "apache-airflow",
+        "desc": "Programmatically author, schedule and monitor workflows."
       },
       {
-        "name": "argparse",
-        "desc": "CLI argument parser."
+        "name": "psycopg2-binary",
+        "desc": "PostgreSQL database adapter for Python."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Mini Redis\" project using standard patterns in Phase 1 — Python Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "mini_redis_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Guide me through building an Apache Airflow ETL pipeline. Explain DAG syntax, PythonOperators, XCom mechanics, custom hooks, and handling task failures.",
+    "fileStructure": "airflow_pipeline/\n├── dags/\n│   ├── etl_dag.py\n│   └── tasks/\n│       ├── extract.py\n│       ├── transform.py\n│       └── load.py\n└── config/airflow.cfg",
+    "architecture": "Scheduler -> DAG Trigger -> Extract Task -> Transform Task (via XCom) -> Load Task -> Target Database",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Mini Redis?",
+        "question": "What is a DAG in the context of Apache Airflow?",
         "options": [
-          "CLI (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Mini Redis?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "A compilation tool for database indexes",
+          "A Directed Acyclic Graph outlining task execution order without cycles (Correct)",
+          "A format for structuring tabular variables"
         ],
         "correct": 1
+      },
+      "q2": {
+        "question": "What is the primary mechanism for sharing small metadata variables between Airflow tasks?",
+        "options": [
+          "XComs (Cross-Communications) (Correct)",
+          "Global module variables",
+          "Writing temporary text logs"
+        ],
+        "correct": 0
       }
     }
   },
   {
     "id": 9,
-    "phase": "Phase 1 — Python Engineering",
-    "title": "ETL Pipeline",
-    "level": "Intermediate",
-    "xp": 250,
-    "desc": "Design and build a production-ready \"ETL Pipeline\" as part of your Phase 1 — Python Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 2 — Data Engineering",
+    "title": "Kafka Streaming Pipeline",
+    "level": "Expert",
+    "xp": 400,
+    "desc": "Build a real-time data streaming pipeline using Apache Kafka. Write robust Python producers publishing transaction logs, configure consumer groups distributing message reads, process events on-the-fly, and handle partition balances and offset commits.",
     "concepts": [
-      "CLI",
-      "pathlib",
-      "argparse",
-      "Exceptions"
+      "Pub/Sub Architecture",
+      "Kafka Producer/Consumer",
+      "Consumer Groups",
+      "Message Offsets"
     ],
     "features": [
-      "Implement core interface and execution logic for ETL Pipeline.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Establish high-throughput network connections to Kafka brokers.",
+      "Write multi-threaded producers writing serialized JSON events into topics.",
+      "Create consumer groups distributing message consumption across partitions.",
+      "Implement manual offset commits to guarantee exactly-once/at-least-once deliveries.",
+      "Process event streams on-the-fly (filtering, aggregating metrics, and routing)."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Configure local Kafka instances with Zookeeper via docker setups.",
+      "Write event generator producer classes streaming simulated metrics.",
+      "Build consumer applications reading data batches and updating terminal dashboards.",
+      "Handle partition rebalancing callbacks and commit offsets manually.",
+      "Stress test message throughput limits, backpressures, and fault recoveries."
     ],
     "libraries": [
       {
-        "name": "pathlib",
-        "desc": "Filesystem paths."
+        "name": "confluent-kafka",
+        "desc": "Ultralight, high-performance client library based on librdkafka."
       },
       {
-        "name": "argparse",
-        "desc": "CLI argument parser."
+        "name": "json",
+        "desc": "Standard encoder/decoder for streaming packets."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"ETL Pipeline\" project using standard patterns in Phase 1 — Python Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "etl_pipeline_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain how to build a Kafka streaming pipeline in Python. Detail Producer configurations, Consumer Group structures, managing partitions, and manual offset commits.",
+    "fileStructure": "kafka_streaming/\n├── producer.py\n├── consumer.py\n├── config.py\n└── tests/\n    └── test_streaming.py",
+    "architecture": "Data Generator -> Confluent Producer -> Kafka Topic Partitions -> Consumer Groups -> Stream Processor -> DB Loader",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building ETL Pipeline?",
+        "question": "How do consumer groups scale consumption in Apache Kafka?",
         "options": [
-          "CLI (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "By letting multiple consumer processes read from different topic partitions concurrently (Correct)",
+          "By copying topic data into host memory",
+          "By compiling Python variables to bytes"
         ],
         "correct": 0
       },
       "q2": {
-        "question": "What is a main implementation challenge for ETL Pipeline?",
+        "question": "Why is committing offsets manually in consumers crucial for ML pipelines?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It decreases message delivery speed",
+          "It gives control over when messages are marked processed, preventing data loss during processing errors (Correct)",
+          "It translates data packets to JSON schemas"
         ],
         "correct": 1
       }
@@ -563,58 +581,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 10,
-    "phase": "Phase 1 — Python Engineering",
-    "title": "Dockerized Backend",
-    "level": "Intermediate",
-    "xp": 250,
-    "desc": "Design and build a production-ready \"Dockerized Backend\" as part of your Phase 1 — Python Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 3 — Machine Learning",
+    "title": "Titanic Survival Prediction",
+    "level": "Beginner",
+    "xp": 100,
+    "desc": "Build a machine learning classification model predicting passenger survival on the Titanic. Learn feature engineering (handling missing data, encoding categories, scaling values), training Scikit-Learn models, and evaluation metric parsing.",
     "concepts": [
-      "CLI",
-      "pathlib",
-      "argparse",
-      "Exceptions"
+      "Classification Basics",
+      "Feature Engineering",
+      "Hyperparameter Tuning",
+      "Confusion Matrices"
     ],
     "features": [
-      "Implement core interface and execution logic for Dockerized Backend.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Analyze dataset distributions using Pandas and Seaborn visuals.",
+      "Impute missing age/fare variables using context-driven techniques.",
+      "Encode categorical fields (sex, cabin locations) using one-hot/label methods.",
+      "Train classification estimators (Logistic Regression, Random Forests, XGBoost).",
+      "Evaluate models using accuracy, precision, recall, and ROC-AUC metrics."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Load Titanic data and run comprehensive exploratory analysis (EDA).",
+      "Design preprocessing pipelines using Scikit-Learn ColumnTransformers.",
+      "Train baseline classifiers and tune parameters via GridSearchCV.",
+      "Analyze model confusion matrices and feature importance rankings.",
+      "Write prediction validation scripts and export trained models as pickles."
     ],
     "libraries": [
       {
-        "name": "pathlib",
-        "desc": "Filesystem paths."
+        "name": "scikit-learn",
+        "desc": "Machine learning libraries for classification, regression, and clustering."
       },
       {
-        "name": "argparse",
-        "desc": "CLI argument parser."
+        "name": "seaborn",
+        "desc": "Statistical data visualization library based on matplotlib."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Dockerized Backend\" project using standard patterns in Phase 1 — Python Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "dockerized_backend_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Guide me through Titanic survival prediction using scikit-learn. Show EDA, preprocessing with ColumnTransformer, tuning a RandomForestClassifier, and explaining metrics.",
+    "fileStructure": "titanic_ml/\n├── eda.ipynb\n├── train.py\n├── pipeline.py\n└── models/\n    └── classifier.pkl",
+    "architecture": "Raw CSV Data -> Pandas Loader -> Clean & Transform -> Model Trainer -> Grid Search -> Evaluation Report",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Dockerized Backend?",
+        "question": "What is the purpose of One-Hot Encoding in feature engineering?",
         "options": [
-          "CLI (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "To normalize numerical scale ranges",
+          "To convert categorical text variables into binary column vectors for model ingestion (Correct)",
+          "To clean NaN metrics"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Dockerized Backend?",
+        "question": "Which metric evaluates classification models when fraud/survival targets are moderately unbalanced?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "Accuracy",
+          "Precision-Recall and Area Under ROC Curve (ROC-AUC) (Correct)",
+          "Mean Squared Error (MSE)"
         ],
         "correct": 1
       }
@@ -622,58 +642,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 11,
-    "phase": "Phase 2 — Data Engineering",
-    "title": "CSV Analytics Engine",
-    "level": "Intermediate",
-    "xp": 300,
-    "desc": "Design and build a production-ready \"CSV Analytics Engine\" as part of your Phase 2 — Data Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 3 — Machine Learning",
+    "title": "House Price Prediction",
+    "level": "Beginner",
+    "xp": 100,
+    "desc": "Build a regression model to estimate house values using structured datasets. Implement target transformations, regularized linear algorithms (Ridge, Lasso), ensemble methods, feature selections, and validate errors using mean absolute error (MAE).",
     "concepts": [
-      "ETL",
-      "Pandas",
-      "Aggregation",
-      "SQL Schema"
+      "Regression Analysis",
+      "L1/L2 Regularization",
+      "Target Transformation",
+      "Evaluation Metrics"
     ],
     "features": [
-      "Implement core interface and execution logic for CSV Analytics Engine.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Preprocess continuous and categorical columns containing skewness.",
+      "Perform log transformations on heavily skewed target variables.",
+      "Compare Lasso (L1) and Ridge (L2) coefficients to drop uninformative features.",
+      "Train gradient boosted estimators (LightGBM, Random Forests).",
+      "Evaluate pricing projections using MAE, RMSE, and R-squared scales."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Load datasets, clean Null cells, and run descriptive correlation mapping.",
+      "Scale features using StandardScaler and map targets using Log1p formulas.",
+      "Train Ridge/Lasso models and plot coefficient shrinkage patterns.",
+      "Build ensemble regressors using Stacking or Voting techniques.",
+      "Write prediction pipelines testing outputs against validation slices."
     ],
     "libraries": [
       {
-        "name": "pandas",
-        "desc": "Dataframes analytics."
+        "name": "scikit-learn",
+        "desc": "Regularized models, pipelines, and evaluation metrics."
       },
       {
-        "name": "numpy",
-        "desc": "Vector computations."
+        "name": "lightgbm",
+        "desc": "Fast, distributed, high-performance gradient boosting framework."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"CSV Analytics Engine\" project using standard patterns in Phase 2 — Data Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "csv_analytics_engine_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain how to build a house price predictor. Detail regression preprocessing, scaling inputs, regularizing coefficients, using LightGBM, and evaluating with RMSE.",
+    "fileStructure": "house_pricing/\n├── data_loader.py\n├── preprocess.py\n├── train_regressor.py\n└── tests/\n    └── test_regressor.py",
+    "architecture": "Tabular Data -> Scale & Transform -> Ridge/Lasso Feature Drop -> LightGBM Regressor -> Exponential Inverse Target -> MAE Output",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building CSV Analytics Engine?",
+        "question": "What is the primary difference between L1 (Lasso) and L2 (Ridge) regularization?",
         "options": [
-          "ETL (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "L1 regularizes target values, L2 regularizes features",
+          "L1 shrinks coefficients to exactly zero (feature selection), L2 shrinks them near zero (Correct)",
+          "L2 only works on classification models"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for CSV Analytics Engine?",
+        "question": "Why is log transformation applied to home prices in regression tasks?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "To speed up training loops",
+          "To stabilize variance and make target distributions normal, reducing large-outlier influence (Correct)",
+          "To convert numbers to strings"
         ],
         "correct": 1
       }
@@ -681,58 +703,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 12,
-    "phase": "Phase 2 — Data Engineering",
-    "title": "SQL Query Engine",
+    "phase": "Phase 3 — Machine Learning",
+    "title": "Credit Card Fraud Detection",
     "level": "Intermediate",
-    "xp": 300,
-    "desc": "Design and build a production-ready \"SQL Query Engine\" as part of your Phase 2 — Data Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "xp": 200,
+    "desc": "Tackle heavily imbalanced dataset challenges by designing a credit card fraud detection system. Master handling skewed classes using SMOTE, adjusting classification decision thresholds, analyzing F1-scores, and tuning Isolation Forests for anomaly detection.",
     "concepts": [
-      "ETL",
-      "Pandas",
-      "Aggregation",
-      "SQL Schema"
+      "Imbalanced Class Handling",
+      "SMOTE Resampling",
+      "Threshold Calibration",
+      "Anomaly Detection"
     ],
     "features": [
-      "Implement core interface and execution logic for SQL Query Engine.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Analyze PCA-transformed transaction matrices showing imbalanced classes (e.g. 0.17% fraud).",
+      "Synthesize minority class metrics using SMOTE or adjust model class weight factors.",
+      "Plot Precision-Recall curves and locate operational decision thresholds.",
+      "Build anomaly detectors using Isolation Forests and Local Outlier Factors.",
+      "Compare model metrics using F1-score, Average Precision, and ROC-AUC."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Load transaction records and establish stratified train/test partitions.",
+      "Implement class balancing logic (SMOTE, undersampling, weight scaling).",
+      "Train Random Forest and XGBoost estimators targeting fraud classes.",
+      "Run classification threshold sweeps mapping values to cost-benefit tables.",
+      "Validate detections using out-of-time datasets to model real-world decay."
     ],
     "libraries": [
       {
-        "name": "pandas",
-        "desc": "Dataframes analytics."
+        "name": "imbalanced-learn",
+        "desc": "Package offering various resampling techniques (like SMOTE) for imbalanced data."
       },
       {
-        "name": "numpy",
-        "desc": "Vector computations."
+        "name": "xgboost",
+        "desc": "Optimized distributed gradient boosting library."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"SQL Query Engine\" project using standard patterns in Phase 2 — Data Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "sql_query_engine_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Guide me through fraud detection with imbalanced data. Show how to use SMOTE, tune classification thresholds, and use Precision-Recall curves instead of Accuracy.",
+    "fileStructure": "fraud_detector/\n├── balance_data.py\n├── train_classifier.py\n├── evaluate_thresholds.py\n└── config.json",
+    "architecture": "Skewed Transactions -> Stratified Split -> SMOTE Balancer -> XGBoost Trainer -> Precision-Recall Analyzer -> Operational Threshold Config",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building SQL Query Engine?",
+        "question": "Why is accuracy a misleading metric for credit card fraud detection?",
         "options": [
-          "ETL (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "It is slow to calculate",
+          "If 99.9% of transactions are legitimate, a model predicting 'no fraud' achieves 99.9% accuracy but catches 0% fraud (Correct)",
+          "It only works on linear algorithms"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for SQL Query Engine?",
+        "question": "How does SMOTE (Synthetic Minority Over-sampling Technique) function?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It duplicates minority class rows",
+          "It interpolates synthetically between existing minority classes and their nearest neighbors (Correct)",
+          "It runs gradient descent"
         ],
         "correct": 1
       }
@@ -740,117 +764,121 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 13,
-    "phase": "Phase 2 — Data Engineering",
-    "title": "Data Warehouse ETL",
-    "level": "Intermediate",
-    "xp": 350,
-    "desc": "Design and build a production-ready \"Data Warehouse ETL\" as part of your Phase 2 — Data Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 3 — Machine Learning",
+    "title": "Movie Recommendation System",
+    "level": "Advanced",
+    "xp": 300,
+    "desc": "Build a movie recommendation system combining multiple techniques. Implement Collaborative Filtering, Content-Based Filtering with TF-IDF vectorizers, and Collaborative Matrix Factorization using Singular Value Decomposition (SVD).",
     "concepts": [
-      "ETL",
-      "Pandas",
-      "Aggregation",
-      "SQL Schema"
+      "Collaborative Filtering",
+      "Cosine Similarity",
+      "Matrix Factorization (SVD)",
+      "TF-IDF Vectorization"
     ],
     "features": [
-      "Implement core interface and execution logic for Data Warehouse ETL.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Analyze user ratings and movie metadata to build sparse interaction matrices.",
+      "Build Content-Based models processing movie descriptions using TF-IDF and Cosine Similarity.",
+      "Implement Collaborative SVD matrix factorization predicting missing user ratings.",
+      "Develop hybrid recommendations combining content-based features and SVD scores.",
+      "Evaluate precision-at-K metrics on recommendation listings."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Load MovieLens datasets and clean movie genre/description strings.",
+      "Implement user-item sparse matrix structures mapping indexes.",
+      "Build TF-IDF search filters calculating similarities on textual attributes.",
+      "Train SVD estimators tuning user/item bias terms.",
+      "Write recommendation routers returning top-K film suggestions for users."
     ],
     "libraries": [
       {
-        "name": "pandas",
-        "desc": "Dataframes analytics."
+        "name": "scipy",
+        "desc": "Scientific computing library containing sparse matrix modules."
       },
       {
-        "name": "numpy",
-        "desc": "Vector computations."
+        "name": "scikit-surprise",
+        "desc": "Python scikit library for building and analyzing recommender systems."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Data Warehouse ETL\" project using standard patterns in Phase 2 — Data Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "data_warehouse_etl_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Teach me to build a Movie Recommender. Explain collaborative filtering, SVD matrix factorization, TF-IDF content filters, and calculating precision-at-K.",
+    "fileStructure": "movie_recommender/\n├── loader.py\n├── content_filter.py\n├── collaborative_svd.py\n└── tests/\n    └── test_recs.py",
+    "architecture": "User Ratings -> Sparse Matrix -> SVD Factorization / TF-IDF Features -> Hybrid Ranker -> Top-K Predictions",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Data Warehouse ETL?",
+        "question": "What does Matrix Factorization do in collaborative filtering systems?",
         "options": [
-          "ETL (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Data Warehouse ETL?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It normalizes continuous variables",
+          "It decomposes user-item interactions into lower-dimensional latent factor matrices representing preferences (Correct)",
+          "It clusters files recursively"
         ],
         "correct": 1
+      },
+      "q2": {
+        "question": "What is the primary drawback of purely Collaborative Filtering models?",
+        "options": [
+          "The 'Cold Start' problem: they cannot recommend items with zero user ratings (Correct)",
+          "They require deep neural networks",
+          "They cannot use string variables"
+        ],
+        "correct": 0
       }
     }
   },
   {
     "id": 14,
-    "phase": "Phase 2 — Data Engineering",
-    "title": "Airflow Pipeline",
-    "level": "Advanced",
+    "phase": "Phase 3 — Machine Learning",
+    "title": "Time Series Forecasting",
+    "level": "Expert",
     "xp": 400,
-    "desc": "Design and build a production-ready \"Airflow Pipeline\" as part of your Phase 2 — Data Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "desc": "Build a forecasting engine predicting future trends in sequential data. Implement rolling average features, check stationarity using ADF tests, build classical ARIMA models, and design a Prophet forecasting pipeline with seasonality.",
     "concepts": [
-      "ETL",
-      "Pandas",
-      "Aggregation",
-      "SQL Schema"
+      "Stationarity & ADF Test",
+      "ARIMA/SARIMAX",
+      "Prophet forecasting",
+      "Backtesting & Walk-forward validation"
     ],
     "features": [
-      "Implement core interface and execution logic for Airflow Pipeline.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Decompose time-series data into Trend, Seasonality, and Residual outputs.",
+      "Run Augmented Dickey-Fuller (ADF) checks and apply differencing to achieve stationarity.",
+      "Configure ARIMA/SARIMAX auto-regressive integrations tuning parameters.",
+      "Train Prophet models incorporating holidays, custom season variables, and growth limits.",
+      "Run walk-forward validation calculating MASE and MAPE forecast errors."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Load sales or energy load parameters indexing timestamps appropriately.",
+      "Perform seasonal decomposition and document statistical stationarity tests.",
+      "Implement baseline ARIMA/SARIMAX predictions analyzing ACF/PACF graphs.",
+      "Train Prophet models predicting horizons with confidence interval envelopes.",
+      "Write time-series cross-validation splits validating models without lookahead bias."
     ],
     "libraries": [
       {
-        "name": "pandas",
-        "desc": "Dataframes analytics."
+        "name": "statsmodels",
+        "desc": "Statistical computations, models (ARIMA), and test metrics."
       },
       {
-        "name": "numpy",
-        "desc": "Vector computations."
+        "name": "prophet",
+        "desc": "Forecasting tool for time series data based on additive models."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Airflow Pipeline\" project using standard patterns in Phase 2 — Data Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "airflow_pipeline_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Guide me through Time Series Forecasting. Show how to make data stationary, analyze ACF/PACF plots, train SARIMAX and Prophet, and run cross-validation.",
+    "fileStructure": "time_series/\n├── load_data.py\n├── stats_models.py\n├── prophet_pipeline.py\n└── tests/\n    └── test_forecaster.py",
+    "architecture": "Raw Series -> ADF Test & Diff -> Decompose (Trend/Season) -> Prophet Model -> Walk-forward Backtest -> MAPE Score",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Airflow Pipeline?",
+        "question": "Why is 'stationarity' required for classical time series forecasting models?",
         "options": [
-          "ETL (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "It speeds up computation times",
+          "It ensures the series properties (mean, variance) remain constant over time, making statistical assumptions valid (Correct)",
+          "It removes negative values"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Airflow Pipeline?",
+        "question": "What is the correct way to validate a time series forecasting model?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "Standard random K-Fold cross validation",
+          "Walk-forward / time-series split validation to prevent future leakage (Correct)",
+          "Evaluating only training errors"
         ],
         "correct": 1
       }
@@ -858,58 +886,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 15,
-    "phase": "Phase 2 — Data Engineering",
-    "title": "Kafka Streaming Pipeline",
-    "level": "Advanced",
-    "xp": 400,
-    "desc": "Design and build a production-ready \"Kafka Streaming Pipeline\" as part of your Phase 2 — Data Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 4 — Deep Learning",
+    "title": "MNIST Digit Recognition",
+    "level": "Beginner",
+    "xp": 100,
+    "desc": "Build a feedforward and convolutional neural network from scratch using PyTorch to recognize handwritten digits. Write Custom PyTorch Datasets, define backpropagation pathways, structure training loops, and visualize feature filters.",
     "concepts": [
-      "ETL",
-      "Pandas",
-      "Aggregation",
-      "SQL Schema"
+      "Neural Net Architecture",
+      "Backpropagation & Gradients",
+      "Cross-Entropy Loss",
+      "PyTorch DataLoader"
     ],
     "features": [
-      "Implement core interface and execution logic for Kafka Streaming Pipeline.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Write multi-layer perceptron (MLP) architectures and simple CNNs in PyTorch.",
+      "Implement custom forward pass functions using ReLU and Softmax layers.",
+      "Write training loops managing batches, gradients, optimizers, and loss steps.",
+      "Monitor validation parameters during training to prevent overfitting.",
+      "Plot confusion matrices showing digit recognition mistakes."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Load MNIST datasets configuring torch transformation vectors.",
+      "Build custom MLP model classes extending torch.nn.Module.",
+      "Write training loops running backpropagation and Adam parameter updates.",
+      "Refactor network to include Convolutional, MaxPool, and Dropout layers.",
+      "Run evaluation checks saving model weights to .pth files."
     ],
     "libraries": [
       {
-        "name": "pandas",
-        "desc": "Dataframes analytics."
+        "name": "torch",
+        "desc": "Tensors and Dynamic neural networks in Python."
       },
       {
-        "name": "numpy",
-        "desc": "Vector computations."
+        "name": "torchvision",
+        "desc": "Datasets, transforms and models for computer vision."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Kafka Streaming Pipeline\" project using standard patterns in Phase 2 — Data Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "kafka_streaming_pipeline_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Help me build an MNIST digit classifier in PyTorch. Show PyTorch Module setups, training loop logic, backpropagation, and transitioning from MLP to CNN.",
+    "fileStructure": "mnist_dl/\n├── model.py\n├── train.py\n├── dataset.py\n└── tests/\n    └── test_model.py",
+    "architecture": "Digit Image -> Conv2D -> ReLU -> MaxPool2D -> Linear -> Softmax -> Cross-Entropy -> SGD Backpropagation",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Kafka Streaming Pipeline?",
+        "question": "What does calling 'optimizer.zero_grad()' do inside a PyTorch training loop?",
         "options": [
-          "ETL (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "It sets all weights to zero",
+          "It clears historical gradient metrics from previous steps to avoid accumulation (Correct)",
+          "It resets the model loss"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Kafka Streaming Pipeline?",
+        "question": "Which loss function is appropriate for training multi-class image classification networks?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "Mean Squared Error (MSE)",
+          "Cross-Entropy Loss (Correct)",
+          "Huber Loss"
         ],
         "correct": 1
       }
@@ -917,58 +947,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 16,
-    "phase": "Phase 3 — Machine Learning",
-    "title": "Titanic Survival Prediction",
+    "phase": "Phase 4 — Deep Learning",
+    "title": "Neural Style Transfer",
     "level": "Intermediate",
-    "xp": 300,
-    "desc": "Design and build a production-ready \"Titanic Survival Prediction\" as part of your Phase 3 — Machine Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "xp": 200,
+    "desc": "Implement Leon Gatys' classic Neural Style Transfer algorithm using a pretrained VGG19 network. Extract style features using Gram matrices, compute content/style loss components, and optimize pixels directly to blend target structures.",
     "concepts": [
-      "Supervised Learning",
-      "Regression",
-      "Metrics",
-      "Validation"
+      "VGG19 Feature Extraction",
+      "Gram Matrix Representing Style",
+      "Content vs. Style Losses",
+      "Image Optimization Hooks"
     ],
     "features": [
-      "Implement core interface and execution logic for Titanic Survival Prediction.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Load pretrained VGG19 networks disabling parameter updates (frozen weights).",
+      "Extract intermediate network activations representing content and style templates.",
+      "Compute Style representations using cross-channel Gram Matrices.",
+      "Implement loss components balancing content fidelity and style textures.",
+      "Optimize input images iteratively using L-BFGS or Adam gradients."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Load content and style inputs preprocessing sizes to match VGG specifications.",
+      "Register feature extractor hooks targeting VGG layer activations.",
+      "Build Gram Matrix calculation modules using tensor dot products.",
+      "Write training functions updating pixel weights directly rather than model weights.",
+      "Plot optimization iterations showing target content blending style patterns."
     ],
     "libraries": [
       {
-        "name": "scikit-learn",
-        "desc": "ML models."
+        "name": "torch",
+        "desc": "Gradient computation and optimization hooks."
       },
       {
-        "name": "pandas",
-        "desc": "Preprocessing Data."
+        "name": "torchvision.models",
+        "desc": "Pre-trained vision models including VGG19."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Titanic Survival Prediction\" project using standard patterns in Phase 3 — Machine Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "titanic_survival_prediction_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain VGG19 Neural Style Transfer. Show me how style is calculated using Gram matrices, what content loss represents, and how to write the pixel-update loop.",
+    "fileStructure": "style_transfer/\n├── transfer.py\n├── loss.py\n├── config.py\n└── outputs/\n    └── stylized.png",
+    "architecture": "Content Image + Style Image -> Pretrained VGG19 -> Content/Style Activation Extraction -> Gram Matrices -> Total Loss -> Pixel Gradient Optimizer -> Output Style Image",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Titanic Survival Prediction?",
+        "question": "How is 'style' captured mathematically in Gatys' Neural Style Transfer?",
         "options": [
-          "Supervised Learning (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "By measuring the coordinates of lines",
+          "By calculating the correlation of feature maps across channels using Gram Matrices (Correct)",
+          "By evaluating pixel brightness values"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Titanic Survival Prediction?",
+        "question": "What is optimized during the training loop of Neural Style Transfer?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "The weights of the VGG19 model",
+          "The pixels of the generated output image directly (Correct)",
+          "The learning rate schedules"
         ],
         "correct": 1
       }
@@ -976,58 +1008,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 17,
-    "phase": "Phase 3 — Machine Learning",
-    "title": "House Price Prediction",
-    "level": "Intermediate",
+    "phase": "Phase 4 — Deep Learning",
+    "title": "Image Caption Generator",
+    "level": "Advanced",
     "xp": 300,
-    "desc": "Design and build a production-ready \"House Price Prediction\" as part of your Phase 3 — Machine Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "desc": "Build a multimodal image caption generator combining computer vision and NLP. Build a CNN encoder (using pretrained ResNet) to extract image feature vectors, feed them into an LSTM/RNN decoder, apply word tokenizations, and train the model using teacher forcing.",
     "concepts": [
-      "Supervised Learning",
-      "Regression",
-      "Metrics",
-      "Validation"
+      "Multimodal CNN Encoder",
+      "LSTM/RNN Sequence Decoders",
+      "Vocabulary Tokenization",
+      "Teacher Forcing"
     ],
     "features": [
-      "Implement core interface and execution logic for House Price Prediction.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Extract semantic image descriptors using pre-trained ResNet CNN headers.",
+      "Project vision vectors into decoder dimensions using projection layers.",
+      "Build vocabulary mappings translating caption strings into token lists.",
+      "Design LSTM decoders generating word sequences autoregressively.",
+      "Train model using teacher forcing inputs optimizing cross-entropy indices."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Build custom datasets loading images and tokenized caption sequences.",
+      "Configure CNN Encoder using frozen ResNet50 models outputting embeddings.",
+      "Implement LSTM Decoder incorporating Embedding and Projection layers.",
+      "Write training loops passing vision states and running token predictions.",
+      "Write inference functions generating descriptions from unseen photos using greedy search."
     ],
     "libraries": [
       {
-        "name": "scikit-learn",
-        "desc": "ML models."
+        "name": "torch",
+        "desc": "Deep learning primitives, CNNs and RNNs."
       },
       {
-        "name": "pandas",
-        "desc": "Preprocessing Data."
+        "name": "nltk",
+        "desc": "Natural Language Toolkit for caption tokenization."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"House Price Prediction\" project using standard patterns in Phase 3 — Machine Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "house_price_prediction_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain how to build an Image Caption Generator combining ResNet and LSTM. Detail vocab mapping, CNN-LSTM interfacing, and decoder sequences.",
+    "fileStructure": "caption_generator/\n├── dataset.py\n├── encoder.py\n├── decoder.py\n├── train.py\n└── predict.py",
+    "architecture": "Raw Image -> ResNet50 -> Feature Vector -> Projection Layer -> LSTM Decoder Input -> Word Tokens Generator",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building House Price Prediction?",
+        "question": "What role does the CNN play in an Image Caption Generator?",
         "options": [
-          "Supervised Learning (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "It parses the caption syntax",
+          "It acts as an encoder, extracting high-level visual feature vectors from the image (Correct)",
+          "It speeds up file IO operations"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for House Price Prediction?",
+        "question": "Why is 'Teacher Forcing' used when training the RNN sequence decoder?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It forces the model to run on GPUs",
+          "It inputs true previous words instead of model predictions, accelerating decoder convergence (Correct)",
+          "It limits vocabulary sizes"
         ],
         "correct": 1
       }
@@ -1035,117 +1069,121 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 18,
-    "phase": "Phase 3 — Machine Learning",
-    "title": "Customer Churn Prediction",
+    "phase": "Phase 5 — Computer Vision",
+    "title": "OCR System",
     "level": "Intermediate",
-    "xp": 300,
-    "desc": "Design and build a production-ready \"Customer Churn Prediction\" as part of your Phase 3 — Machine Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "xp": 200,
+    "desc": "Build an Optical Character Recognition (OCR) system using Tesseract and OpenCV. Implement image preprocessing (thresholding, noise removal, dilation), detect bounding boxes around textual regions, and convert pixel details to clean strings.",
     "concepts": [
-      "Supervised Learning",
-      "Regression",
-      "Metrics",
-      "Validation"
+      "OCR Engine Integration",
+      "OpenCV Preprocessing",
+      "Image Thresholding",
+      "Bounding Box Delineation"
     ],
     "features": [
-      "Implement core interface and execution logic for Customer Churn Prediction.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Preprocess source documents using grayscale filters and adaptive thresholding.",
+      "Apply dilation and erosion morphology steps to isolate characters.",
+      "Detect structured text boundaries and extract layout region boxes.",
+      "Configure Tesseract engine flags to read numbers, characters, or specific languages.",
+      "Extract textual streams from images and write parser results to documents."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Set up OpenCV scripts loading image parameters and converting pixel formats.",
+      "Build binarization filters using Otsu's adaptive thresholding.",
+      "Implement bounding box contour scanners mapping target coordinates.",
+      "Integrate pytesseract binding wrappers translating regions into text blocks.",
+      "Test OCR accuracy rates on scanned receipts, invoices, and handwritings."
     ],
     "libraries": [
       {
-        "name": "scikit-learn",
-        "desc": "ML models."
+        "name": "opencv-python",
+        "desc": "Computer vision and image processing operations."
       },
       {
-        "name": "pandas",
-        "desc": "Preprocessing Data."
+        "name": "pytesseract",
+        "desc": "Python wrapper for Google's Tesseract-OCR Engine."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Customer Churn Prediction\" project using standard patterns in Phase 3 — Machine Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "customer_churn_prediction_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain how to build an OCR system. Detail OpenCV preprocessing pipelines (adaptive thresholding, binarization) and running PyTesseract to extract bounding boxes.",
+    "fileStructure": "ocr_system/\n├── preprocess.py\n├── ocr_engine.py\n├── extract.py\n└── tests/\n    └── test_ocr.py",
+    "architecture": "Source Image -> Grayscale -> Adaptive Threshold -> Contour Detection -> Region Cropping -> Tesseract Engine -> String Output",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Customer Churn Prediction?",
+        "question": "Why is binarization (converting to strict black/white) critical before running OCR engines?",
         "options": [
-          "Supervised Learning (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Customer Churn Prediction?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "To colorize text labels",
+          "To separate text characters cleanly from background patterns, reducing recognition errors (Correct)",
+          "To compress image memory requirements"
         ],
         "correct": 1
+      },
+      "q2": {
+        "question": "What does Otsu's thresholding method do?",
+        "options": [
+          "It automatically calculates the optimal threshold value from image histogram variances (Correct)",
+          "It resizes images using interpolations",
+          "It maps pixels to vectors"
+        ],
+        "correct": 0
       }
     }
   },
   {
     "id": 19,
-    "phase": "Phase 3 — Machine Learning",
-    "title": "Credit Card Fraud Detection",
+    "phase": "Phase 5 — Computer Vision",
+    "title": "Image Segmentation",
     "level": "Advanced",
-    "xp": 400,
-    "desc": "Design and build a production-ready \"Credit Card Fraud Detection\" as part of your Phase 3 — Machine Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "xp": 300,
+    "desc": "Implement pixel-level classification by building an Image Segmentation pipeline in PyTorch. Design a convolutional autoencoder / U-Net structure, calculate Dice/IoU loss functions, preprocess image mask boundaries, and segment objects in real-time.",
     "concepts": [
-      "Supervised Learning",
-      "Regression",
-      "Metrics",
-      "Validation"
+      "Semantic Segmentation",
+      "U-Net Autoencoder",
+      "Intersection over Union (IoU)",
+      "Transposed Convolutions"
     ],
     "features": [
-      "Implement core interface and execution logic for Credit Card Fraud Detection.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Process input images and training labels (pixel classification masks).",
+      "Build encoder paths compressing resolution while capturing contextual feature states.",
+      "Implement decoder paths upsampling dimensions using Transposed Convolutions.",
+      "Construct skip connections linking encoder activations directly to decoders.",
+      "Compute model loss metrics using Dice Coefficient and Binary Cross-Entropy."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Build custom PyTorch dataset modules handling image and segmentation mask scaling.",
+      "Code the U-Net architecture detailing contracting, expanding, and skip components.",
+      "Write training pipelines optimizing Dice and IoU metrics.",
+      "Plot prediction segments overlaying target masks onto original photos.",
+      "Test segmentation boundaries on medical datasets or road visual streams."
     ],
     "libraries": [
       {
-        "name": "scikit-learn",
-        "desc": "ML models."
+        "name": "torch",
+        "desc": "PyTorch deep learning framework for convolutional networks."
       },
       {
-        "name": "pandas",
-        "desc": "Preprocessing Data."
+        "name": "albumentations",
+        "desc": "Fast and flexible image augmentation library for vision models."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Credit Card Fraud Detection\" project using standard patterns in Phase 3 — Machine Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "credit_card_fraud_detection_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain U-Net image segmentation. Detail Encoder/Decoder modules, skip connection utilities, Transposed Convolutions, and Dice Loss implementations.",
+    "fileStructure": "segmentation/\n├── dataset.py\n├── unet_model.py\n├── train.py\n└── evaluate.py",
+    "architecture": "Image Pixel -> Encoder Blocks -> Latent Vector -> Transposed Conv Upsample (with Skip Concat) -> Sigmoid Map -> Dice Loss Evaluation",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Credit Card Fraud Detection?",
+        "question": "What is the primary function of skip connections in U-Net models?",
         "options": [
-          "Supervised Learning (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "To bypass training steps",
+          "To transfer high-resolution spatial details directly from encoder layers to decoder layers (Correct)",
+          "To scale learning rates"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Credit Card Fraud Detection?",
+        "question": "Which evaluation metric measures the pixel overlap area between predicted and true masks?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "Mean Squared Error (MSE)",
+          "Intersection over Union (IoU) / Jaccard Index (Correct)",
+          "Perplexity"
         ],
         "correct": 1
       }
@@ -1153,58 +1191,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 20,
-    "phase": "Phase 3 — Machine Learning",
-    "title": "Movie Recommendation System",
-    "level": "Advanced",
-    "xp": 400,
-    "desc": "Design and build a production-ready \"Movie Recommendation System\" as part of your Phase 3 — Machine Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 6 — NLP",
+    "title": "Sentiment Analysis",
+    "level": "Beginner",
+    "xp": 100,
+    "desc": "Build a sentiment classification model predicting text polarity (positive vs. negative). Learn natural language processing fundamentals (stopword removal, tokenization, lemmatization), represent text using TF-IDF and word embeddings, and train classification estimators.",
     "concepts": [
-      "Supervised Learning",
-      "Regression",
-      "Metrics",
-      "Validation"
+      "Text Preprocessing",
+      "Tokenization & Lemmatization",
+      "TF-IDF Representation",
+      "Word Embeddings"
     ],
     "features": [
-      "Implement core interface and execution logic for Movie Recommendation System.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Clean textual datasets by filtering tags, symbols, and common stop words.",
+      "Tokenize paragraphs and reduce words to dictionary forms using NLTK/SpaCy.",
+      "Build TF-IDF feature matrices mapping word statistics across corpuses.",
+      "Train classifiers (Naive Bayes, Logistic Regression, Linear SVMs) to categorize sentiment.",
+      "Test classifications on real product reviews or custom text strings."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Load text databases and perform Exploratory Text Analysis (character distribution, word clouds).",
+      "Implement cleaning functions executing lemmatization routines.",
+      "Construct Scikit-Learn TF-IDF vectorization blocks.",
+      "Train Naive Bayes classifiers and plot ROC curves on test slices.",
+      "Validate predictions on live review API requests."
     ],
     "libraries": [
       {
-        "name": "scikit-learn",
-        "desc": "ML models."
+        "name": "nltk",
+        "desc": "Natural Language Toolkit for cleaning, tokenizing, and lemmatizing."
       },
       {
-        "name": "pandas",
-        "desc": "Preprocessing Data."
+        "name": "scikit-learn",
+        "desc": "Machine learning libraries, TF-IDF vectorizers, and metrics."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Movie Recommendation System\" project using standard patterns in Phase 3 — Machine Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "movie_recommendation_system_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain Sentiment Analysis in NLP. Show text preprocessing (lemmatization), building a TF-IDF matrix, training a Naive Bayes model, and calculating F1 metrics.",
+    "fileStructure": "sentiment_analysis/\n├── preprocess.py\n├── train_classifier.py\n├── vectorizer.py\n└── tests/\n    └── test_sentiment.py",
+    "architecture": "Raw Text -> Tokenizer -> Lemmatizer -> TF-IDF Vectorizer -> Naive Bayes Classifier -> Sentiment Label",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Movie Recommendation System?",
+        "question": "What does Lemmatization do to a word token?",
         "options": [
-          "Supervised Learning (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "It hashes the word into a binary array",
+          "It reduces a word to its base dictionary form (e.g. 'running' to 'run') considering context (Correct)",
+          "It capitalizes every letter"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Movie Recommendation System?",
+        "question": "Why is Multinomial Naive Bayes commonly used for text classification?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It uses deep neural structures",
+          "It is fast and models word frequency counts effectively based on probability scores (Correct)",
+          "It calculates word vectors natively"
         ],
         "correct": 1
       }
@@ -1212,58 +1252,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 21,
-    "phase": "Phase 3 — Machine Learning",
-    "title": "Spam Email Classifier",
-    "level": "Advanced",
-    "xp": 400,
-    "desc": "Design and build a production-ready \"Spam Email Classifier\" as part of your Phase 3 — Machine Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 6 — NLP",
+    "title": "Named Entity Recognition",
+    "level": "Intermediate",
+    "xp": 200,
+    "desc": "Build a Named Entity Recognition (NER) tagger extracting key entities (Persons, Organizations, Locations) from raw text. Train a custom NER model using SpaCy's transition-based architectures, write training annotations, and evaluate tagging recalls.",
     "concepts": [
-      "Supervised Learning",
-      "Regression",
-      "Metrics",
-      "Validation"
+      "NER Tagging (Person/Org/Loc)",
+      "Token Classification",
+      "SpaCy Pipelines",
+      "IOB2 Annotation Formatting"
     ],
     "features": [
-      "Implement core interface and execution logic for Spam Email Classifier.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Locate and highlight entities within raw paragraphs using SpaCy.",
+      "Prepare custom corpus files using the IOB2 annotation specification.",
+      "Train transition-based parser weights using custom training examples.",
+      "Add custom entities (like products, codes) to standard pretrained NER models.",
+      "Extract entities from web scrapers and map records to databases."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Load textual dataset and convert training inputs to SpaCy DocBin formats.",
+      "Initialize blank pipeline models specifying training parameters.",
+      "Run optimization epochs updating token classification weights.",
+      "Build entity extraction scripts formatting records into tables.",
+      "Write test scripts checking recognition metrics (Precision, Recall, F1)."
     ],
     "libraries": [
       {
-        "name": "scikit-learn",
-        "desc": "ML models."
+        "name": "spacy",
+        "desc": "Industrial-strength Natural Language Processing in Python."
       },
       {
         "name": "pandas",
-        "desc": "Preprocessing Data."
+        "desc": "Tabular mapping of extracted entities."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Spam Email Classifier\" project using standard patterns in Phase 3 — Machine Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "spam_email_classifier_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Help me build a Named Entity Recognition system. Explain training a custom SpaCy NER model, token tag structures, and scoring entity extraction F1-scores.",
+    "fileStructure": "ner_tagger/\n├── prepare_data.py\n├── train_ner.py\n├── extract_entities.py\n└── data/\n    └── config.cfg",
+    "architecture": "Text string -> SpaCy Tokenizer -> NER Pipe -> Transition Parser -> IOB2 Entity Tag Array",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Spam Email Classifier?",
+        "question": "What does the 'B-' prefix indicate in IOB2 tagging layouts?",
         "options": [
-          "Supervised Learning (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "Binary entity classification",
+          "The Beginning of a multi-word entity token sequence (Correct)",
+          "Background noise words"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Spam Email Classifier?",
+        "question": "How does SpaCy process entity tag updates during custom training?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "By compiling regular expressions",
+          "By updating the transition-based parser weights using stochastic gradient descent updates (Correct)",
+          "By matching text against static dictionary lists"
         ],
         "correct": 1
       }
@@ -1271,58 +1313,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 22,
-    "phase": "Phase 3 — Machine Learning",
-    "title": "Resume Classifier",
+    "phase": "Phase 6 — NLP",
+    "title": "Machine Translation",
     "level": "Advanced",
-    "xp": 400,
-    "desc": "Design and build a production-ready \"Resume Classifier\" as part of your Phase 3 — Machine Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "xp": 300,
+    "desc": "Build an English-to-French machine translation system in PyTorch. Implement a sequence-to-sequence (Seq2Seq) neural architecture, build Encoder-Decoder LSTMs, write a custom Bahdanau Additive Attention layer, and evaluate translation outputs using BLEU scores.",
     "concepts": [
-      "Supervised Learning",
-      "Regression",
-      "Metrics",
-      "Validation"
+      "Seq2Seq Architectures",
+      "Encoder-Decoder LSTMs",
+      "Additive/Dot-product Attention",
+      "BLEU Evaluation Metric"
     ],
     "features": [
-      "Implement core interface and execution logic for Resume Classifier.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Load parallel text files encoding sentence pairs.",
+      "Build Encoder networks summarizing input syntax into context representations.",
+      "Write Attention layers aligning decoder generation steps with encoder states.",
+      "Construct Decoder networks generating translated words sequentially.",
+      "Measure output translation accuracy using Bilingual Evaluation Understudy (BLEU) scores."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Construct bilingual vocabulary tokenizers mapping English and French mappings.",
+      "Build PyTorch Seq2Seq models detailing Encoder LSTM and Attention layers.",
+      "Write custom Decoder components executing attention weights on inputs.",
+      "Implement training loops utilizing teacher forcing operations.",
+      "Translate validation sentences and calculate BLEU scores using NLTK."
     ],
     "libraries": [
       {
-        "name": "scikit-learn",
-        "desc": "ML models."
+        "name": "torch",
+        "desc": "Seq2Seq neural modules and attention calculations."
       },
       {
-        "name": "pandas",
-        "desc": "Preprocessing Data."
+        "name": "nltk",
+        "desc": "BLEU score calculation utility modules."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Resume Classifier\" project using standard patterns in Phase 3 — Machine Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "resume_classifier_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain how to build a Seq2Seq Machine Translation model in PyTorch. Detail how Bahdanau Attention is computed and how BLEU scores are calculated.",
+    "fileStructure": "translation_seq2seq/\n├── vocab.py\n├── encoder.py\n├── decoder.py\n├── attention.py\n├── train.py\n└── evaluate.py",
+    "architecture": "English Sentence -> LSTM Encoder -> Attention Alignment -> LSTM Decoder -> Softmax Word Selection -> French Sentence Output",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Resume Classifier?",
+        "question": "What limitation of basic Encoder-Decoder networks does the Attention mechanism solve?",
         "options": [
-          "Supervised Learning (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "It reduces training data needs",
+          "It prevents information bottlenecks by letting the decoder access all historical encoder states dynamically (Correct)",
+          "It eliminates the need for LSTMs"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Resume Classifier?",
+        "question": "What does a BLEU score of 1.0 indicate?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "Zero translation match",
+          "An exact, perfect token-level overlap with the reference translations (Correct)",
+          "A compilation failure"
         ],
         "correct": 1
       }
@@ -1330,58 +1374,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 23,
-    "phase": "Phase 3 — Machine Learning",
-    "title": "Image Classification",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Image Classification\" as part of your Phase 3 — Machine Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 6 — NLP",
+    "title": "Question Answering",
+    "level": "Expert",
+    "xp": 400,
+    "desc": "Implement a Question Answering system using Hugging Face Transformers. Fine-tune a pre-trained BERT/DistilBERT model on the Stanford Question Answering Dataset (SQuAD) to extract answer spans from contexts, and deploy the inference pipeline.",
     "concepts": [
-      "Supervised Learning",
-      "Regression",
-      "Metrics",
-      "Validation"
+      "Extractive QA",
+      "BERT Token Embeddings",
+      "Token Span Classification",
+      "Hugging Face Trainer API"
     ],
     "features": [
-      "Implement core interface and execution logic for Image Classification.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Tokenize question and context inputs into combined BERT format sequence tokens.",
+      "Predict answer start and end index spans from paragraphs.",
+      "Fine-tune pre-trained DistilBERT weights using supervised training loops.",
+      "Clean up sub-word outputs (WordPiece tokens) to return human-readable answers.",
+      "Implement inference pipelines taking user question/context strings directly."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Load SQuAD datasets via Hugging Face and examine token alignments.",
+      "Tokenize inputs using AutoTokenizer, aligning start/end characters to token indexes.",
+      "Load AutoModelForQuestionAnswering and configure training hyperparameters.",
+      "Train model weights using Hugging Face Trainer or custom PyTorch epochs.",
+      "Build interactive QA scripts executing predictions on new document paragraphs."
     ],
     "libraries": [
       {
-        "name": "scikit-learn",
-        "desc": "ML models."
+        "name": "transformers",
+        "desc": "Hugging Face library offering pretrained models and tokenizers."
       },
       {
-        "name": "pandas",
-        "desc": "Preprocessing Data."
+        "name": "datasets",
+        "desc": "Hugging Face library for sharing and loading datasets (like SQuAD)."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Image Classification\" project using standard patterns in Phase 3 — Machine Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "image_classification_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain how to fine-tune DistilBERT for question answering on SQuAD. Detail token alignment, predicting start/end spans, and inference execution.",
+    "fileStructure": "qa_system/\n├── data_prep.py\n├── train_qa.py\n├── pipeline.py\n└── tests/\n    └── test_qa.py",
+    "architecture": "Question + Context -> BERT Tokenizer -> DistilBERT Layer -> Start/End Token Logit Classification -> Span Extractor -> Answer Text",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Image Classification?",
+        "question": "How does BERT determine the answer to a question in extractive QA?",
         "options": [
-          "Supervised Learning (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "By generating new text tokens",
+          "By classifying two logits per token representing the start and end boundary indices in the context (Correct)",
+          "By looking up keywords in a dictionary"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Image Classification?",
+        "question": "What is the purpose of tokenizers in Hugging Face QA pipelines?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "To translate sentences into SQL queries",
+          "To segment text into sub-words (like WordPiece) and output token IDs, masks, and segment classifications (Correct)",
+          "To run database migrations"
         ],
         "correct": 1
       }
@@ -1389,58 +1435,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 24,
-    "phase": "Phase 3 — Machine Learning",
-    "title": "Object Detection",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Object Detection\" as part of your Phase 3 — Machine Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 7 — Reinforcement Learning",
+    "title": "CartPole Agent",
+    "level": "Intermediate",
+    "xp": 200,
+    "desc": "Build a classic Reinforcement Learning agent solving the CartPole environment. Implement tabular Q-Learning and a Deep Q-Network (DQN) in PyTorch, design experience replay buffers, manage exploration/exploitation trade-offs with epsilon-greedy policies, and target network synchronizations.",
     "concepts": [
-      "Supervised Learning",
-      "Regression",
-      "Metrics",
-      "Validation"
+      "Q-Learning & DQN",
+      "Experience Replay Buffers",
+      "Epsilon-greedy Exploration",
+      "Temporal Difference (TD) Target"
     ],
     "features": [
-      "Implement core interface and execution logic for Object Detection.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Interface with classic OpenAI Gym/Gymnasium physics environments.",
+      "Design Q-Network model estimators mapping physical states to action values.",
+      "Implement replay buffers store transition tuples to stabilize neural training.",
+      "Write Epsilon-greedy schedules decaying exploration rates over training runs.",
+      "Synchronize target networks periodically to calculate stable TD targets."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Configure Gym environment settings and verify random action baselines.",
+      "Build PyTorch neural networks estimating state-action valuations.",
+      "Implement Experience Replay classes tracking state-action-reward histories.",
+      "Write agent step loop updating weights based on Bellman loss targets.",
+      "Train agent until it reaches maximum reward thresholds (balancing pole stably)."
     ],
     "libraries": [
       {
-        "name": "scikit-learn",
-        "desc": "ML models."
+        "name": "gymnasium",
+        "desc": "Standard API for reinforcement learning environments (formerly Gym)."
       },
       {
-        "name": "pandas",
-        "desc": "Preprocessing Data."
+        "name": "torch",
+        "desc": "Neural optimization framework for DQN calculations."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Object Detection\" project using standard patterns in Phase 3 — Machine Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "object_detection_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Guide me through building a DQN agent for CartPole. Explain state spaces, action selections (epsilon-greedy), replay buffers, and computing Bellman target loss.",
+    "fileStructure": "cartpole_dqn/\n├── agent.py\n├── model.py\n├── replay_buffer.py\n└── train.py",
+    "architecture": "Gym Environment State -> DQN Network -> Epsilon-Greedy Selector -> Action Execute -> Replay Buffer -> Bellman Loss Weights Update",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Object Detection?",
+        "question": "Why is an Experience Replay Buffer critical when training Deep Q-Networks (DQN)?",
         "options": [
-          "Supervised Learning (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "It compresses environment physics",
+          "It breaks temporal correlations in consecutive agent frames, ensuring independent and identically distributed data (Correct)",
+          "It displays gameplay graphics"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Object Detection?",
+        "question": "What role does the Target Network play in DQNs?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It tracks input states",
+          "It calculates target Q-values using stable, frozen parameters, preventing value feedback divergence (Correct)",
+          "It manages player logs"
         ],
         "correct": 1
       }
@@ -1448,117 +1496,121 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 25,
-    "phase": "Phase 3 — Machine Learning",
-    "title": "Time Series Forecasting",
+    "phase": "Phase 7 — Reinforcement Learning",
+    "title": "Snake AI",
     "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Time Series Forecasting\" as part of your Phase 3 — Machine Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "xp": 300,
+    "desc": "Build a custom reinforcement learning environment and agent that learns to play Snake. Develop custom state spaces representing directions, obstacles, and food locations; design specific reward functions; and train agents using Policy Gradient models.",
     "concepts": [
-      "Supervised Learning",
-      "Regression",
-      "Metrics",
-      "Validation"
+      "Custom Gym Environments",
+      "Reward Shaping",
+      "State Space Representation",
+      "Policy Gradient Methods"
     ],
     "features": [
-      "Implement core interface and execution logic for Time Series Forecasting.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Build a custom game environment conforming to standard Gymnasium interfaces.",
+      "Represent environment details as binary vectors indicating immediate collisions and food vectors.",
+      "Apply reward shaping (rewards for eating, penalties for dying/spinning).",
+      "Train agents using Policy Gradient architectures (REINFORCE or Actor-Critic).",
+      "Plot game scores and steps to evaluate model progress."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Write custom Snake game engine detailing physics, ticks, and state buffers.",
+      "Wrap game loops inside subclassed gymnasium.Env frameworks.",
+      "Design input representations mapping relative distances to walls and targets.",
+      "Train agents using Policy networks updating probability distributions.",
+      "Analyze training curves showing progressive path selections."
     ],
     "libraries": [
       {
-        "name": "scikit-learn",
-        "desc": "ML models."
+        "name": "pygame",
+        "desc": "Game library used to build custom environments and render graphics."
       },
       {
-        "name": "pandas",
-        "desc": "Preprocessing Data."
+        "name": "torch",
+        "desc": "Dynamic neural networks optimizing policy gradients."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Time Series Forecasting\" project using standard patterns in Phase 3 — Machine Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "time_series_forecasting_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Help me build a Snake AI environment and policy gradient agent. Teach me reward shaping, representing states, and updating policies with REINFORCE.",
+    "fileStructure": "snake_rl/\n├── snake_env.py\n├── policy_agent.py\n├── play.py\n└── tests/\n    └── test_env.py",
+    "architecture": "Snake State Map -> Policy Network -> Action Probability -> Step Selection -> Custom Environment -> Reward & Next State -> Policy Loss Backpropagation",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Time Series Forecasting?",
+        "question": "What is 'Reward Shaping' in reinforcement learning context?",
         "options": [
-          "Supervised Learning (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Time Series Forecasting?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "Resizing graphical game windows",
+          "Designing intermediate feedback rewards to guide agents toward final goals (Correct)",
+          "Manually updating network weights"
         ],
         "correct": 1
+      },
+      "q2": {
+        "question": "How do Policy Gradient methods differ from Q-learning?",
+        "options": [
+          "They approximate policy probabilities directly instead of learning action values (Correct)",
+          "They only run on simple environments",
+          "They bypass neural networks entirely"
+        ],
+        "correct": 0
       }
     }
   },
   {
     "id": 26,
-    "phase": "Phase 4 — Deep Learning",
-    "title": "MNIST Digit Recognition",
-    "level": "Advanced",
-    "xp": 400,
-    "desc": "Design and build a production-ready \"MNIST Digit Recognition\" as part of your Phase 4 — Deep Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 8 — LLM Engineering",
+    "title": "AI PDF Chat",
+    "level": "Beginner",
+    "xp": 100,
+    "desc": "Design and build a local PDF Chat application utilizing Retrieval-Augmented Generation (RAG). Learn to extract layout structures from PDF files, divide text blocks into overlapping chunks, generate token embeddings, index chunks locally, and construct context prompts for LLM integrations.",
     "concepts": [
-      "Neural Networks",
-      "Backpropagation",
-      "Gradient Descent",
-      "Loss Function"
+      "RAG Architecture",
+      "PDF Layout Extraction",
+      "Text Chunking & Overlap",
+      "Context Window Prompting"
     ],
     "features": [
-      "Implement core interface and execution logic for MNIST Digit Recognition.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Extract textual streams from uploaded multi-page PDF documents.",
+      "Segment long papers into overlapping text chunks to preserve local context.",
+      "Connect to Hugging Face or OpenAI APIs to generate query and block embeddings.",
+      "Perform cosine searches returning context segments related to queries.",
+      "Assemble prompts formatting context paragraphs alongside user questions for LLM completion."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Build python scripts parsing PDF layers using PyPDF2 or pdfplumber.",
+      "Implement chunking loops managing character limits and overlapping tokens.",
+      "Connect embeddings generation hooks targeting text vectors.",
+      "Write context assembler functions filtering top matches.",
+      "Connect an LLM API generating structured summary text answers."
     ],
     "libraries": [
       {
-        "name": "torch",
-        "desc": "Deep learning models."
+        "name": "pypdf",
+        "desc": "Pure-python PDF library capable of extracting document text."
       },
       {
-        "name": "torchvision",
-        "desc": "Vision datasets."
+        "name": "langchain",
+        "desc": "Framework for developing applications powered by language models."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"MNIST Digit Recognition\" project using standard patterns in Phase 4 — Deep Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "mnist_digit_recognition_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain how to build an AI PDF Chat. Detail document parsing, chunking with overlap, similarity ranking, prompt structure, and LLM orchestration.",
+    "fileStructure": "pdf_chat/\n├── parser.py\n├── chunker.py\n├── prompt_engine.py\n├── app.py\n└── requirements.txt",
+    "architecture": "PDF -> PyPDF Parser -> Text Chunking (with overlap) -> Similarity Ranking -> Context Prompt -> LLM API -> Chat Answer",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building MNIST Digit Recognition?",
+        "question": "Why is 'chunk overlap' used when splitting documents for RAG systems?",
         "options": [
-          "Neural Networks (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "To speed up vector generation",
+          "To ensure semantic context at split boundaries is preserved and not severed (Correct)",
+          "To validate file extensions"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for MNIST Digit Recognition?",
+        "question": "What is the primary function of Retrieval-Augmented Generation (RAG)?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It trains new foundation language models from scratch",
+          "It retrieves relevant document facts to ground LLM prompts, preventing hallucinations (Correct)",
+          "It compresses database schemas"
         ],
         "correct": 1
       }
@@ -1566,58 +1618,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 27,
-    "phase": "Phase 4 — Deep Learning",
-    "title": "Face Recognition",
-    "level": "Advanced",
-    "xp": 400,
-    "desc": "Design and build a production-ready \"Face Recognition\" as part of your Phase 4 — Deep Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 8 — LLM Engineering",
+    "title": "RAG Search Engine",
+    "level": "Intermediate",
+    "xp": 200,
+    "desc": "Build a search engine scaling vector retrievals. Integrate a dedicated vector database (like Chroma or FAISS), implement document updates and index structures, write semantic queries, and implement cross-encoder re-ranking algorithms.",
     "concepts": [
-      "Neural Networks",
-      "Backpropagation",
-      "Gradient Descent",
-      "Loss Function"
+      "Vector Databases (Chroma/FAISS)",
+      "Index Architectures",
+      "Semantic Similarity",
+      "Cross-Encoder Re-ranking"
     ],
     "features": [
-      "Implement core interface and execution logic for Face Recognition.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Index document corpuses within vector storage databases.",
+      "Generate embeddings for new entries and run database updates.",
+      "Run semantic similarity queries looking up top-K related records.",
+      "Apply Cross-Encoder re-rankers scoring retrieved items to optimize relevance.",
+      "Expose search APIs returning matching passages and metadata tags."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Configure vector database storage (ChromaDB/FAISS) inside the project layout.",
+      "Write document loaders parsing web files and indexing paragraph embeddings.",
+      "Implement similarity search pipelines querying vector coordinates.",
+      "Integrate SentenceTransformers Cross-Encoder models re-evaluating matches.",
+      "Test search latencies, retrieval precision, and recall parameters."
     ],
     "libraries": [
       {
-        "name": "torch",
-        "desc": "Deep learning models."
+        "name": "chromadb",
+        "desc": "Open-source AI-native vector database system."
       },
       {
-        "name": "torchvision",
-        "desc": "Vision datasets."
+        "name": "sentence-transformers",
+        "desc": "Python framework for state-of-the-art sentence, text and image embeddings."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Face Recognition\" project using standard patterns in Phase 4 — Deep Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "face_recognition_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Guide me through building a RAG Search Engine. Explain vector database integration, search indexing, metadata queries, and cross-encoder re-ranking.",
+    "fileStructure": "rag_search/\n├── db_client.py\n├── indexer.py\n├── search_api.py\n├── reranker.py\n└── config.py",
+    "architecture": "Query -> Embedding Generator -> Vector DB Lookup (Top-K) -> Cross-Encoder Re-ranker -> Sorted Search Results",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Face Recognition?",
+        "question": "What does a Cross-Encoder do in a search retrieval pipeline?",
         "options": [
-          "Neural Networks (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "It translates text to foreign languages",
+          "It analyzes query-document pairs simultaneously, outputting highly accurate similarity scores to re-rank inputs (Correct)",
+          "It splits files into chunks"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Face Recognition?",
+        "question": "Why are vector databases preferred over SQL databases for semantic search?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "They support HTML files",
+          "They are optimized for high-dimensional nearest-neighbor vector scans (Correct)",
+          "They execute Javascript rules"
         ],
         "correct": 1
       }
@@ -1625,58 +1679,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 28,
-    "phase": "Phase 4 — Deep Learning",
-    "title": "Neural Style Transfer",
+    "phase": "Phase 8 — LLM Engineering",
+    "title": "SQL Agent",
     "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Neural Style Transfer\" as part of your Phase 4 — Deep Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "xp": 300,
+    "desc": "Build an LLM Agent capable of querying relational databases in natural language. Implement dynamic prompt configurations supplying database schemas, design tool-calling routines parsing SQL output, build execution safety sandboxes, and compile diagnostic chains.",
     "concepts": [
-      "Neural Networks",
-      "Backpropagation",
-      "Gradient Descent",
-      "Loss Function"
+      "LLM Tool-calling",
+      "Dynamic Prompt Engineering",
+      "SQL Generation & Execution",
+      "Safety Sandboxing"
     ],
     "features": [
-      "Implement core interface and execution logic for Neural Style Transfer.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Supply LLMs with database table structures and schemas dynamically.",
+      "Generate valid SQL queries from user questions (Text-to-SQL).",
+      "Parse and execute model SQL commands against relational databases.",
+      "Implement safety sandboxing (e.g. read-only connections, query limits).",
+      "Return natural language responses summarizing tabular database outputs."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Set up target SQL databases (SQLite/Postgres) loaded with sample tables.",
+      "Write dynamic system prompt builders assembling database schema instructions.",
+      "Implement LLM tool-calling hooks parsing generated code strings.",
+      "Build execution sandboxes preventing destructive write transactions.",
+      "Verify query performance, error-recovery loops, and database responses."
     ],
     "libraries": [
       {
-        "name": "torch",
-        "desc": "Deep learning models."
+        "name": "sqlalchemy",
+        "desc": "SQL toolkit and Object Relational Mapper for Python."
       },
       {
-        "name": "torchvision",
-        "desc": "Vision datasets."
+        "name": "openai",
+        "desc": "Official library accessing OpenAI api engines."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Neural Style Transfer\" project using standard patterns in Phase 4 — Deep Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "neural_style_transfer_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain how to build a SQL Agent. Show me how schemas are formatted into prompts, how tool-calling functions handle errors, and how to restrict queries to read-only.",
+    "fileStructure": "sql_agent/\n├── agent.py\n├── sandbox.py\n├── schema_helper.py\n└── tests/\n    └── test_agent.py",
+    "architecture": "User Question -> Schema Assembly -> LLM Plan -> Generated SQL -> Read-Only Sandbox -> Query Results -> LLM Summary -> Final Response",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Neural Style Transfer?",
+        "question": "How does a SQL Agent prevent executing malicious commands like 'DROP TABLE'?",
         "options": [
-          "Neural Networks (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "By parsing words manually",
+          "By wrapping execution inside a read-only database transaction sandbox with restricted user privileges (Correct)",
+          "By shutting down the server"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Neural Style Transfer?",
+        "question": "What is the function of tool-calling in SQL Agents?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It connects models to CSS packages",
+          "It enables the LLM to request database execution, receiving raw rows to formulate responses (Correct)",
+          "It translates python syntax"
         ],
         "correct": 1
       }
@@ -1684,58 +1740,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 29,
-    "phase": "Phase 4 — Deep Learning",
-    "title": "Image Caption Generator",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Image Caption Generator\" as part of your Phase 4 — Deep Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 8 — LLM Engineering",
+    "title": "Vision Chatbot",
+    "level": "Expert",
+    "xp": 400,
+    "desc": "Build a multimodal chatbot integrating visual and text inference. Code pipelines processing images (scaling, encoding to base64, structuring API payloads), manage multi-turn history records containing mixed content types, and prompt systems to analyze visual details.",
     "concepts": [
-      "Neural Networks",
-      "Backpropagation",
-      "Gradient Descent",
-      "Loss Function"
+      "Multimodal Inference API",
+      "Image Encoding & Payloads",
+      "Mixed-content Chat History",
+      "System Prompting Strategies"
     ],
     "features": [
-      "Implement core interface and execution logic for Image Caption Generator.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Accept, resize, and convert images into base64 payloads.",
+      "Construct request structures containing mixed text and image keys.",
+      "Handle multi-turn conversations remembering image interactions.",
+      "Prompt models to run visual analyses (object localization, OCR, document reading).",
+      "Build user interfaces displaying visual history and responses."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Write processing utilities formatting images to standard formats using Pillow.",
+      "Implement base64 encoding pipelines converting files to string vectors.",
+      "Build chat manager storing historical text-image token schemas.",
+      "Integrate OpenAI/Claude vision APIs executing concurrent analysis queries.",
+      "Write validation tests verifying payload structures and response times."
     ],
     "libraries": [
       {
-        "name": "torch",
-        "desc": "Deep learning models."
+        "name": "pillow",
+        "desc": "Python Imaging Library supporting image loading and transformations."
       },
       {
-        "name": "torchvision",
-        "desc": "Vision datasets."
+        "name": "fastapi",
+        "desc": "Web interface exposing chat endpoints."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Image Caption Generator\" project using standard patterns in Phase 4 — Deep Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "image_caption_generator_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain how to interface with Multimodal LLM APIs. Detail image compression, base64 payload structure, and maintaining mixed-content chat histories.",
+    "fileStructure": "vision_chatbot/\n├── app/\n│   ├── main.py\n│   ├── image_utils.py\n│   └── chat_history.py\n└── tests/\n    └── test_chatbot.py",
+    "architecture": "User Image + Text -> Pillow Compressor -> Base64 Encoder -> API Payload -> Multimodal LLM -> Text Response",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Image Caption Generator?",
+        "question": "How are images passed to cloud LLM vision APIs like GPT-4o?",
         "options": [
-          "Neural Networks (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "As compiled numpy arrays",
+          "As base64-encoded strings or URL references inside structured JSON message payloads (Correct)",
+          "As raw binary packages"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Image Caption Generator?",
+        "question": "Why should images be resized before API transmission?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "To change image aspect ratios",
+          "To reduce payload sizes, minimize token costs, and accelerate network response latencies (Correct)",
+          "To improve text accuracy"
         ],
         "correct": 1
       }
@@ -1743,58 +1801,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 30,
-    "phase": "Phase 4 — Deep Learning",
-    "title": "Speech Recognition",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Speech Recognition\" as part of your Phase 4 — Deep Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 9 — Agentic AI",
+    "title": "Research Agent",
+    "level": "Intermediate",
+    "xp": 200,
+    "desc": "Build an autonomous Research Agent implementing the ReAct (Reasoning and Acting) loop. Design loops coordinate thought processes, let agents execute Google Search or Wikipedia APIs, extract page summaries, self-correct errors, and build answers.",
     "concepts": [
-      "Neural Networks",
-      "Backpropagation",
-      "Gradient Descent",
-      "Loss Function"
+      "ReAct Execution Loop",
+      "API Search Tools",
+      "Thought/Action/Observation",
+      "Self-Correction Loops"
     ],
     "features": [
-      "Implement core interface and execution logic for Speech Recognition.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Implement the ReAct loop: Thought -> Action -> Observation -> Thought.",
+      "Register search tools fetching data from Wikipedia or web APIs.",
+      "Parse and summarize page contents returning context snippets.",
+      "Handle tool execution errors letting agents correct query inputs.",
+      "Output finalized reports summarizing factual observations."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Write agent runner orchestration parsing loops.",
+      "Build search tools querying Wikipedia API endpoints.",
+      "Create prompt guidelines forcing agents to follow ReAct specifications.",
+      "Implement token-limit safety checks preventing infinite execution loops.",
+      "Test agent capabilities answering complex questions requiring multi-hop reasoning."
     ],
     "libraries": [
       {
-        "name": "torch",
-        "desc": "Deep learning models."
+        "name": "wikipedia",
+        "desc": "Python library to query and extract data from Wikipedia."
       },
       {
-        "name": "torchvision",
-        "desc": "Vision datasets."
+        "name": "langchain-core",
+        "desc": "Basic abstractions for agent frameworks and tools."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Speech Recognition\" project using standard patterns in Phase 4 — Deep Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "speech_recognition_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Help me build a ReAct Research Agent. Show how the execution loop parses Thought/Action outputs, handles tool observations, and outputs final answers.",
+    "fileStructure": "research_agent/\n├── agent.py\n├── tools.py\n├── prompt.py\n└── tests/\n    └── test_agent.py",
+    "architecture": "User Goal -> ReAct Engine -> Thought -> Action -> Web Search Tool -> Observation -> Thought -> Final Report",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Speech Recognition?",
+        "question": "What does the ReAct framework combine in LLM agent designs?",
         "options": [
-          "Neural Networks (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "Recursion and Activation",
+          "Reasoning (Thought generation) and Acting (Tool execution) (Correct)",
+          "Retrieval and Compiling"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Speech Recognition?",
+        "question": "How does a ReAct agent determine it has reached the goal?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "When its timer expires",
+          "When it outputs a special stop token or indicates a 'Final Answer' thought action (Correct)",
+          "By crashing the loop"
         ],
         "correct": 1
       }
@@ -1802,58 +1862,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 31,
-    "phase": "Phase 4 — Deep Learning",
-    "title": "Text Summarizer",
+    "phase": "Phase 9 — Agentic AI",
+    "title": "Browser Agent",
     "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Text Summarizer\" as part of your Phase 4 — Deep Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "xp": 300,
+    "desc": "Build an autonomous Browser Agent utilizing Playwright to navigate websites. Code tools scanning DOM nodes, compile interactive actions (click, fill, scroll), construct vision loops taking screenshots, and plan browse strategies.",
     "concepts": [
-      "Neural Networks",
-      "Backpropagation",
-      "Gradient Descent",
-      "Loss Function"
+      "Playwright Automation",
+      "DOM Parsing & Cleaning",
+      "Action Execution Mapping",
+      "Vision-based Verification"
     ],
     "features": [
-      "Implement core interface and execution logic for Text Summarizer.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Initialize headless/headful browser sessions using Playwright.",
+      "Scan and extract simplified DOM hierarchies locating interactive nodes.",
+      "Execute interface events: clicking inputs, filling text, and scrolling.",
+      "Capture browser screenshots verifying page state changes.",
+      "Implement step planning engines coordinating multiple page views."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Configure Playwright drivers within the project environment.",
+      "Write DOM parsers scrubbing script nodes and formatting clickable tags.",
+      "Build action controllers executing agent requests (e.g. click('#login')).",
+      "Implement screenshot feedback loops passing graphics to vision APIs.",
+      "Test browser agents searching items, logging in, or saving files."
     ],
     "libraries": [
       {
-        "name": "torch",
-        "desc": "Deep learning models."
+        "name": "playwright",
+        "desc": "Web testing and automation library for Chromium, Firefox and WebKit."
       },
       {
-        "name": "torchvision",
-        "desc": "Vision datasets."
+        "name": "beautifulsoup4",
+        "desc": "Clean up raw HTML templates."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Text Summarizer\" project using standard patterns in Phase 4 — Deep Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "text_summarizer_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain how to build a Browser Agent. Show Playwright setups, DOM parser loops, executing click/type actions, and screenshot feedback loops.",
+    "fileStructure": "browser_agent/\n├── agent.py\n├── browser.py\n├── dom_cleaner.py\n└── tests/\n    └── test_browser.py",
+    "architecture": "Goal -> Agent Planner -> Clean DOM Scan -> Click/Type Action -> Playwright Driver -> Web Page Update -> Screenshot verification",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Text Summarizer?",
+        "question": "Why is it important to clean raw HTML before passing it to Browser Agents?",
         "options": [
-          "Neural Networks (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "To speed up browser renders",
+          "To reduce prompt sizes by removing scripts and styling, keeping semantic elements readable (Correct)",
+          "To convert pages to PDF format"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Text Summarizer?",
+        "question": "Which tool executes web actions in our Browser Agent?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "Flask",
+          "Playwright (Correct)",
+          "SQLite"
         ],
         "correct": 1
       }
@@ -1861,58 +1923,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 32,
-    "phase": "Phase 5 — Computer Vision",
-    "title": "OCR System",
+    "phase": "Phase 9 — Agentic AI",
+    "title": "Multi-Agent Research Team",
     "level": "Advanced",
-    "xp": 400,
-    "desc": "Design and build a production-ready \"OCR System\" as part of your Phase 5 — Computer Vision curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "xp": 300,
+    "desc": "Build a collaborative Multi-Agent Research Team. Implement distinct agent roles (Researcher, Writer, Critic), construct message brokers coordinating communications, define debate protocols, and manage state routers.",
     "concepts": [
-      "Image Processing",
-      "Convolutions",
-      "Feature Detection",
-      "Object Mapping"
+      "Agent Role Definitions",
+      "Communication Brokers",
+      "Debate/Critic Protocols",
+      "State Machines & Routing"
     ],
     "features": [
-      "Implement core interface and execution logic for OCR System.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Define agent personas containing unique system prompt profiles.",
+      "Coordinate messages across agents using a centralized state broker.",
+      "Implement critic loops where Writers receive edit recommendations.",
+      "Build branch networks routing tasks dynamically based on content.",
+      "Export collaborative transcripts tracking team progress."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Write modular agent wrappers containing specific role prompts.",
+      "Configure state engines mapping workflows and task handoffs.",
+      "Implement critic loops where Writers adjust text based on observations.",
+      "Create message histories coordinating team data exchanges.",
+      "Test team capabilities researching topics, compiling summaries, and correcting drafts."
     ],
     "libraries": [
       {
-        "name": "opencv-python",
-        "desc": "Vision routines."
+        "name": "langgraph",
+        "desc": "Library for building stateful, multi-actor applications with LLMs."
       },
       {
-        "name": "pillow",
-        "desc": "Image files."
+        "name": "pydantic",
+        "desc": "Format shared state data templates."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"OCR System\" project using standard patterns in Phase 5 — Computer Vision. Show me the key classes, steps, and target goals.",
-    "fileStructure": "ocr_system_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Guide me through building a Multi-Agent Research Team. Explain role partitioning, designing state nodes, routing decisions, and critic feedback loop implementations.",
+    "fileStructure": "multi_agent_team/\n├── state.py\n├── agents/\n│   ├── researcher.py\n│   ├── writer.py\n│   └── critic.py\n├── graph.py\n└── app.py",
+    "architecture": "User Request -> Researcher Agent -> Raw Data -> Writer Agent -> Draft -> Critic Agent -> Feedback Loops -> Writer Refine -> Final Output",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building OCR System?",
+        "question": "What is the primary benefit of dividing complex tasks among multiple specialized agents?",
         "options": [
-          "Image Processing (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "It reduces token execution counts",
+          "It improves output quality by confining agents to distinct, optimized personas and system prompts (Correct)",
+          "It compiles code faster"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for OCR System?",
+        "question": "What role does LangGraph play in multi-agent orchestration?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It displays charting visuals",
+          "It represents workflows as state machines (graphs), mapping agents to nodes and transitions to edges (Correct)",
+          "It acts as database storage"
         ],
         "correct": 1
       }
@@ -1920,58 +1984,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 33,
-    "phase": "Phase 5 — Computer Vision",
-    "title": "Image Segmentation",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Image Segmentation\" as part of your Phase 5 — Computer Vision curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 9 — Agentic AI",
+    "title": "Personal AI Operating System",
+    "level": "Expert",
+    "xp": 500,
+    "desc": "Build a terminal-based capstone project: a Personal AI Operating System. Implement dynamic tool registration engines, build system files parser tools, coordinate vector memory databases, and compile safety boundaries around local executions.",
     "concepts": [
-      "Image Processing",
-      "Convolutions",
-      "Feature Detection",
-      "Object Mapping"
+      "Dynamic Tool Registry",
+      "System Files Parsing",
+      "Vector Memory Indexing",
+      "Safety Boundary Execution"
     ],
     "features": [
-      "Implement core interface and execution logic for Image Segmentation.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Build a terminal client taking commands and routing tasks.",
+      "Register local scripts as tools (file editors, web searchers, system commands).",
+      "Manage persistent history records inside local vector storage databases.",
+      "Create safety limits prompt sandboxes checking command parameters.",
+      "Expose voice-synthesis options reading results aloud."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Create project layouts with boot loops and config managers.",
+      "Build tool registries loading classes and exposing JSON tool signatures.",
+      "Integrate vector memory cache databases storing chat highlights.",
+      "Implement command validation interceptors preventing dangerous system calls.",
+      "Run integration scripts performing complex tasks (e.g. download list, process rows, edit files)."
     ],
     "libraries": [
       {
-        "name": "opencv-python",
-        "desc": "Vision routines."
+        "name": "click",
+        "desc": "Python package for creating beautiful command line interfaces."
       },
       {
-        "name": "pillow",
-        "desc": "Image files."
+        "name": "chromadb",
+        "desc": "Vector database for storing OS memory context."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Image Segmentation\" project using standard patterns in Phase 5 — Computer Vision. Show me the key classes, steps, and target goals.",
-    "fileStructure": "image_segmentation_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Guide me through building a Personal AI Operating System. Show me how to implement dynamic tool loading, manage session memory, and build command safety interceptors.",
+    "fileStructure": "personal_ai_os/\n├── main.py\n├── core/\n│   ├── registry.py\n│   ├── memory.py\n│   └── sandbox.py\n└── tools/\n    ├── fs_tools.py\n    └── net_tools.py",
+    "architecture": "Terminal Shell Input -> Safety Interceptor -> AI OS Core -> Tool Registry -> Script execution / Vector Memory -> Shell Output",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Image Segmentation?",
+        "question": "What is a major design requirement for AI agents interacting with local filesystems?",
         "options": [
-          "Image Processing (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "Compressing host directories",
+          "Strict sandboxing and parameters validation preventing recursive deletions or data leaks (Correct)",
+          "Converting code to assembly"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Image Segmentation?",
+        "question": "How does vector memory improve long-term agent interactions?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It increases network bandwidths",
+          "It searches and retrieves key context blocks from past days, overriding static window limitations (Correct)",
+          "It overrides python syntax rules"
         ],
         "correct": 1
       }
@@ -1979,58 +2045,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 34,
-    "phase": "Phase 5 — Computer Vision",
-    "title": "Image Search Engine",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Image Search Engine\" as part of your Phase 5 — Computer Vision curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 10 — Generative AI",
+    "title": "AI Tutor",
+    "level": "Intermediate",
+    "xp": 200,
+    "desc": "Build an interactive AI Tutor application. Implement syllabus generators compiling custom study tracks based on user levels, coordinate quiz evaluation chains scoring student answers, and prompt explanations.",
     "concepts": [
-      "Image Processing",
-      "Convolutions",
-      "Feature Detection",
-      "Object Mapping"
+      "Structured Syllabus Generator",
+      "Interactive Quiz Chains",
+      "Feynman Explanation Prompts",
+      "Dynamic Level Adjusters"
     ],
     "features": [
-      "Implement core interface and execution logic for Image Search Engine.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Generate structured markdown learning paths answering user requests.",
+      "Create interactive quiz loops examining topic masteries.",
+      "Implement Feynman Technique prompts simplifying explanations.",
+      "Adjust tutorial depths dynamically matching student responses.",
+      "Track student scores exporting progress cards."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Define Pydantic schema parameters outlining learning profiles.",
+      "Build dynamic prompt systems generating custom study plans.",
+      "Create quiz generation pipelines writing questions and validation keys.",
+      "Implement user response check engines returning tips.",
+      "Expose web routes using FastAPI running tutor sessions."
     ],
     "libraries": [
       {
-        "name": "opencv-python",
-        "desc": "Vision routines."
+        "name": "pydantic",
+        "desc": "Schema validators defining quiz and syllabus shapes."
       },
       {
-        "name": "pillow",
-        "desc": "Image files."
+        "name": "jinja2",
+        "desc": "Template rendering library for dynamic prompt structures."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Image Search Engine\" project using standard patterns in Phase 5 — Computer Vision. Show me the key classes, steps, and target goals.",
-    "fileStructure": "image_search_engine_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Help me build an AI Tutor API. Explain structured syllabus generation with Pydantic, dynamic quiz generation, and implementing Feynman technique prompt filters.",
+    "fileStructure": "ai_tutor/\n├── main.py\n├── prompts.py\n├── schemas.py\n└── tests/\n    └── test_tutor.py",
+    "architecture": "Student Goal -> Syllabus Generator -> Curriculum -> Quiz Engine -> Student Answer -> Evaluator Chain -> Feedback & Depth Adjuster",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Image Search Engine?",
+        "question": "What is the key benefit of utilizing Pydantic's BaseModel in LLM generators?",
         "options": [
-          "Image Processing (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "It speeds up network latency",
+          "It guarantees the model output conforms to strict JSON structures for easy parsing (Correct)",
+          "It replaces the compiler"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Image Search Engine?",
+        "question": "What does a Feynman Technique prompt require the LLM to do?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "Translate paragraphs to Latin",
+          "Explain complex technical topics using simple, accessible language and analogies (Correct)",
+          "Write multi-threaded code"
         ],
         "correct": 1
       }
@@ -2038,58 +2106,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 35,
-    "phase": "Phase 5 — Computer Vision",
-    "title": "Pose Estimation",
+    "phase": "Phase 10 — Generative AI",
+    "title": "AI Workflow Builder",
     "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Pose Estimation\" as part of your Phase 5 — Computer Vision curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "xp": 300,
+    "desc": "Build an AI Workflow Builder generating executable automation scripts. Build graph orchestration models representing steps, create template compilers converting instructions to python functions, and sandbox execution test loops.",
     "concepts": [
-      "Image Processing",
-      "Convolutions",
-      "Feature Detection",
-      "Object Mapping"
+      "Workflow Orchestration",
+      "Code Generation Pipelines",
+      "Structured Task Models",
+      "Compilation Sandboxing"
     ],
     "features": [
-      "Implement core interface and execution logic for Pose Estimation.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Translate natural workflow goals into step-by-step nodes.",
+      "Compile code blocks containing actions (API requests, data changes).",
+      "Assemble variables mapping outputs between steps.",
+      "Run generated tasks inside local sandbox environments.",
+      "Export workflow logs highlighting error locations."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Define task graph models using Pydantic templates.",
+      "Build compiler prompts converting goals to executable code snippets.",
+      "Write execution sandbox hooks running scripts securely.",
+      "Implement variable binding channels forwarding outputs.",
+      "Verify workflow execution using simulated target integrations."
     ],
     "libraries": [
       {
-        "name": "opencv-python",
-        "desc": "Vision routines."
+        "name": "pydantic",
+        "desc": "Data models enforcing workflow node definitions."
       },
       {
-        "name": "pillow",
-        "desc": "Image files."
+        "name": "asteval",
+        "desc": "Safe evaluator of Python expressions using AST representation."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Pose Estimation\" project using standard patterns in Phase 5 — Computer Vision. Show me the key classes, steps, and target goals.",
-    "fileStructure": "pose_estimation_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain how to build an AI Workflow Builder. Show dynamic graph mapping, parsing goals to code, variables routing, and sandbox execution configurations.",
+    "fileStructure": "workflow_builder/\n├── main.py\n├── graph.py\n├── compiler.py\n├── sandbox.py\n└── tests/\n    └── test_workflow.py",
+    "architecture": "Prompt Goal -> Graph Planner -> Steps Array -> Code Compiler -> safe AST Evaluator -> Output parameters",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Pose Estimation?",
+        "question": "Why is running code generated by AI models risky?",
         "options": [
-          "Image Processing (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "It is slower than compiled code",
+          "It can contain bugs or execute destructive system actions if un-sandboxed (Correct)",
+          "It requires extra CSS files"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Pose Estimation?",
+        "question": "How does asteval help mitigate execution risks?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It compiles code to binary files",
+          "It runs a safe Python subset using Abstract Syntax Trees, blocking OS system import calls (Correct)",
+          "It encrypts inputs"
         ],
         "correct": 1
       }
@@ -2097,58 +2167,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 36,
-    "phase": "Phase 5 — Computer Vision",
-    "title": "Medical Image Classifier",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Medical Image Classifier\" as part of your Phase 5 — Computer Vision curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 11 — MLOps",
+    "title": "Model Serving API",
+    "level": "Intermediate",
+    "xp": 200,
+    "desc": "Build an enterprise model serving backend using FastAPI. Configure request batching, model prediction warmups, multi-worker thread pools, logging latency, and exporting API metrics.",
     "concepts": [
-      "Image Processing",
-      "Convolutions",
-      "Feature Detection",
-      "Object Mapping"
+      "Model Inference APIs",
+      "Dynamic Request Batching",
+      "Model Warmups",
+      "Worker Concurrency"
     ],
     "features": [
-      "Implement core interface and execution logic for Medical Image Classifier.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Expose prediction endpoints loading model files during initialization.",
+      "Batch inference requests dynamically to optimize CPU/GPU utilization.",
+      "Run startup warmups to eliminate initial latency spikes.",
+      "Log request latencies, input sizes, and prediction distributions.",
+      "Export metrics schemas monitoring server health."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Write FastAPI servers loading PyTorch/Scikit-Learn model weights.",
+      "Implement background query queuing pools for batching.",
+      "Create warmup scripts calling the network with test inputs.",
+      "Configure gunicorn/uvicorn setups allocating worker threads.",
+      "Benchmark throughput limits and prediction latencies."
     ],
     "libraries": [
       {
-        "name": "opencv-python",
-        "desc": "Vision routines."
+        "name": "fastapi",
+        "desc": "Web serving framework."
       },
       {
-        "name": "pillow",
-        "desc": "Image files."
+        "name": "gunicorn",
+        "desc": "WSGI HTTP server for UNIX environments."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Medical Image Classifier\" project using standard patterns in Phase 5 — Computer Vision. Show me the key classes, steps, and target goals.",
-    "fileStructure": "medical_image_classifier_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Guide me through building a Model Serving API. Explain how to load models once at startup, implement batching, and handle worker threads.",
+    "fileStructure": "model_server/\n├── app/\n│   ├── main.py\n│   ├── predictor.py\n│   └── config.py\n└── benchmarks/\n    └── load_test.py",
+    "architecture": "Incoming Request -> Web Worker -> Batch Queue -> Model Batch Inference -> Worker Response -> Latency Log",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Medical Image Classifier?",
+        "question": "Why should models be loaded at server startup rather than inside the endpoint route?",
         "options": [
-          "Image Processing (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "To secure model weight files",
+          "Loading model weights takes seconds; loading once at startup avoids massive API latency spikes on every request (Correct)",
+          "To clean up cache allocations"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Medical Image Classifier?",
+        "question": "What does request batching optimize during model serving?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It reduces network transmission costs",
+          "It processes multiple queries in a single matrix operation, boosting hardware efficiency (Correct)",
+          "It formats outputs to JSON"
         ],
         "correct": 1
       }
@@ -2156,58 +2228,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 37,
-    "phase": "Phase 6 — NLP",
-    "title": "Sentiment Analysis",
+    "phase": "Phase 11 — MLOps",
+    "title": "MLflow Integration",
     "level": "Advanced",
-    "xp": 400,
-    "desc": "Design and build a production-ready \"Sentiment Analysis\" as part of your Phase 6 — NLP curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "xp": 300,
+    "desc": "Build an experiment tracking engine integrating MLflow. Learn to log metrics, track hyperparameter iterations, register artifact files, tag runs, and query models using registry APIs.",
     "concepts": [
-      "Text Normalization",
-      "Tokenization",
-      "Embeddings",
-      "Sequence Modeling"
+      "Experiment Tracking",
+      "Parameters Logging",
+      "Artifact Archiving",
+      "Model Registry APIs"
     ],
     "features": [
-      "Implement core interface and execution logic for Sentiment Analysis.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Log parameter iterations dynamically during training.",
+      "Save training metrics (loss, validation curves) across epochs.",
+      "Archive artifacts (datasets, configuration files, visual plots).",
+      "Register finalized model binaries with tag states (Staging, Production).",
+      "Query registry APIs to retrieve active model versions."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Set up MLflow local tracking servers linking file registries.",
+      "Write training scripts logging weights, runs, and validation curves.",
+      "Implement model registration pipelines tracking metrics.",
+      "Deploy artifact targets saving confusion matrix png files.",
+      "Build model lookup classes querying the MLflow client."
     ],
     "libraries": [
       {
-        "name": "spacy",
-        "desc": "NLP pipeline."
+        "name": "mlflow",
+        "desc": "Platform to manage the ML lifecycle including experimentation, reproducibility, and deployment."
       },
       {
-        "name": "transformers",
-        "desc": "Transformer models."
+        "name": "scikit-learn",
+        "desc": "Generate classification metrics for log updates."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Sentiment Analysis\" project using standard patterns in Phase 6 — NLP. Show me the key classes, steps, and target goals.",
-    "fileStructure": "sentiment_analysis_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain MLflow experiment tracking. Show how to initialize a run, log hyperparameters, upload artifacts, and manage the model registry.",
+    "fileStructure": "mlflow_tracking/\n├── train.py\n├── registry_client.py\n├── config.json\n└── requirements.txt",
+    "architecture": "Training run -> MLflow Logger -> Parameters & Metrics -> Model Registry -> Artifact Store",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Sentiment Analysis?",
+        "question": "What is the primary purpose of MLflow Tracking?",
         "options": [
-          "Text Normalization (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "To build UI dashboards",
+          "To log parameters, code versions, metrics, and output files for model reproducibility (Correct)",
+          "To compile database indexing rules"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Sentiment Analysis?",
+        "question": "How does the MLflow Model Registry help transition models?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It automatically trains models",
+          "It manages version states, tagging files as Staging, Production, or Archived (Correct)",
+          "It compiles code"
         ],
         "correct": 1
       }
@@ -2215,58 +2289,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 38,
-    "phase": "Phase 6 — NLP",
-    "title": "Named Entity Recognition",
+    "phase": "Phase 11 — MLOps",
+    "title": "Drift Detection",
     "level": "Advanced",
-    "xp": 400,
-    "desc": "Design and build a production-ready \"Named Entity Recognition\" as part of your Phase 6 — NLP curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "xp": 300,
+    "desc": "Implement a statistical Drift Detection engine monitoring production data. Calculate Population Stability Index (PSI) and Kolmogorov-Smirnov (KS) tests comparing distribution shifts, and configure alerting metrics.",
     "concepts": [
-      "Text Normalization",
-      "Tokenization",
-      "Embeddings",
-      "Sequence Modeling"
+      "Data Drift Detection",
+      "Population Stability Index (PSI)",
+      "Kolmogorov-Smirnov (KS) test",
+      "Alert Configuration Systems"
     ],
     "features": [
-      "Implement core interface and execution logic for Named Entity Recognition.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Monitor incoming production data arrays comparing parameters to baselines.",
+      "Calculate feature distribution shifts using Kolmogorov-Smirnov tests.",
+      "Compute Population Stability Index (PSI) measuring dataset variations.",
+      "Expose anomaly endpoints indicating model input drifts.",
+      "Compile alerting hooks triggering model retraining loops."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Write data drift calculations implementing PSI algorithms.",
+      "Implement KS test checks on numerical arrays using SciPy.",
+      "Create reference data metrics representing baseline training sets.",
+      "Build serving pipeline filters tagging high-drift queries.",
+      "Verify system alerts and logging alerts."
     ],
     "libraries": [
       {
-        "name": "spacy",
-        "desc": "NLP pipeline."
+        "name": "scipy",
+        "desc": "Scientific computations offering statistical tests (KS test)."
       },
       {
-        "name": "transformers",
-        "desc": "Transformer models."
+        "name": "numpy",
+        "desc": "Array math and vector calculation utilities."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Named Entity Recognition\" project using standard patterns in Phase 6 — NLP. Show me the key classes, steps, and target goals.",
-    "fileStructure": "named_entity_recognition_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Teach me Drift Detection. Explain Kolmogorov-Smirnov tests, calculating Population Stability Index (PSI), and alerting when distributions shift.",
+    "fileStructure": "drift_detector/\n├── detector.py\n├── stats_helper.py\n├── config.py\n└── tests/\n    └── test_drift.py",
+    "architecture": "Production Data -> Feature Extractor -> KS-Test & PSI calculations -> Alert Interceptor -> MLflow/Retrain Trigger",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Named Entity Recognition?",
+        "question": "What does a high Kolmogorov-Smirnov (KS) test statistic indicate?",
         "options": [
-          "Text Normalization (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "A faster request speed",
+          "The production data distribution has significantly shifted from the training baseline (Correct)",
+          "An index compilation error"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Named Entity Recognition?",
+        "question": "Which Population Stability Index (PSI) value threshold indicates significant feature drift?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "PSI < 0.1",
+          "PSI > 0.2 (Correct)",
+          "PSI = 0"
         ],
         "correct": 1
       }
@@ -2274,58 +2350,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 39,
-    "phase": "Phase 6 — NLP",
-    "title": "Machine Translation",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Machine Translation\" as part of your Phase 6 — NLP curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 11 — MLOps",
+    "title": "Monitoring Dashboard",
+    "level": "Expert",
+    "xp": 400,
+    "desc": "Build a real-time Monitoring Dashboard for machine learning models. Expose model latency, prediction anomalies, request volumes, and system resource tracking using Prometheus metrics and Grafana visualizations.",
     "concepts": [
-      "Text Normalization",
-      "Tokenization",
-      "Embeddings",
-      "Sequence Modeling"
+      "Prometheus Instrumentation",
+      "Grafana Dashboards",
+      "Metric Classifications (Counter/Gauge)",
+      "Alert Manager Hooks"
     ],
     "features": [
-      "Implement core interface and execution logic for Machine Translation.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Expose standard `/metrics` endpoints compatible with Prometheus.",
+      "Track total requests and errors using Prometheus Counters.",
+      "Monitor response latency and prediction distributions using Gauges.",
+      "Integrate system resource logging (CPU, Memory, Disk).",
+      "Build custom Grafana dashboard JSON configurations."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Install prometheus-client configurations inside the FastAPI service layout.",
+      "Create API endpoints tracking model queries and response status codes.",
+      "Register Gauges tracking prediction classifications and average latencies.",
+      "Write configuration templates loading dashboard formats.",
+      "Test endpoint query logging during simulated request loads."
     ],
     "libraries": [
       {
-        "name": "spacy",
-        "desc": "NLP pipeline."
+        "name": "prometheus-client",
+        "desc": "Official Prometheus instrumentation library for Python."
       },
       {
-        "name": "transformers",
-        "desc": "Transformer models."
+        "name": "psutil",
+        "desc": "Cross-platform library for retrieving information on running processes and system utilization."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Machine Translation\" project using standard patterns in Phase 6 — NLP. Show me the key classes, steps, and target goals.",
-    "fileStructure": "machine_translation_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain how to build a model monitoring dashboard. Show Prometheus instrumentation, exporting metrics, and structuring Grafana displays.",
+    "fileStructure": "model_monitor/\n├── app/\n│   ├── main.py\n│   ├── metrics.py\n│   └── monitor.py\n└── grafana/dashboard.json",
+    "architecture": "API Request -> Prometheus Exporter -> Prometheus Server Scrape -> Grafana Dashboard Visuals",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Machine Translation?",
+        "question": "What is the difference between Counter and Gauge metrics in Prometheus?",
         "options": [
-          "Text Normalization (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "Counters only track data sizes, Gauges track time",
+          "Counters only increase (e.g. total requests); Gauges can go up and down (e.g. system memory, latency) (Correct)",
+          "Gauges are not supported in Python"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Machine Translation?",
+        "question": "How does Prometheus collect metrics from a model serving endpoint?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "By writing files locally",
+          "By periodically scraping a standard HTTP /metrics endpoint exposed by the server (Correct)",
+          "By connecting to SQL logs"
         ],
         "correct": 1
       }
@@ -2333,58 +2411,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 40,
-    "phase": "Phase 6 — NLP",
-    "title": "Question Answering",
+    "phase": "Phase 12 — Distributed Systems",
+    "title": "Distributed Cache",
     "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Question Answering\" as part of your Phase 6 — NLP curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "xp": 300,
+    "desc": "Build a light Distributed Cache system. Implement a Consistent Hashing ring distributing keys across virtual nodes, code cache evictions, build node network heartbeats, and write client socket synchronization layers.",
     "concepts": [
-      "Text Normalization",
-      "Tokenization",
-      "Embeddings",
-      "Sequence Modeling"
+      "Consistent Hashing",
+      "Virtual Node Replication",
+      "Cache Evictions (LRU)",
+      "Socket Synchronization"
     ],
     "features": [
-      "Implement core interface and execution logic for Question Answering.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Distribute data keys across multiple cache server nodes.",
+      "Implement Consistent Hashing rings balancing loads.",
+      "Build virtual node representations optimizing key spreads.",
+      "Manage node failures dynamically adjusting hashing rings.",
+      "Sync records over simple network sockets."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Write consistent hashing rings mapping servers to positions.",
+      "Build server nodes running local cache routines.",
+      "Implement heartbeat checkers tracking node statuses.",
+      "Configure client request routing layers mapping keys to nodes.",
+      "Test database setups under simulated node failures."
     ],
     "libraries": [
       {
-        "name": "spacy",
-        "desc": "NLP pipeline."
+        "name": "hashlib",
+        "desc": "Cryptographic hashing functions used to compute ring coordinates."
       },
       {
-        "name": "transformers",
-        "desc": "Transformer models."
+        "name": "socket",
+        "desc": "Communicate between distributed caching nodes."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Question Answering\" project using standard patterns in Phase 6 — NLP. Show me the key classes, steps, and target goals.",
-    "fileStructure": "question_answering_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain Consistent Hashing. Guide me through building a distributed cache with node rings, handling virtual nodes, and socket synchronization.",
+    "fileStructure": "distributed_cache/\n├── ring.py\n├── node.py\n├── client.py\n└── tests/\n    └── test_cache.py",
+    "architecture": "Key -> Consistent Hash Ring -> Target Node lookup -> Socket connection -> Read/Write Cache -> Sync updates",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Question Answering?",
+        "question": "What problem does Consistent Hashing solve in distributed caches?",
         "options": [
-          "Text Normalization (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "It speeds up network protocols",
+          "It minimizes key redistributions when servers are added or removed from the cluster (Correct)",
+          "It overrides socket structures"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Question Answering?",
+        "question": "What are virtual nodes in hash rings?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "Simulated emulator systems",
+          "Multiple positions assigned to a single physical server on the ring, ensuring balanced load distribution (Correct)",
+          "Mock database connections"
         ],
         "correct": 1
       }
@@ -2392,58 +2472,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 41,
-    "phase": "Phase 6 — NLP",
-    "title": "Text Clustering",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Text Clustering\" as part of your Phase 6 — NLP curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 12 — Distributed Systems",
+    "title": "Message Queue",
+    "level": "Expert",
+    "xp": 400,
+    "desc": "Build a lightweight Distributed Message Queue from scratch. Design a Pub/Sub topic architecture, build write-ahead logs (WAL) for disk persistence, implement consumer acknowledgments tracking offsets, and enforce TCP routing logic.",
     "concepts": [
-      "Text Normalization",
-      "Tokenization",
-      "Embeddings",
-      "Sequence Modeling"
+      "Pub/Sub Broker Engine",
+      "Write-Ahead Logs (WAL)",
+      "Consumer Acknowledgments",
+      "TCP Message Framing"
     ],
     "features": [
-      "Implement core interface and execution logic for Text Clustering.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Route messages from publishers into specific broker topics.",
+      "Write payloads into binary Write-Ahead Logs ensuring persistence.",
+      "Track client acknowledgments updating current partition indices.",
+      "Support multiple consumer subscriptions reading topic ranges.",
+      "Enforce network connections using custom framing schemas."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Write binary log files persistence tools (Write-Ahead Logs).",
+      "Build socket routing engines coordinating client connections.",
+      "Implement publisher pipelines writing string updates.",
+      "Configure subscription handlers managing consumer states.",
+      "Test throughput speeds, message persistence, and consumer balances."
     ],
     "libraries": [
       {
-        "name": "spacy",
-        "desc": "NLP pipeline."
+        "name": "struct",
+        "desc": "Interpret bytes as packed binary data structures."
       },
       {
-        "name": "transformers",
-        "desc": "Transformer models."
+        "name": "socket",
+        "desc": "TCP broker communication sockets."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Text Clustering\" project using standard patterns in Phase 6 — NLP. Show me the key classes, steps, and target goals.",
-    "fileStructure": "text_clustering_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain building a Message Queue. Show how Write-Ahead Logs are constructed, how structural binary headers route network payloads, and how consumers acknowledge offsets.",
+    "fileStructure": "message_queue/\n├── broker.py\n├── wal.py\n├── consumer.py\n└── tests/\n    └── test_queue.py",
+    "architecture": "Publisher -> TCP Frame -> Broker Engine -> Write-Ahead Log -> Consumer Queue -> Acknowledgment Offset Save",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Text Clustering?",
+        "question": "What is the purpose of a Write-Ahead Log (WAL) in database/queue architectures?",
         "options": [
-          "Text Normalization (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "It validates schemas",
+          "It appends updates to disk sequentially before applying changes, securing data persistence (Correct)",
+          "It formats prints"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Text Clustering?",
+        "question": "Why is the Python 'struct' module useful in socket programming?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It compresses text styles",
+          "It packs Python values into binary format structures for consistent TCP message framing (Correct)",
+          "It compiles code"
         ],
         "correct": 1
       }
@@ -2451,117 +2533,121 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 42,
-    "phase": "Phase 6 — NLP",
-    "title": "Document Similarity Search",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Document Similarity Search\" as part of your Phase 6 — NLP curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 13 — System Design",
+    "title": "ChatGPT Clone",
+    "level": "Intermediate",
+    "xp": 200,
+    "desc": "Design and build a complete web ChatGPT Clone. Implement Server-Sent Events (SSE) streaming responses from LLM APIs, manage conversation histories inside relational databases, and build interactive frontends.",
     "concepts": [
-      "Text Normalization",
-      "Tokenization",
-      "Embeddings",
-      "Sequence Modeling"
+      "Server-Sent Events (SSE)",
+      "Database Session History",
+      "FastAPI Stream Responses",
+      "Token Counting Logics"
     ],
     "features": [
-      "Implement core interface and execution logic for Document Similarity Search.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Stream model responses word-by-word using Server-Sent Events.",
+      "Save and list conversation history indices in SQLite databases.",
+      "Expose clean chat APIs taking text parameters.",
+      "Implement request parsing filters limiting input sizes.",
+      "Design web frontends managing stream updates."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Expose FastAPI server layout structures.",
+      "Write database models mapping users, sessions, and messages.",
+      "Implement streaming generators yielding SSE data streams.",
+      "Build simple web interfaces rendering markdown streams.",
+      "Verify chat concurrency, database sessions, and latency metrics."
     ],
     "libraries": [
       {
-        "name": "spacy",
-        "desc": "NLP pipeline."
+        "name": "fastapi",
+        "desc": "Web APIs exposing streaming routes."
       },
       {
-        "name": "transformers",
-        "desc": "Transformer models."
+        "name": "sqlmodel",
+        "desc": "SQL databases mapper framework."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Document Similarity Search\" project using standard patterns in Phase 6 — NLP. Show me the key classes, steps, and target goals.",
-    "fileStructure": "document_similarity_search_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Guide me through building a ChatGPT Clone. Explain SSE streaming endpoint configurations, database session storage, and how the frontend renders stream tokens.",
+    "fileStructure": "chatgpt_clone/\n├── app/\n│   ├── main.py\n│   ├── models.py\n│   └── database.py\n├── static/\n│   └── index.html\n└── requirements.txt",
+    "architecture": "User Input -> FastAPI -> SQLModel History Fetch -> OpenAI API Stream -> Server-Sent Events -> Browser Render",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Document Similarity Search?",
+        "question": "Which technology allows the server to stream text answers incrementally over a single connection?",
         "options": [
-          "Text Normalization (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Document Similarity Search?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "WebSockets only",
+          "Server-Sent Events (SSE) / EventSource API (Correct)",
+          "REST polling intervals"
         ],
         "correct": 1
+      },
+      "q2": {
+        "question": "Why is storing chat history critical for multi-turn LLM completions?",
+        "options": [
+          "Models have zero internal memory; the server must provide past messages on every request for context (Correct)",
+          "It decreases model parameters",
+          "It compiles code"
+        ],
+        "correct": 0
       }
     }
   },
   {
     "id": 43,
-    "phase": "Phase 7 — Reinforcement Learning",
-    "title": "CartPole Agent",
-    "level": "Advanced",
+    "phase": "Phase 13 — System Design",
+    "title": "Netflix Recommendation Backend",
+    "level": "Expert",
     "xp": 400,
-    "desc": "Design and build a production-ready \"CartPole Agent\" as part of your Phase 7 — Reinforcement Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "desc": "Design a high-scale recommendation backend modeling Netflix's architecture. Build candidate generation layers using vector databases, implement feature fetch APIs caching metadata, and construct scoring systems.",
     "concepts": [
-      "Q-Learning",
-      "State Space",
-      "Policy Optimization",
-      "Reward Function"
+      "Two-Stage Recommendations",
+      "Candidate Generators",
+      "Feature Caching (Redis)",
+      "Model Ranker Inference"
     ],
     "features": [
-      "Implement core interface and execution logic for CartPole Agent.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Generate candidate sets of movies matching user profiles.",
+      "Cache metadata records in Redis indexes.",
+      "Rank movie candidates using scoring models.",
+      "Support partition scales distributing catalog searches.",
+      "Expose recommendation routes."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Set up database indexing models.",
+      "Build candidate generator matching profiles using FAISS.",
+      "Implement metadata lookup helpers routing queries to Redis.",
+      "Write model ranker endpoints scoring candidates.",
+      "Benchmark retrieval speeds, partition loads, and API latencies."
     ],
     "libraries": [
       {
-        "name": "gymnasium",
-        "desc": "RL environments."
+        "name": "redis",
+        "desc": "In-memory database server interface."
       },
       {
-        "name": "numpy",
-        "desc": "State matrices."
+        "name": "faiss-cpu",
+        "desc": "Library for efficient similarity search and clustering of dense vectors."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"CartPole Agent\" project using standard patterns in Phase 7 — Reinforcement Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "cartpole_agent_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain designing a recommendation backend. Detail candidate generation, feature lookups in Redis, scoring architecture, and how to scale catalog lookups.",
+    "fileStructure": "recommender_backend/\n├── app/\n│   ├── main.py\n│   ├── candidates.py\n│   └── ranker.py\n├── config.py\n└── tests/\n    └── test_recommend.py",
+    "architecture": "User ID -> Candidate Retrieval (FAISS) -> Feature Enrichment (Redis) -> Ranking Model Scoring -> Ranked Video List Output",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building CartPole Agent?",
+        "question": "What are the two main stages of modern scale recommendation systems?",
         "options": [
-          "Q-Learning (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "Formatting and Printing",
+          "Candidate Generation (Retrieval) and Ranking (Scoring) (Correct)",
+          "Compiling and Indexing"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for CartPole Agent?",
+        "question": "Why is Redis used in the recommendation pipeline?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "To serve HTML files",
+          "To fetch user/movie feature metadata in milliseconds to enrich ranking model inputs (Correct)",
+          "To compile Python classes"
         ],
         "correct": 1
       }
@@ -2569,58 +2655,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 44,
-    "phase": "Phase 7 — Reinforcement Learning",
-    "title": "Snake AI",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Snake AI\" as part of your Phase 7 — Reinforcement Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 14 — Research Reproduction",
+    "title": "Attention Mechanism",
+    "level": "Intermediate",
+    "xp": 200,
+    "desc": "Reproduce the Scaled Dot-Product Attention mechanism from the 'Attention Is All You Need' paper. Write tensor math computations in PyTorch, implement Query/Key/Value transformations, apply causal masks, and plot matrix heatmaps.",
     "concepts": [
-      "Q-Learning",
-      "State Space",
-      "Policy Optimization",
-      "Reward Function"
+      "Scaled Dot-Product Attention",
+      "Query/Key/Value Tensors",
+      "Softmax Normalization",
+      "Causal Masking matrices"
     ],
     "features": [
-      "Implement core interface and execution logic for Snake AI.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Compute Scaled Dot-Product values: Softmax(QK^T / sqrt(d_k))V.",
+      "Apply attention masks hiding future sequence indexes.",
+      "Calculate matrix dimensions dynamically.",
+      "Expose weights metrics mapping alignment coefficients.",
+      "Plot attention heatmaps visually."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Write PyTorch modules taking Query, Key, and Value tensors.",
+      "Implement scaling divisions based on vector dimensions.",
+      "Build causal mask matrices masking sequence paths.",
+      "Write test pipelines checking outputs and shapes.",
+      "Create visualization files rendering attention distributions."
     ],
     "libraries": [
       {
-        "name": "gymnasium",
-        "desc": "RL environments."
+        "name": "torch",
+        "desc": "Tensor computations and matrix algebra."
       },
       {
-        "name": "numpy",
-        "desc": "State matrices."
+        "name": "matplotlib",
+        "desc": "Plotting library for generating attention heatmaps."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Snake AI\" project using standard patterns in Phase 7 — Reinforcement Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "snake_ai_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain the math behind Scaled Dot-Product Attention. Show PyTorch implementations mapping Q, K, V tensors, scaling vectors, masks, and mapping outputs.",
+    "fileStructure": "attention_layer/\n├── attention.py\n├── visualize.py\n├── config.py\n└── tests/\n    └── test_attention.py",
+    "architecture": "Query, Key, Value Tensors -> Q @ K.T -> Scaling (/ sqrt(d_k)) -> Softmax -> Softmax @ V -> Output Tensor",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Snake AI?",
+        "question": "Why is the dot-product scaled by the square root of the key dimension (d_k) in Transformer attention?",
         "options": [
-          "Q-Learning (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "To shrink memory sizes",
+          "To prevent dot-products from growing extremely large, pushing Softmax gradients into flat, non-learning zones (Correct)",
+          "To encrypt inputs"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Snake AI?",
+        "question": "What does a causal mask block?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It blocks syntax errors",
+          "It prevents the model from attending to subsequent tokens (future information) during auto-regressive prediction (Correct)",
+          "It blocks external APIs"
         ],
         "correct": 1
       }
@@ -2628,58 +2716,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 45,
-    "phase": "Phase 7 — Reinforcement Learning",
-    "title": "Lunar Lander",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Lunar Lander\" as part of your Phase 7 — Reinforcement Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 14 — Research Reproduction",
+    "title": "Transformer from Scratch",
+    "level": "Expert",
+    "xp": 500,
+    "desc": "Build a complete Transformer network from scratch in PyTorch. Implement Multi-Head Attention, Position-Wise Feed-Forward networks, Layer Normalizations, Sinusoidal Positional encodings, and Encoder-Decoder architectures.",
     "concepts": [
-      "Q-Learning",
-      "State Space",
-      "Policy Optimization",
-      "Reward Function"
+      "Multi-Head Attention",
+      "Positional Encoding (Sinusoidal)",
+      "Layer Normalization (LayerNorm)",
+      "Encoder/Decoder stacking"
     ],
     "features": [
-      "Implement core interface and execution logic for Lunar Lander.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Coordinate multiple attention head projections in parallel layers.",
+      "Compute Sinusoidal Positional Encoding tensors mapping sequences.",
+      "Implement residual connections adding input features to outputs.",
+      "Code Layer Normalization equations stabilizing gradient ranges.",
+      "Design Encoder-Decoder networks processing inputs."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Implement Positional Encoding math modules.",
+      "Build Multi-Head Attention modules dividing projection states.",
+      "Configure feed-forward blocks containing linear transformations.",
+      "Stack Encoder and Decoder blocks compiling parameters.",
+      "Run translation training validation loops on small corpuses."
     ],
     "libraries": [
       {
-        "name": "gymnasium",
-        "desc": "RL environments."
+        "name": "torch",
+        "desc": "PyTorch tensor operations, parameter updates, and neural layers."
       },
       {
         "name": "numpy",
-        "desc": "State matrices."
+        "desc": "Positional sinusoidal matrix calculations."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Lunar Lander\" project using standard patterns in Phase 7 — Reinforcement Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "lunar_lander_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Guide me through building a complete Transformer from scratch. Explain Multi-Head Attention, sinusoidal positional encodings, LayerNorm, and stacking the encoder/decoder blocks.",
+    "fileStructure": "transformer_scratch/\n├── model.py\n├── layers.py\n├── train.py\n└── tests/\n    └── test_transformer.py",
+    "architecture": "Source tokens -> Positional Embedding -> Encoder Blocks -> Latent Context -> Decoder Blocks -> Softmax Projection",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Lunar Lander?",
+        "question": "Why are positional encodings required in Transformer networks?",
         "options": [
-          "Q-Learning (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "To index database keys",
+          "Because attention operations process all tokens simultaneously, lacking inherent sequence position context (Correct)",
+          "To normalize weights"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Lunar Lander?",
+        "question": "What is the role of Layer Normalization in Transformers?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It scales image pixels",
+          "It normalizes activations across features within a single batch, stabilizing model training (Correct)",
+          "It compiles code"
         ],
         "correct": 1
       }
@@ -2687,58 +2777,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 46,
-    "phase": "Phase 7 — Reinforcement Learning",
-    "title": "Tic Tac Toe AI",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Tic Tac Toe AI\" as part of your Phase 7 — Reinforcement Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 14 — Research Reproduction",
+    "title": "Mini GPT Decoder",
+    "level": "Expert",
+    "xp": 500,
+    "desc": "Build an autoregressive Mini GPT Decoder model. Implement causal multi-head attention layers, training data pipelines handling context block shifts, temperature-scaled sampling engines, and optimize weights.",
     "concepts": [
-      "Q-Learning",
-      "State Space",
-      "Policy Optimization",
-      "Reward Function"
+      "Autoregressive Decoders",
+      "Causal Multi-Head Attention",
+      "Temperature/Top-K Sampling",
+      "Cross-Entropy Language Modeling"
     ],
     "features": [
-      "Implement core interface and execution logic for Tic Tac Toe AI.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Build autoregressive transformer decoder blocks.",
+      "Implement causal masking vectors enforcing sequence properties.",
+      "Write sampling engines filtering distributions using Temperature/Top-K values.",
+      "Configure text pipelines loading token sequences.",
+      "Optimize model parameters using target cross-entropy loss."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Implement decoder layer modules linking attention layers.",
+      "Write data loading pipelines returning shifted character blocks.",
+      "Build training loops calculating cross-entropy loss weights.",
+      "Implement text generation loops calling sampling rules.",
+      "Train model on small literary works generating novel text sentences."
     ],
     "libraries": [
       {
-        "name": "gymnasium",
-        "desc": "RL environments."
+        "name": "torch",
+        "desc": "PyTorch tensor operations, parameter updates, and neural layers."
       },
       {
-        "name": "numpy",
-        "desc": "State matrices."
+        "name": "tiktoken",
+        "desc": "Fast BPE tokeniser for use with OpenAI's models."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Tic Tac Toe AI\" project using standard patterns in Phase 7 — Reinforcement Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "tic_tac_toe_ai_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain how to build a Mini GPT Decoder. Detail causal attention configurations, shifting inputs/targets, temperature-scaled sampling, and writing training loops.",
+    "fileStructure": "mini_gpt/\n├── model.py\n├── dataset.py\n├── generate.py\n└── train.py",
+    "architecture": "Tokens -> Embedding -> Causal Decoder Blocks -> Linear Projection -> Logits -> Temperature/Top-K -> Next Token Output",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Tic Tac Toe AI?",
+        "question": "How is the target sequence configured in autoregressive language modeling?",
         "options": [
-          "Q-Learning (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "It is identical to the input sequence",
+          "It is shifted by one token to the right, predicting the next token at each step (Correct)",
+          "It is reversed"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for Tic Tac Toe AI?",
+        "question": "What does a lower temperature value (e.g. 0.2) do during token sampling?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It increases token limits",
+          "It flattens probability distributions, making generated text more deterministic and repetitive (Correct)",
+          "It speeds up compilation"
         ],
         "correct": 1
       }
@@ -2746,117 +2838,121 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 47,
-    "phase": "Phase 7 — Reinforcement Learning",
-    "title": "Self-Playing Game Agent",
+    "phase": "Phase 14 — Research Reproduction",
+    "title": "ResNet",
     "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"Self-Playing Game Agent\" as part of your Phase 7 — Reinforcement Learning curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "xp": 300,
+    "desc": "Reproduce the classic ResNet (Residual Networks) architecture in PyTorch. Implement residual blocks containing shortcut/skip connections, handle dimension projection mismatching, stack deep layers, and train models on CIFAR10.",
     "concepts": [
-      "Q-Learning",
-      "State Space",
-      "Policy Optimization",
-      "Reward Function"
+      "Residual Skip Connections",
+      "Identity mapping",
+      "Projection blocks",
+      "Gradient bottleneck mitigation"
     ],
     "features": [
-      "Implement core interface and execution logic for Self-Playing Game Agent.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Build custom residual blocks adding input values to outputs.",
+      "Implement 1x1 convolutions matching channels during downsamplings.",
+      "Stack convolutional networks generating deep architectures.",
+      "Apply Batch Normalization steps optimizing convergence speeds.",
+      "Train networks classifying datasets."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Build basic residual block modules in PyTorch.",
+      "Implement Projection blocks scaling input channel dimension sizes.",
+      "Assemble complete ResNet-18/ResNet-34 class networks.",
+      "Write training loops running updates on CIFAR10.",
+      "Analyze accuracy outcomes."
     ],
     "libraries": [
       {
-        "name": "gymnasium",
-        "desc": "RL environments."
+        "name": "torch",
+        "desc": "PyTorch deep learning framework for convolutional networks."
       },
       {
-        "name": "numpy",
-        "desc": "State matrices."
+        "name": "torchvision.datasets",
+        "desc": "CIFAR10 data libraries."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Self-Playing Game Agent\" project using standard patterns in Phase 7 — Reinforcement Learning. Show me the key classes, steps, and target goals.",
-    "fileStructure": "self_playing_game_agent_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Guide me through building ResNet. Explain residual block structures, identity vs projection mappings, batch normalization, and training on CIFAR10.",
+    "fileStructure": "resnet_scratch/\n├── model.py\n├── train.py\n├── dataset.py\n└── tests/\n    └── test_resnet.py",
+    "architecture": "Input Image -> Conv2D -> BatchNormalizer -> Residual Blocks (Skip Addition) -> Global Average Pool -> Linear Output",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building Self-Playing Game Agent?",
+        "question": "What primary problem does the ResNet shortcut connection solve?",
         "options": [
-          "Q-Learning (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Self-Playing Game Agent?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "It increases input resolution",
+          "It mitigates vanishing/exploding gradients in extremely deep networks by letting gradients backpropagate directly through identity mappings (Correct)",
+          "It eliminates the need for activation functions"
         ],
         "correct": 1
+      },
+      "q2": {
+        "question": "When is a 1x1 convolution shortcut required in a residual block?",
+        "options": [
+          "When the block input and output dimensions mismatch in channel size or spatial resolution (Correct)",
+          "On every layer of the network",
+          "Only on the final linear layer"
+        ],
+        "correct": 0
       }
     }
   },
   {
     "id": 48,
-    "phase": "Phase 8 — LLM Engineering",
-    "title": "AI PDF Chat",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"AI PDF Chat\" as part of your Phase 8 — LLM Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "phase": "Phase 14 — Research Reproduction",
+    "title": "Vision Transformer",
+    "level": "Expert",
+    "xp": 500,
+    "desc": "Implement a Vision Transformer (ViT) model from scratch. Split source images into patches, project patches into dense embed dimensions, add class tokens and positional vectors, and pass them to standard Transformer encoders.",
     "concepts": [
-      "Prompt Engineering",
-      "Vector Store",
-      "Semantic Retrieval",
-      "RAG"
+      "Image Patch Embeddings",
+      "Class (CLS) Tokens",
+      "Positional Embeddings",
+      "Self-Attention over Patches"
     ],
     "features": [
-      "Implement core interface and execution logic for AI PDF Chat.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Convert images into arrays of distinct grid patches.",
+      "Project flat patch vectors into embed dimensions using Linear layers.",
+      "Prepend learnable Class (CLS) tokens tracking output representations.",
+      "Implement Positional Embeddings adding layout data to patches.",
+      "Pass patch sequences through Transformer Encoders for classification."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Write patch extractor layers using Convolutional operations.",
+      "Build embed layers appending CLS tokens and position vectors.",
+      "Construct Transformer Encoder blocks parsing patches.",
+      "Implement classification headers yielding final metrics.",
+      "Test vision classification metrics on datasets."
     ],
     "libraries": [
       {
-        "name": "langchain",
-        "desc": "Chains orchestrator."
+        "name": "torch",
+        "desc": "PyTorch tensor operations, parameter updates, and neural layers."
       },
       {
-        "name": "chromadb",
-        "desc": "Vector store."
+        "name": "einops",
+        "desc": "Flexible and powerful tensor operations library for reshaping."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"AI PDF Chat\" project using standard patterns in Phase 8 — LLM Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "ai_pdf_chat_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain Vision Transformer (ViT) architectures. Show how images divide into patch sequences, how positional vectors are added, and how Transformer Encoders process outputs.",
+    "fileStructure": "vit_scratch/\n├── vit.py\n├── patch.py\n├── train.py\n└── tests/\n    └── test_vit.py",
+    "architecture": "Image -> Patch Splitting -> Patch Projection Embed -> CLS token prepend -> Position vectors add -> Transformer Encoder -> MLP Head -> Classification Output",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building AI PDF Chat?",
+        "question": "How are spatial image coordinates represented in Vision Transformers (ViT)?",
         "options": [
-          "Prompt Engineering (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "Using pixel coordinates",
+          "By adding learnable Positional Embedding vectors to the projected patch embeddings (Correct)",
+          "Using external databases"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for AI PDF Chat?",
+        "question": "What is the CLS token in ViTs?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "A token indicating compile steps",
+          "A learnable vector prepended to the patch sequence that aggregates global image context for final classification (Correct)",
+          "An index divider"
         ],
         "correct": 1
       }
@@ -2864,3067 +2960,60 @@ export const pythonProjects: PythonProject[] = [
   },
   {
     "id": 49,
-    "phase": "Phase 8 — LLM Engineering",
-    "title": "AI Research Assistant",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"AI Research Assistant\" as part of your Phase 8 — LLM Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Prompt Engineering",
-      "Vector Store",
-      "Semantic Retrieval",
-      "RAG"
-    ],
-    "features": [
-      "Implement core interface and execution logic for AI Research Assistant.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langchain",
-        "desc": "Chains orchestrator."
-      },
-      {
-        "name": "chromadb",
-        "desc": "Vector store."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"AI Research Assistant\" project using standard patterns in Phase 8 — LLM Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "ai_research_assistant_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building AI Research Assistant?",
-        "options": [
-          "Prompt Engineering (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for AI Research Assistant?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 50,
-    "phase": "Phase 8 — LLM Engineering",
-    "title": "AI Code Reviewer",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"AI Code Reviewer\" as part of your Phase 8 — LLM Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Prompt Engineering",
-      "Vector Store",
-      "Semantic Retrieval",
-      "RAG"
-    ],
-    "features": [
-      "Implement core interface and execution logic for AI Code Reviewer.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langchain",
-        "desc": "Chains orchestrator."
-      },
-      {
-        "name": "chromadb",
-        "desc": "Vector store."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"AI Code Reviewer\" project using standard patterns in Phase 8 — LLM Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "ai_code_reviewer_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building AI Code Reviewer?",
-        "options": [
-          "Prompt Engineering (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for AI Code Reviewer?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 51,
-    "phase": "Phase 8 — LLM Engineering",
-    "title": "RAG Search Engine",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"RAG Search Engine\" as part of your Phase 8 — LLM Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Prompt Engineering",
-      "Vector Store",
-      "Semantic Retrieval",
-      "RAG"
-    ],
-    "features": [
-      "Implement core interface and execution logic for RAG Search Engine.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langchain",
-        "desc": "Chains orchestrator."
-      },
-      {
-        "name": "chromadb",
-        "desc": "Vector store."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"RAG Search Engine\" project using standard patterns in Phase 8 — LLM Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "rag_search_engine_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building RAG Search Engine?",
-        "options": [
-          "Prompt Engineering (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for RAG Search Engine?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 52,
-    "phase": "Phase 8 — LLM Engineering",
-    "title": "Multi-document QA",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Multi-document QA\" as part of your Phase 8 — LLM Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Prompt Engineering",
-      "Vector Store",
-      "Semantic Retrieval",
-      "RAG"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Multi-document QA.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langchain",
-        "desc": "Chains orchestrator."
-      },
-      {
-        "name": "chromadb",
-        "desc": "Vector store."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Multi-document QA\" project using standard patterns in Phase 8 — LLM Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "multi_document_qa_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Multi-document QA?",
-        "options": [
-          "Prompt Engineering (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Multi-document QA?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 53,
-    "phase": "Phase 8 — LLM Engineering",
-    "title": "SQL Agent",
-    "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"SQL Agent\" as part of your Phase 8 — LLM Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Prompt Engineering",
-      "Vector Store",
-      "Semantic Retrieval",
-      "RAG"
-    ],
-    "features": [
-      "Implement core interface and execution logic for SQL Agent.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langchain",
-        "desc": "Chains orchestrator."
-      },
-      {
-        "name": "chromadb",
-        "desc": "Vector store."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"SQL Agent\" project using standard patterns in Phase 8 — LLM Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "sql_agent_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building SQL Agent?",
-        "options": [
-          "Prompt Engineering (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for SQL Agent?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 54,
-    "phase": "Phase 8 — LLM Engineering",
-    "title": "Vision Chatbot",
-    "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"Vision Chatbot\" as part of your Phase 8 — LLM Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Prompt Engineering",
-      "Vector Store",
-      "Semantic Retrieval",
-      "RAG"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Vision Chatbot.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langchain",
-        "desc": "Chains orchestrator."
-      },
-      {
-        "name": "chromadb",
-        "desc": "Vector store."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Vision Chatbot\" project using standard patterns in Phase 8 — LLM Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "vision_chatbot_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Vision Chatbot?",
-        "options": [
-          "Prompt Engineering (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Vision Chatbot?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 55,
-    "phase": "Phase 8 — LLM Engineering",
-    "title": "Voice Assistant",
-    "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"Voice Assistant\" as part of your Phase 8 — LLM Engineering curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Prompt Engineering",
-      "Vector Store",
-      "Semantic Retrieval",
-      "RAG"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Voice Assistant.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langchain",
-        "desc": "Chains orchestrator."
-      },
-      {
-        "name": "chromadb",
-        "desc": "Vector store."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Voice Assistant\" project using standard patterns in Phase 8 — LLM Engineering. Show me the key classes, steps, and target goals.",
-    "fileStructure": "voice_assistant_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Voice Assistant?",
-        "options": [
-          "Prompt Engineering (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Voice Assistant?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 56,
-    "phase": "Phase 9 — Agentic AI",
-    "title": "Research Agent",
-    "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"Research Agent\" as part of your Phase 9 — Agentic AI curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "ReAct Loop",
-      "Autonomous Planning",
-      "Tool Execution",
-      "State Management"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Research Agent.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langgraph",
-        "desc": "State graphs orchestration."
-      },
-      {
-        "name": "google-genai",
-        "desc": "Gemini APIs SDK."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Research Agent\" project using standard patterns in Phase 9 — Agentic AI. Show me the key classes, steps, and target goals.",
-    "fileStructure": "research_agent_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Research Agent?",
-        "options": [
-          "ReAct Loop (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Research Agent?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 57,
-    "phase": "Phase 9 — Agentic AI",
-    "title": "Coding Agent",
-    "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"Coding Agent\" as part of your Phase 9 — Agentic AI curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "ReAct Loop",
-      "Autonomous Planning",
-      "Tool Execution",
-      "State Management"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Coding Agent.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langgraph",
-        "desc": "State graphs orchestration."
-      },
-      {
-        "name": "google-genai",
-        "desc": "Gemini APIs SDK."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Coding Agent\" project using standard patterns in Phase 9 — Agentic AI. Show me the key classes, steps, and target goals.",
-    "fileStructure": "coding_agent_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Coding Agent?",
-        "options": [
-          "ReAct Loop (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Coding Agent?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 58,
-    "phase": "Phase 9 — Agentic AI",
-    "title": "Browser Agent",
-    "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"Browser Agent\" as part of your Phase 9 — Agentic AI curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "ReAct Loop",
-      "Autonomous Planning",
-      "Tool Execution",
-      "State Management"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Browser Agent.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langgraph",
-        "desc": "State graphs orchestration."
-      },
-      {
-        "name": "google-genai",
-        "desc": "Gemini APIs SDK."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Browser Agent\" project using standard patterns in Phase 9 — Agentic AI. Show me the key classes, steps, and target goals.",
-    "fileStructure": "browser_agent_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Browser Agent?",
-        "options": [
-          "ReAct Loop (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Browser Agent?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 59,
-    "phase": "Phase 9 — Agentic AI",
-    "title": "Travel Planner Agent",
-    "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"Travel Planner Agent\" as part of your Phase 9 — Agentic AI curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "ReAct Loop",
-      "Autonomous Planning",
-      "Tool Execution",
-      "State Management"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Travel Planner Agent.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langgraph",
-        "desc": "State graphs orchestration."
-      },
-      {
-        "name": "google-genai",
-        "desc": "Gemini APIs SDK."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Travel Planner Agent\" project using standard patterns in Phase 9 — Agentic AI. Show me the key classes, steps, and target goals.",
-    "fileStructure": "travel_planner_agent_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Travel Planner Agent?",
-        "options": [
-          "ReAct Loop (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Travel Planner Agent?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 60,
-    "phase": "Phase 9 — Agentic AI",
-    "title": "Financial Analysis Agent",
-    "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"Financial Analysis Agent\" as part of your Phase 9 — Agentic AI curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "ReAct Loop",
-      "Autonomous Planning",
-      "Tool Execution",
-      "State Management"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Financial Analysis Agent.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langgraph",
-        "desc": "State graphs orchestration."
-      },
-      {
-        "name": "google-genai",
-        "desc": "Gemini APIs SDK."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Financial Analysis Agent\" project using standard patterns in Phase 9 — Agentic AI. Show me the key classes, steps, and target goals.",
-    "fileStructure": "financial_analysis_agent_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Financial Analysis Agent?",
-        "options": [
-          "ReAct Loop (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Financial Analysis Agent?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 61,
-    "phase": "Phase 9 — Agentic AI",
-    "title": "Meeting Assistant Agent",
-    "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"Meeting Assistant Agent\" as part of your Phase 9 — Agentic AI curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "ReAct Loop",
-      "Autonomous Planning",
-      "Tool Execution",
-      "State Management"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Meeting Assistant Agent.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langgraph",
-        "desc": "State graphs orchestration."
-      },
-      {
-        "name": "google-genai",
-        "desc": "Gemini APIs SDK."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Meeting Assistant Agent\" project using standard patterns in Phase 9 — Agentic AI. Show me the key classes, steps, and target goals.",
-    "fileStructure": "meeting_assistant_agent_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Meeting Assistant Agent?",
-        "options": [
-          "ReAct Loop (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Meeting Assistant Agent?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 62,
-    "phase": "Phase 9 — Agentic AI",
-    "title": "Multi-Agent Research Team",
-    "level": "Advanced",
-    "xp": 600,
-    "desc": "Design and build a production-ready \"Multi-Agent Research Team\" as part of your Phase 9 — Agentic AI curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "ReAct Loop",
-      "Autonomous Planning",
-      "Tool Execution",
-      "State Management"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Multi-Agent Research Team.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langgraph",
-        "desc": "State graphs orchestration."
-      },
-      {
-        "name": "google-genai",
-        "desc": "Gemini APIs SDK."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Multi-Agent Research Team\" project using standard patterns in Phase 9 — Agentic AI. Show me the key classes, steps, and target goals.",
-    "fileStructure": "multi_agent_research_team_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Multi-Agent Research Team?",
-        "options": [
-          "ReAct Loop (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Multi-Agent Research Team?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 63,
-    "phase": "Phase 9 — Agentic AI",
-    "title": "Customer Support Agent",
-    "level": "Advanced",
-    "xp": 600,
-    "desc": "Design and build a production-ready \"Customer Support Agent\" as part of your Phase 9 — Agentic AI curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "ReAct Loop",
-      "Autonomous Planning",
-      "Tool Execution",
-      "State Management"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Customer Support Agent.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langgraph",
-        "desc": "State graphs orchestration."
-      },
-      {
-        "name": "google-genai",
-        "desc": "Gemini APIs SDK."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Customer Support Agent\" project using standard patterns in Phase 9 — Agentic AI. Show me the key classes, steps, and target goals.",
-    "fileStructure": "customer_support_agent_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Customer Support Agent?",
-        "options": [
-          "ReAct Loop (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Customer Support Agent?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 64,
-    "phase": "Phase 9 — Agentic AI",
-    "title": "Autonomous Coding Team",
-    "level": "Advanced",
-    "xp": 600,
-    "desc": "Design and build a production-ready \"Autonomous Coding Team\" as part of your Phase 9 — Agentic AI curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "ReAct Loop",
-      "Autonomous Planning",
-      "Tool Execution",
-      "State Management"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Autonomous Coding Team.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langgraph",
-        "desc": "State graphs orchestration."
-      },
-      {
-        "name": "google-genai",
-        "desc": "Gemini APIs SDK."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Autonomous Coding Team\" project using standard patterns in Phase 9 — Agentic AI. Show me the key classes, steps, and target goals.",
-    "fileStructure": "autonomous_coding_team_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Autonomous Coding Team?",
-        "options": [
-          "ReAct Loop (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Autonomous Coding Team?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 65,
-    "phase": "Phase 9 — Agentic AI",
-    "title": "Personal AI Operating System",
-    "level": "Expert",
-    "xp": 1000,
-    "desc": "Design and build a production-ready \"Personal AI Operating System\" as part of your Phase 9 — Agentic AI curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "ReAct Loop",
-      "Autonomous Planning",
-      "Tool Execution",
-      "State Management"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Personal AI Operating System.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "langgraph",
-        "desc": "State graphs orchestration."
-      },
-      {
-        "name": "google-genai",
-        "desc": "Gemini APIs SDK."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Personal AI Operating System\" project using standard patterns in Phase 9 — Agentic AI. Show me the key classes, steps, and target goals.",
-    "fileStructure": "personal_ai_operating_system_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Personal AI Operating System?",
-        "options": [
-          "ReAct Loop (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Personal AI Operating System?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 66,
-    "phase": "Phase 10 — Generative AI",
-    "title": "AI Resume Builder",
-    "level": "Advanced",
-    "xp": 400,
-    "desc": "Design and build a production-ready \"AI Resume Builder\" as part of your Phase 10 — Generative AI curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Model Prompting",
-      "Template Hydration",
-      "Dynamic Outputs",
-      "UI Interfaces"
-    ],
-    "features": [
-      "Implement core interface and execution logic for AI Resume Builder.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "google-genai",
-        "desc": "AI models."
-      },
-      {
-        "name": "streamlit",
-        "desc": "Fast UI prototypes."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"AI Resume Builder\" project using standard patterns in Phase 10 — Generative AI. Show me the key classes, steps, and target goals.",
-    "fileStructure": "ai_resume_builder_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building AI Resume Builder?",
-        "options": [
-          "Model Prompting (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for AI Resume Builder?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 67,
-    "phase": "Phase 10 — Generative AI",
-    "title": "AI Interview Coach",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"AI Interview Coach\" as part of your Phase 10 — Generative AI curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Model Prompting",
-      "Template Hydration",
-      "Dynamic Outputs",
-      "UI Interfaces"
-    ],
-    "features": [
-      "Implement core interface and execution logic for AI Interview Coach.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "google-genai",
-        "desc": "AI models."
-      },
-      {
-        "name": "streamlit",
-        "desc": "Fast UI prototypes."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"AI Interview Coach\" project using standard patterns in Phase 10 — Generative AI. Show me the key classes, steps, and target goals.",
-    "fileStructure": "ai_interview_coach_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building AI Interview Coach?",
-        "options": [
-          "Model Prompting (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for AI Interview Coach?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 68,
-    "phase": "Phase 10 — Generative AI",
-    "title": "AI Tutor",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"AI Tutor\" as part of your Phase 10 — Generative AI curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Model Prompting",
-      "Template Hydration",
-      "Dynamic Outputs",
-      "UI Interfaces"
-    ],
-    "features": [
-      "Implement core interface and execution logic for AI Tutor.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "google-genai",
-        "desc": "AI models."
-      },
-      {
-        "name": "streamlit",
-        "desc": "Fast UI prototypes."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"AI Tutor\" project using standard patterns in Phase 10 — Generative AI. Show me the key classes, steps, and target goals.",
-    "fileStructure": "ai_tutor_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building AI Tutor?",
-        "options": [
-          "Model Prompting (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for AI Tutor?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 69,
-    "phase": "Phase 10 — Generative AI",
-    "title": "AI Email Writer",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"AI Email Writer\" as part of your Phase 10 — Generative AI curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Model Prompting",
-      "Template Hydration",
-      "Dynamic Outputs",
-      "UI Interfaces"
-    ],
-    "features": [
-      "Implement core interface and execution logic for AI Email Writer.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "google-genai",
-        "desc": "AI models."
-      },
-      {
-        "name": "streamlit",
-        "desc": "Fast UI prototypes."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"AI Email Writer\" project using standard patterns in Phase 10 — Generative AI. Show me the key classes, steps, and target goals.",
-    "fileStructure": "ai_email_writer_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building AI Email Writer?",
-        "options": [
-          "Model Prompting (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for AI Email Writer?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 70,
-    "phase": "Phase 10 — Generative AI",
-    "title": "AI Presentation Generator",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"AI Presentation Generator\" as part of your Phase 10 — Generative AI curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Model Prompting",
-      "Template Hydration",
-      "Dynamic Outputs",
-      "UI Interfaces"
-    ],
-    "features": [
-      "Implement core interface and execution logic for AI Presentation Generator.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "google-genai",
-        "desc": "AI models."
-      },
-      {
-        "name": "streamlit",
-        "desc": "Fast UI prototypes."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"AI Presentation Generator\" project using standard patterns in Phase 10 — Generative AI. Show me the key classes, steps, and target goals.",
-    "fileStructure": "ai_presentation_generator_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building AI Presentation Generator?",
-        "options": [
-          "Model Prompting (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for AI Presentation Generator?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 71,
-    "phase": "Phase 10 — Generative AI",
-    "title": "AI Workflow Builder",
-    "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"AI Workflow Builder\" as part of your Phase 10 — Generative AI curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Model Prompting",
-      "Template Hydration",
-      "Dynamic Outputs",
-      "UI Interfaces"
-    ],
-    "features": [
-      "Implement core interface and execution logic for AI Workflow Builder.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "google-genai",
-        "desc": "AI models."
-      },
-      {
-        "name": "streamlit",
-        "desc": "Fast UI prototypes."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"AI Workflow Builder\" project using standard patterns in Phase 10 — Generative AI. Show me the key classes, steps, and target goals.",
-    "fileStructure": "ai_workflow_builder_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building AI Workflow Builder?",
-        "options": [
-          "Model Prompting (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for AI Workflow Builder?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 72,
-    "phase": "Phase 11 — MLOps",
-    "title": "Model Serving API",
-    "level": "Advanced",
-    "xp": 400,
-    "desc": "Design and build a production-ready \"Model Serving API\" as part of your Phase 11 — MLOps curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "CI/CD for ML",
-      "Model Server",
-      "Feature Materialization",
-      "Data Drift"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Model Serving API.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "mlflow",
-        "desc": "Experiment tracer."
-      },
-      {
-        "name": "fastapi",
-        "desc": "Model server API."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Model Serving API\" project using standard patterns in Phase 11 — MLOps. Show me the key classes, steps, and target goals.",
-    "fileStructure": "model_serving_api_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Model Serving API?",
-        "options": [
-          "CI/CD for ML (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Model Serving API?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 73,
-    "phase": "Phase 11 — MLOps",
-    "title": "MLflow Integration",
-    "level": "Advanced",
-    "xp": 400,
-    "desc": "Design and build a production-ready \"MLflow Integration\" as part of your Phase 11 — MLOps curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "CI/CD for ML",
-      "Model Server",
-      "Feature Materialization",
-      "Data Drift"
-    ],
-    "features": [
-      "Implement core interface and execution logic for MLflow Integration.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "mlflow",
-        "desc": "Experiment tracer."
-      },
-      {
-        "name": "fastapi",
-        "desc": "Model server API."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"MLflow Integration\" project using standard patterns in Phase 11 — MLOps. Show me the key classes, steps, and target goals.",
-    "fileStructure": "mlflow_integration_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building MLflow Integration?",
-        "options": [
-          "CI/CD for ML (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for MLflow Integration?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 74,
-    "phase": "Phase 11 — MLOps",
-    "title": "Feature Store Demo",
-    "level": "Advanced",
-    "xp": 400,
-    "desc": "Design and build a production-ready \"Feature Store Demo\" as part of your Phase 11 — MLOps curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "CI/CD for ML",
-      "Model Server",
-      "Feature Materialization",
-      "Data Drift"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Feature Store Demo.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "mlflow",
-        "desc": "Experiment tracer."
-      },
-      {
-        "name": "fastapi",
-        "desc": "Model server API."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Feature Store Demo\" project using standard patterns in Phase 11 — MLOps. Show me the key classes, steps, and target goals.",
-    "fileStructure": "feature_store_demo_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Feature Store Demo?",
-        "options": [
-          "CI/CD for ML (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Feature Store Demo?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 75,
-    "phase": "Phase 11 — MLOps",
-    "title": "Online Inference",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Online Inference\" as part of your Phase 11 — MLOps curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "CI/CD for ML",
-      "Model Server",
-      "Feature Materialization",
-      "Data Drift"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Online Inference.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "mlflow",
-        "desc": "Experiment tracer."
-      },
-      {
-        "name": "fastapi",
-        "desc": "Model server API."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Online Inference\" project using standard patterns in Phase 11 — MLOps. Show me the key classes, steps, and target goals.",
-    "fileStructure": "online_inference_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Online Inference?",
-        "options": [
-          "CI/CD for ML (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Online Inference?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 76,
-    "phase": "Phase 11 — MLOps",
-    "title": "Batch Inference",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Batch Inference\" as part of your Phase 11 — MLOps curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "CI/CD for ML",
-      "Model Server",
-      "Feature Materialization",
-      "Data Drift"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Batch Inference.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "mlflow",
-        "desc": "Experiment tracer."
-      },
-      {
-        "name": "fastapi",
-        "desc": "Model server API."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Batch Inference\" project using standard patterns in Phase 11 — MLOps. Show me the key classes, steps, and target goals.",
-    "fileStructure": "batch_inference_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Batch Inference?",
-        "options": [
-          "CI/CD for ML (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Batch Inference?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 77,
-    "phase": "Phase 11 — MLOps",
-    "title": "Canary Deployment",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Canary Deployment\" as part of your Phase 11 — MLOps curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "CI/CD for ML",
-      "Model Server",
-      "Feature Materialization",
-      "Data Drift"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Canary Deployment.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "mlflow",
-        "desc": "Experiment tracer."
-      },
-      {
-        "name": "fastapi",
-        "desc": "Model server API."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Canary Deployment\" project using standard patterns in Phase 11 — MLOps. Show me the key classes, steps, and target goals.",
-    "fileStructure": "canary_deployment_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Canary Deployment?",
-        "options": [
-          "CI/CD for ML (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Canary Deployment?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 78,
-    "phase": "Phase 11 — MLOps",
-    "title": "Drift Detection",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Drift Detection\" as part of your Phase 11 — MLOps curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "CI/CD for ML",
-      "Model Server",
-      "Feature Materialization",
-      "Data Drift"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Drift Detection.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "mlflow",
-        "desc": "Experiment tracer."
-      },
-      {
-        "name": "fastapi",
-        "desc": "Model server API."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Drift Detection\" project using standard patterns in Phase 11 — MLOps. Show me the key classes, steps, and target goals.",
-    "fileStructure": "drift_detection_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Drift Detection?",
-        "options": [
-          "CI/CD for ML (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Drift Detection?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 79,
-    "phase": "Phase 11 — MLOps",
-    "title": "Retraining Pipeline",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Retraining Pipeline\" as part of your Phase 11 — MLOps curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "CI/CD for ML",
-      "Model Server",
-      "Feature Materialization",
-      "Data Drift"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Retraining Pipeline.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "mlflow",
-        "desc": "Experiment tracer."
-      },
-      {
-        "name": "fastapi",
-        "desc": "Model server API."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Retraining Pipeline\" project using standard patterns in Phase 11 — MLOps. Show me the key classes, steps, and target goals.",
-    "fileStructure": "retraining_pipeline_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Retraining Pipeline?",
-        "options": [
-          "CI/CD for ML (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Retraining Pipeline?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 80,
-    "phase": "Phase 11 — MLOps",
-    "title": "Monitoring Dashboard",
-    "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"Monitoring Dashboard\" as part of your Phase 11 — MLOps curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "CI/CD for ML",
-      "Model Server",
-      "Feature Materialization",
-      "Data Drift"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Monitoring Dashboard.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "mlflow",
-        "desc": "Experiment tracer."
-      },
-      {
-        "name": "fastapi",
-        "desc": "Model server API."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Monitoring Dashboard\" project using standard patterns in Phase 11 — MLOps. Show me the key classes, steps, and target goals.",
-    "fileStructure": "monitoring_dashboard_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Monitoring Dashboard?",
-        "options": [
-          "CI/CD for ML (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Monitoring Dashboard?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 81,
-    "phase": "Phase 12 — Distributed Systems",
-    "title": "Distributed Cache",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Distributed Cache\" as part of your Phase 12 — Distributed Systems curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Consensus Protocol",
-      "Load Balancing",
-      "Service Registry",
-      "High Availability"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Distributed Cache.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "redis",
-        "desc": "In-memory broker."
-      },
-      {
-        "name": "pika",
-        "desc": "RabbitMQ connector."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Distributed Cache\" project using standard patterns in Phase 12 — Distributed Systems. Show me the key classes, steps, and target goals.",
-    "fileStructure": "distributed_cache_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Distributed Cache?",
-        "options": [
-          "Consensus Protocol (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Distributed Cache?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 82,
-    "phase": "Phase 12 — Distributed Systems",
-    "title": "Message Queue",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Message Queue\" as part of your Phase 12 — Distributed Systems curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Consensus Protocol",
-      "Load Balancing",
-      "Service Registry",
-      "High Availability"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Message Queue.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "redis",
-        "desc": "In-memory broker."
-      },
-      {
-        "name": "pika",
-        "desc": "RabbitMQ connector."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Message Queue\" project using standard patterns in Phase 12 — Distributed Systems. Show me the key classes, steps, and target goals.",
-    "fileStructure": "message_queue_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Message Queue?",
-        "options": [
-          "Consensus Protocol (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Message Queue?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 83,
-    "phase": "Phase 12 — Distributed Systems",
-    "title": "API Gateway",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"API Gateway\" as part of your Phase 12 — Distributed Systems curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Consensus Protocol",
-      "Load Balancing",
-      "Service Registry",
-      "High Availability"
-    ],
-    "features": [
-      "Implement core interface and execution logic for API Gateway.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "redis",
-        "desc": "In-memory broker."
-      },
-      {
-        "name": "pika",
-        "desc": "RabbitMQ connector."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"API Gateway\" project using standard patterns in Phase 12 — Distributed Systems. Show me the key classes, steps, and target goals.",
-    "fileStructure": "api_gateway_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building API Gateway?",
-        "options": [
-          "Consensus Protocol (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for API Gateway?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 84,
-    "phase": "Phase 12 — Distributed Systems",
-    "title": "Service Discovery",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Service Discovery\" as part of your Phase 12 — Distributed Systems curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Consensus Protocol",
-      "Load Balancing",
-      "Service Registry",
-      "High Availability"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Service Discovery.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "redis",
-        "desc": "In-memory broker."
-      },
-      {
-        "name": "pika",
-        "desc": "RabbitMQ connector."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Service Discovery\" project using standard patterns in Phase 12 — Distributed Systems. Show me the key classes, steps, and target goals.",
-    "fileStructure": "service_discovery_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Service Discovery?",
-        "options": [
-          "Consensus Protocol (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Service Discovery?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 85,
-    "phase": "Phase 12 — Distributed Systems",
-    "title": "Distributed Task Scheduler",
-    "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"Distributed Task Scheduler\" as part of your Phase 12 — Distributed Systems curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Consensus Protocol",
-      "Load Balancing",
-      "Service Registry",
-      "High Availability"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Distributed Task Scheduler.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "redis",
-        "desc": "In-memory broker."
-      },
-      {
-        "name": "pika",
-        "desc": "RabbitMQ connector."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Distributed Task Scheduler\" project using standard patterns in Phase 12 — Distributed Systems. Show me the key classes, steps, and target goals.",
-    "fileStructure": "distributed_task_scheduler_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Distributed Task Scheduler?",
-        "options": [
-          "Consensus Protocol (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Distributed Task Scheduler?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 86,
-    "phase": "Phase 13 — System Design",
-    "title": "YouTube Clone",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"YouTube Clone\" as part of your Phase 13 — System Design curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Sharding",
-      "API Gateways",
-      "Horizontal Scaling",
-      "Fault Tolerance"
-    ],
-    "features": [
-      "Implement core interface and execution logic for YouTube Clone.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "fastapi",
-        "desc": "Server API endpoints."
-      },
-      {
-        "name": "redis",
-        "desc": "Task queue caching."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"YouTube Clone\" project using standard patterns in Phase 13 — System Design. Show me the key classes, steps, and target goals.",
-    "fileStructure": "youtube_clone_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building YouTube Clone?",
-        "options": [
-          "Sharding (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for YouTube Clone?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 87,
-    "phase": "Phase 13 — System Design",
-    "title": "WhatsApp Clone",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"WhatsApp Clone\" as part of your Phase 13 — System Design curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Sharding",
-      "API Gateways",
-      "Horizontal Scaling",
-      "Fault Tolerance"
-    ],
-    "features": [
-      "Implement core interface and execution logic for WhatsApp Clone.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "fastapi",
-        "desc": "Server API endpoints."
-      },
-      {
-        "name": "redis",
-        "desc": "Task queue caching."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"WhatsApp Clone\" project using standard patterns in Phase 13 — System Design. Show me the key classes, steps, and target goals.",
-    "fileStructure": "whatsapp_clone_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building WhatsApp Clone?",
-        "options": [
-          "Sharding (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for WhatsApp Clone?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 88,
-    "phase": "Phase 13 — System Design",
-    "title": "Uber Clone",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Uber Clone\" as part of your Phase 13 — System Design curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Sharding",
-      "API Gateways",
-      "Horizontal Scaling",
-      "Fault Tolerance"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Uber Clone.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "fastapi",
-        "desc": "Server API endpoints."
-      },
-      {
-        "name": "redis",
-        "desc": "Task queue caching."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Uber Clone\" project using standard patterns in Phase 13 — System Design. Show me the key classes, steps, and target goals.",
-    "fileStructure": "uber_clone_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Uber Clone?",
-        "options": [
-          "Sharding (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Uber Clone?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 89,
-    "phase": "Phase 13 — System Design",
-    "title": "Google Drive Clone",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Google Drive Clone\" as part of your Phase 13 — System Design curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Sharding",
-      "API Gateways",
-      "Horizontal Scaling",
-      "Fault Tolerance"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Google Drive Clone.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "fastapi",
-        "desc": "Server API endpoints."
-      },
-      {
-        "name": "redis",
-        "desc": "Task queue caching."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Google Drive Clone\" project using standard patterns in Phase 13 — System Design. Show me the key classes, steps, and target goals.",
-    "fileStructure": "google_drive_clone_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Google Drive Clone?",
-        "options": [
-          "Sharding (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Google Drive Clone?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 90,
-    "phase": "Phase 13 — System Design",
-    "title": "Dropbox Clone",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Dropbox Clone\" as part of your Phase 13 — System Design curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Sharding",
-      "API Gateways",
-      "Horizontal Scaling",
-      "Fault Tolerance"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Dropbox Clone.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "fastapi",
-        "desc": "Server API endpoints."
-      },
-      {
-        "name": "redis",
-        "desc": "Task queue caching."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Dropbox Clone\" project using standard patterns in Phase 13 — System Design. Show me the key classes, steps, and target goals.",
-    "fileStructure": "dropbox_clone_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Dropbox Clone?",
-        "options": [
-          "Sharding (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Dropbox Clone?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 91,
-    "phase": "Phase 13 — System Design",
-    "title": "Twitter Clone",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"Twitter Clone\" as part of your Phase 13 — System Design curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Sharding",
-      "API Gateways",
-      "Horizontal Scaling",
-      "Fault Tolerance"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Twitter Clone.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "fastapi",
-        "desc": "Server API endpoints."
-      },
-      {
-        "name": "redis",
-        "desc": "Task queue caching."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Twitter Clone\" project using standard patterns in Phase 13 — System Design. Show me the key classes, steps, and target goals.",
-    "fileStructure": "twitter_clone_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Twitter Clone?",
-        "options": [
-          "Sharding (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Twitter Clone?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 92,
-    "phase": "Phase 13 — System Design",
-    "title": "ChatGPT Clone",
-    "level": "Advanced",
-    "xp": 450,
-    "desc": "Design and build a production-ready \"ChatGPT Clone\" as part of your Phase 13 — System Design curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Sharding",
-      "API Gateways",
-      "Horizontal Scaling",
-      "Fault Tolerance"
-    ],
-    "features": [
-      "Implement core interface and execution logic for ChatGPT Clone.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "fastapi",
-        "desc": "Server API endpoints."
-      },
-      {
-        "name": "redis",
-        "desc": "Task queue caching."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"ChatGPT Clone\" project using standard patterns in Phase 13 — System Design. Show me the key classes, steps, and target goals.",
-    "fileStructure": "chatgpt_clone_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building ChatGPT Clone?",
-        "options": [
-          "Sharding (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for ChatGPT Clone?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 93,
-    "phase": "Phase 13 — System Design",
-    "title": "Netflix Recommendation Backend",
-    "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"Netflix Recommendation Backend\" as part of your Phase 13 — System Design curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Sharding",
-      "API Gateways",
-      "Horizontal Scaling",
-      "Fault Tolerance"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Netflix Recommendation Backend.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "fastapi",
-        "desc": "Server API endpoints."
-      },
-      {
-        "name": "redis",
-        "desc": "Task queue caching."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Netflix Recommendation Backend\" project using standard patterns in Phase 13 — System Design. Show me the key classes, steps, and target goals.",
-    "fileStructure": "netflix_recommendation_backend_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Netflix Recommendation Backend?",
-        "options": [
-          "Sharding (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Netflix Recommendation Backend?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 94,
-    "phase": "Phase 14 — Research Reproduction",
-    "title": "Transformer from Scratch",
-    "level": "Advanced",
-    "xp": 600,
-    "desc": "Design and build a production-ready \"Transformer from Scratch\" as part of your Phase 14 — Research Reproduction curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Model Layer Scratch",
-      "Tensors Math",
-      "Transformer Weights",
-      "Backpropagation Math"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Transformer from Scratch.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "torch",
-        "desc": "Tensor networks."
-      },
-      {
-        "name": "numpy",
-        "desc": "Array mechanics."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Transformer from Scratch\" project using standard patterns in Phase 14 — Research Reproduction. Show me the key classes, steps, and target goals.",
-    "fileStructure": "transformer_from_scratch_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Transformer from Scratch?",
-        "options": [
-          "Model Layer Scratch (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Transformer from Scratch?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 95,
-    "phase": "Phase 14 — Research Reproduction",
-    "title": "Attention Mechanism",
-    "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"Attention Mechanism\" as part of your Phase 14 — Research Reproduction curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Model Layer Scratch",
-      "Tensors Math",
-      "Transformer Weights",
-      "Backpropagation Math"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Attention Mechanism.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "torch",
-        "desc": "Tensor networks."
-      },
-      {
-        "name": "numpy",
-        "desc": "Array mechanics."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Attention Mechanism\" project using standard patterns in Phase 14 — Research Reproduction. Show me the key classes, steps, and target goals.",
-    "fileStructure": "attention_mechanism_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Attention Mechanism?",
-        "options": [
-          "Model Layer Scratch (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Attention Mechanism?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 96,
-    "phase": "Phase 14 — Research Reproduction",
-    "title": "Mini BERT",
-    "level": "Advanced",
-    "xp": 600,
-    "desc": "Design and build a production-ready \"Mini BERT\" as part of your Phase 14 — Research Reproduction curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Model Layer Scratch",
-      "Tensors Math",
-      "Transformer Weights",
-      "Backpropagation Math"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Mini BERT.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "torch",
-        "desc": "Tensor networks."
-      },
-      {
-        "name": "numpy",
-        "desc": "Array mechanics."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Mini BERT\" project using standard patterns in Phase 14 — Research Reproduction. Show me the key classes, steps, and target goals.",
-    "fileStructure": "mini_bert_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Mini BERT?",
-        "options": [
-          "Model Layer Scratch (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Mini BERT?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 97,
-    "phase": "Phase 14 — Research Reproduction",
-    "title": "Mini GPT Decoder",
-    "level": "Advanced",
-    "xp": 600,
-    "desc": "Design and build a production-ready \"Mini GPT Decoder\" as part of your Phase 14 — Research Reproduction curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Model Layer Scratch",
-      "Tensors Math",
-      "Transformer Weights",
-      "Backpropagation Math"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Mini GPT Decoder.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "torch",
-        "desc": "Tensor networks."
-      },
-      {
-        "name": "numpy",
-        "desc": "Array mechanics."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Mini GPT Decoder\" project using standard patterns in Phase 14 — Research Reproduction. Show me the key classes, steps, and target goals.",
-    "fileStructure": "mini_gpt_decoder_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Mini GPT Decoder?",
-        "options": [
-          "Model Layer Scratch (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Mini GPT Decoder?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 98,
-    "phase": "Phase 14 — Research Reproduction",
-    "title": "Vision Transformer",
-    "level": "Advanced",
-    "xp": 600,
-    "desc": "Design and build a production-ready \"Vision Transformer\" as part of your Phase 14 — Research Reproduction curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Model Layer Scratch",
-      "Tensors Math",
-      "Transformer Weights",
-      "Backpropagation Math"
-    ],
-    "features": [
-      "Implement core interface and execution logic for Vision Transformer.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "torch",
-        "desc": "Tensor networks."
-      },
-      {
-        "name": "numpy",
-        "desc": "Array mechanics."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"Vision Transformer\" project using standard patterns in Phase 14 — Research Reproduction. Show me the key classes, steps, and target goals.",
-    "fileStructure": "vision_transformer_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building Vision Transformer?",
-        "options": [
-          "Model Layer Scratch (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for Vision Transformer?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 99,
-    "phase": "Phase 14 — Research Reproduction",
-    "title": "ResNet",
-    "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"ResNet\" as part of your Phase 14 — Research Reproduction curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
-    "concepts": [
-      "Model Layer Scratch",
-      "Tensors Math",
-      "Transformer Weights",
-      "Backpropagation Math"
-    ],
-    "features": [
-      "Implement core interface and execution logic for ResNet.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
-    ],
-    "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
-    ],
-    "libraries": [
-      {
-        "name": "torch",
-        "desc": "Tensor networks."
-      },
-      {
-        "name": "numpy",
-        "desc": "Array mechanics."
-      }
-    ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"ResNet\" project using standard patterns in Phase 14 — Research Reproduction. Show me the key classes, steps, and target goals.",
-    "fileStructure": "resnet_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
-    "quiz": {
-      "q1": {
-        "question": "Which concept is key to building ResNet?",
-        "options": [
-          "Model Layer Scratch (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
-        ],
-        "correct": 0
-      },
-      "q2": {
-        "question": "What is a main implementation challenge for ResNet?",
-        "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
-        ],
-        "correct": 1
-      }
-    }
-  },
-  {
-    "id": 100,
     "phase": "Phase 14 — Research Reproduction",
     "title": "U-Net",
     "level": "Advanced",
-    "xp": 500,
-    "desc": "Design and build a production-ready \"U-Net\" as part of your Phase 14 — Research Reproduction curriculum. Learn how to structure code, choose frameworks, and validate system properties.",
+    "xp": 300,
+    "desc": "Build a classic U-Net semantic image segmentation architecture. Code contracting paths compressing spatial features, design expanding paths upsampling maps, implement skip connection concatenations, and evaluate predictions.",
     "concepts": [
-      "Model Layer Scratch",
-      "Tensors Math",
-      "Transformer Weights",
-      "Backpropagation Math"
+      "U-Net Contracting Path",
+      "Expanding Upsampling Path",
+      "Skip Concatenations",
+      "Pixel-level Classifications"
     ],
     "features": [
-      "Implement core interface and execution logic for U-Net.",
-      "Build schema validation and error boundaries around input vectors.",
-      "Integrate standard diagnostic log files and trace metadata.",
-      "Configure test assertions covering edge cases and performance boundaries."
+      "Design contracting pathways extracting vision features.",
+      "Implement expanding pathways upsampling resolution using transpose convolutions.",
+      "Write skip connections concatenating encoder channels onto decoders.",
+      "Configure output maps classifying pixels.",
+      "Train networks resolving target boundaries."
     ],
     "milestones": [
-      "Initialize workspace, define local config schemas, and set up helper loggers.",
-      "Write baseline classes/functions executing core requirements.",
-      "Refactor architecture bottlenecks and optimize resource bounds.",
-      "Write pytest suites validating correct execution properties."
+      "Create contracting block components using Conv2D and MaxPool layers.",
+      "Build expanding block components using ConvTranspose2D tools.",
+      "Write skip connection layers concatenating features.",
+      "Construct complete U-Net class networks parsing outputs.",
+      "Run segmentation metrics checks."
     ],
     "libraries": [
       {
         "name": "torch",
-        "desc": "Tensor networks."
+        "desc": "PyTorch deep learning framework for convolutional networks."
       },
       {
-        "name": "numpy",
-        "desc": "Array mechanics."
+        "name": "torchvision.transforms",
+        "desc": "Resize and align vision inputs."
       }
     ],
-    "aiPrompt": "You are my Technical Mentor. Help me build my \"U-Net\" project using standard patterns in Phase 14 — Research Reproduction. Show me the key classes, steps, and target goals.",
-    "fileStructure": "u_net_project/\n├── main.py\n├── core/\n│   ├── config.py\n│   └── engine.py\n└── tests/\n    └── test_core.py",
-    "architecture": "Input Stream -> Config Validator -> Engine Execution -> Output Formatter -> Log Diagnostics",
+    "aiPrompt": "Explain U-Net segmentation. Show contracting downsampling, expanding upsampling, skip layer concatenations, and writing custom Dice/BCE loss calculations.",
+    "fileStructure": "unet_scratch/\n├── model.py\n├── train.py\n├── loader.py\n└── tests/\n    └── test_unet.py",
+    "architecture": "Input Image -> Contracting Encoder -> Latent Layer -> Expanding Decoder (with skip concatenation) -> 1x1 Conv output -> Sigmoid Map -> Segmented Output",
     "quiz": {
       "q1": {
-        "question": "Which concept is key to building U-Net?",
+        "question": "What is the benefit of the U-Net architecture for medical image segmentation?",
         "options": [
-          "Model Layer Scratch (Correct)",
-          "Running background threads",
-          "Compiling python to C++ code"
+          "It does not require training metrics",
+          "It uses skip connections to preserve high-resolution local features, allowing precise boundary localization (Correct)",
+          "It is faster than standard networks"
         ],
-        "correct": 0
+        "correct": 1
       },
       "q2": {
-        "question": "What is a main implementation challenge for U-Net?",
+        "question": "How are features joined across contracting and expanding paths in U-Net?",
         "options": [
-          "Converting data types",
-          "Handling boundary errors and input failures (Correct)",
-          "Installing third-party packages"
+          "By multiplying values",
+          "By concatenating the encoder activation tensor along the channel dimension of the corresponding decoder tensor (Correct)",
+          "By running standard additions"
         ],
         "correct": 1
       }

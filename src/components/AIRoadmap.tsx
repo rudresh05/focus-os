@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { pythonProjects, PythonProject, Library, QuizQuestion } from "./pythonProjectsData";
+import { pythonProjectDetails } from "./pythonProjectDetailsData";
 
 const STORAGE_KEY_AIML = "ai_roadmap_progress";
 const STORAGE_KEY_PYTHON_COMPLETED = "python_roadmap_completed";
@@ -425,9 +426,14 @@ export function AIRoadmap() {
   const [pythonQuizzes, setPythonQuizzes] = useState<Record<number, { q1: number; q2: number }>>({});
   const [enforcePythonOrder, setEnforcePythonOrder] = useState<boolean>(true);
   const [pythonDifficulty, setPythonDifficulty] = useState<"All" | "Beginner" | "Intermediate" | "Advanced" | "Expert">("All");
-  const [pythonDetailTab, setPythonDetailTab] = useState<"overview" | "prompt" | "quiz">("overview");
+  const [pythonDetailTab, setPythonDetailTab] = useState<"overview" | "blueprint" | "mentor" | "quiz">("overview");
+  const [activeStepIndex, setActiveStepIndex] = useState<number | null>(0);
   const [tempQuizAnswers, setTempQuizAnswers] = useState<Record<string, number>>({});
   const [expandedPhases, setExpandedPhases] = useState<Record<string, boolean>>({ "Phase 1 — Python Engineering": true });
+
+  useEffect(() => {
+    setActiveStepIndex(0);
+  }, [selectedPythonId]);
   
   // Interactive AI Tutor States
   const [chatting, setChatting] = useState(false);
@@ -598,17 +604,30 @@ export function AIRoadmap() {
   };
 
   // Python Progress helpers
-  const selectedPythonProject = pythonProjects.find(p => p.id === selectedPythonId) || pythonProjects[0];
+  const visiblePythonProjects = pythonProjects.filter(
+    p => pythonDifficulty === "All" || p.level === pythonDifficulty
+  );
+
+  const selectedPythonProject = pythonProjects.find(p => p.id === selectedPythonId) || visiblePythonProjects[0] || pythonProjects[0];
 
   useEffect(() => {
     if (selectedPythonProject) {
       setExpandedPhases(prev => ({ ...prev, [selectedPythonProject.phase]: true }));
     }
   }, [selectedPythonId, selectedPythonProject]);
+
+  useEffect(() => {
+    if (visiblePythonProjects.length > 0 && !visiblePythonProjects.some(p => p.id === selectedPythonId)) {
+      setSelectedPythonId(visiblePythonProjects[0].id);
+    }
+  }, [pythonDifficulty]);
+
   const isPythonProjectUnlocked = (id: number) => {
     if (!enforcePythonOrder) return true;
-    if (id === 1) return true;
-    return pythonCompleted.includes(id - 1);
+    const visibleIndex = visiblePythonProjects.findIndex(p => p.id === id);
+    if (visibleIndex <= 0) return true;
+    const prevProject = visiblePythonProjects[visibleIndex - 1];
+    return pythonCompleted.includes(prevProject.id);
   };
 
   const getPythonPrompt = () => {
@@ -852,19 +871,29 @@ export function AIRoadmap() {
                     <IconTrophy className="w-3 h-3" /> XP: {pythonXp} / {pythonProjects.reduce((acc, p) => acc + p.xp, 0)}
                   </span>
                   <span className="text-[10px] font-bold text-foreground">
-                    {Math.round((pythonCompleted.length / pythonProjects.length) * 100)}%
+                    {visiblePythonProjects.length > 0
+                      ? Math.round((visiblePythonProjects.filter(p => pythonCompleted.includes(p.id)).length / visiblePythonProjects.length) * 100)
+                      : 0}%
                   </span>
                 </div>
                 <div className="h-1.5 rounded-full overflow-hidden bg-line">
                   <motion.div
                     className="h-full rounded-full bg-success"
                     initial={{ width: 0 }}
-                    animate={{ width: `${Math.round((pythonCompleted.length / pythonProjects.length) * 100)}%` }}
+                    animate={{
+                      width: `${
+                        visiblePythonProjects.length > 0
+                          ? Math.round((visiblePythonProjects.filter(p => pythonCompleted.includes(p.id)).length / visiblePythonProjects.length) * 100)
+                          : 0
+                      }%`
+                    }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                   />
                 </div>
                 <div className="flex justify-between items-center mt-1">
-                  <p className="text-[9px] text-muted-foreground">{pythonCompleted.length}/{pythonProjects.length} projects built</p>
+                  <p className="text-[9px] text-muted-foreground">
+                    {visiblePythonProjects.filter(p => pythonCompleted.includes(p.id)).length}/{visiblePythonProjects.length} projects built
+                  </p>
                   <button
                     onClick={() => {
                       const nextOrder = !enforcePythonOrder;
@@ -990,11 +1019,9 @@ export function AIRoadmap() {
             </>
           ) : (
             (() => {
-              const phases = Array.from(new Set(pythonProjects.map(p => p.phase)));
+              const phases = Array.from(new Set(visiblePythonProjects.map(p => p.phase)));
               return phases.map((phase) => {
-                const phaseProjects = pythonProjects.filter(
-                  p => p.phase === phase && (pythonDifficulty === "All" || p.level === pythonDifficulty)
-                );
+                const phaseProjects = visiblePythonProjects.filter(p => p.phase === phase);
                 if (phaseProjects.length === 0) return null;
 
                 const isExpanded = !!expandedPhases[phase];
@@ -1304,22 +1331,25 @@ export function AIRoadmap() {
                 </div>
 
                 {/* Sub-tab navigation in Right Panel */}
-                <div className="px-5 sm:px-8 border-b border-line flex gap-4 bg-bg-soft/10 flex-shrink-0">
-                  {(["overview", "prompt", "quiz"] as const).map((tab) => (
+                <div className="px-5 sm:px-8 border-b border-line flex gap-4 bg-bg-soft/10 flex-shrink-0 overflow-x-auto custom-scrollbar whitespace-nowrap">
+                  {([
+                    { id: "overview", label: "Project Brief" },
+                    { id: "blueprint", label: "Execution Blueprint" },
+                    { id: "mentor", label: "AI Chat" },
+                    { id: "quiz", label: "Skill Quiz" }
+                  ] as const).map(({ id, label }) => (
                     <button
-                      key={tab}
-                      onClick={() => setPythonDetailTab(tab)}
+                      key={id}
+                      onClick={() => setPythonDetailTab(id)}
                       className={cn(
-                        "py-3 text-[11px] font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer",
-                        pythonDetailTab === tab
+                        "py-3 text-[11px] font-bold uppercase tracking-wider border-b-2 transition-all cursor-pointer flex-shrink-0",
+                        pythonDetailTab === id
                           ? "text-foreground"
                           : "border-transparent text-muted-foreground hover:text-foreground"
                       )}
-                      style={pythonDetailTab === tab ? { borderBottomColor: accent.color } : {}}
+                      style={pythonDetailTab === id ? { borderBottomColor: accent.color } : {}}
                     >
-                      {tab === "overview" && "Project Brief"}
-                      {tab === "prompt" && "AI Mentor"}
-                      {tab === "quiz" && "Skill Quiz"}
+                      {label}
                     </button>
                   ))}
                 </div>
@@ -1340,11 +1370,16 @@ export function AIRoadmap() {
                         {/* Architecture and Under the hood */}
                         <div className="p-4 border border-line bg-gradient-to-br from-bg-soft/10 to-background rounded-xl">
                           <h4 className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-muted-foreground mb-3 flex items-center gap-1.5">
-                            <IconTarget className="w-3.5 h-3.5" style={{ color: accent.color }} /> How It Works (System Architecture)
+                            <IconTarget className="w-3.5 h-3.5" style={{ color: accent.color }} /> System Architecture & Flow
                           </h4>
-                          <div className="bg-background border border-line p-3 rounded-lg flex items-center gap-2 overflow-x-auto text-[10px] text-accent font-mono py-2.5">
-                            <span className="text-muted-foreground flex-shrink-0">Flow:</span>
-                            <span className="whitespace-nowrap">{selectedPythonProject.architecture}</span>
+                          <div className="flex flex-wrap items-center gap-2 p-3.5 bg-background border border-line rounded-xl overflow-x-auto text-[10px] font-mono text-accent py-2.5">
+                            <span className="text-muted-foreground flex-shrink-0">Pipeline:</span>
+                            {selectedPythonProject.architecture.split(" -> ").map((step, idx, arr) => (
+                              <div key={idx} className="flex items-center gap-2 flex-shrink-0">
+                                <span className="px-2.5 py-1 rounded-md bg-bg-soft text-foreground border border-line">{step}</span>
+                                {idx < arr.length - 1 && <span className="text-muted-foreground">&rarr;</span>}
+                              </div>
+                            ))}
                           </div>
                         </div>
 
@@ -1353,9 +1388,20 @@ export function AIRoadmap() {
                           <h4 className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-muted-foreground mb-2.5 flex items-center gap-1.5">
                             <IconBook className="w-3.5 h-3.5" style={{ color: accent.color }} /> Suggested File Layout
                           </h4>
-                          <pre className="bg-background border border-line p-3.5 rounded-lg text-[10px] font-mono text-muted-foreground leading-relaxed overflow-x-auto">
-                            {selectedPythonProject.fileStructure}
-                          </pre>
+                          <div className="border border-line rounded-xl overflow-hidden shadow-sm bg-[#0B0F19]">
+                            <div className="flex items-center justify-between px-4 py-2 bg-background border-b border-line flex-shrink-0">
+                              <div className="flex items-center gap-1.5">
+                                <span className="w-2 h-2 rounded-full bg-red-500/80" />
+                                <span className="w-2 h-2 rounded-full bg-yellow-500/80" />
+                                <span className="w-2 h-2 rounded-full bg-green-500/80" />
+                              </div>
+                              <span className="text-[9px] font-mono text-muted-foreground uppercase tracking-widest">Workspace Structure</span>
+                              <div className="w-12" />
+                            </div>
+                            <pre className="p-4 text-[10px] font-mono text-emerald-400 leading-relaxed overflow-x-auto">
+                              {selectedPythonProject.fileStructure}
+                            </pre>
+                          </div>
                         </div>
 
                         {/* Concepts */}
@@ -1365,7 +1411,7 @@ export function AIRoadmap() {
                           </h4>
                           <div className="flex flex-wrap gap-1.5">
                             {selectedPythonProject.concepts.map((concept, i) => (
-                              <span key={i} className="text-[10px] font-bold bg-bg-soft border border-line px-2.5 py-1 rounded-md text-foreground hover:border-accent/40 transition-colors">
+                              <span key={i} className="text-[10px] font-bold bg-bg-soft border border-line/60 px-2.5 py-1 rounded-md text-foreground/80 hover:border-accent/40 hover:text-foreground transition-all duration-200">
                                 {concept}
                               </span>
                             ))}
@@ -1374,34 +1420,45 @@ export function AIRoadmap() {
 
                         {/* Checklist */}
                         <div>
-                          <h4 className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-muted-foreground mb-2.5 flex items-center gap-1.5">
-                            <IconCheck className="w-3.5 h-3.5" style={{ color: accent.color }} /> Features Checklist
-                          </h4>
-                          <div className="space-y-2">
-                            {selectedPythonProject.features.map((feat, index) => {
-                              const checked = !!(pythonFeatures[selectedPythonProject.id] || [])[index];
-                              return (
-                                <button
-                                  key={index}
-                                  onClick={() => togglePythonFeature(selectedPythonProject.id, index)}
-                                  className="w-full flex items-start gap-3 p-3 rounded-lg border border-line bg-bg-soft/20 hover:bg-bg-soft/40 transition-all text-left cursor-pointer"
-                                >
-                                  <div className={cn(
-                                    "w-4 h-4 rounded border border-line flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors",
-                                    checked ? "bg-success border-success text-white" : "bg-background"
-                                  )}>
-                                    {checked && <IconCheck className="w-2.5 h-2.5" />}
-                                  </div>
-                                  <span className={cn(
-                                    "text-xs leading-relaxed transition-all",
-                                    checked ? "line-through text-muted-foreground/60" : "text-muted-foreground hover:text-foreground"
-                                  )}>
-                                    {feat}
-                                  </span>
-                                </button>
-                              );
-                            })}
-                          </div>
+                          {(() => {
+                            const totalF = selectedPythonProject.features.length;
+                            const completedF = (pythonFeatures[selectedPythonProject.id] || []).filter(Boolean).length;
+                            return (
+                              <>
+                                <div className="flex justify-between items-center mb-2.5">
+                                  <h4 className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-muted-foreground flex items-center gap-1.5">
+                                    <IconCheck className="w-3.5 h-3.5" style={{ color: accent.color }} /> Features Checklist
+                                  </h4>
+                                  <span className="text-[10px] font-bold text-muted-foreground">{completedF} / {totalF} completed</span>
+                                </div>
+                                <div className="space-y-2">
+                                  {selectedPythonProject.features.map((feat, index) => {
+                                    const checked = !!(pythonFeatures[selectedPythonProject.id] || [])[index];
+                                    return (
+                                      <button
+                                        key={index}
+                                        onClick={() => togglePythonFeature(selectedPythonProject.id, index)}
+                                        className="w-full flex items-start gap-3 p-3 rounded-lg border border-line bg-bg-soft/20 hover:bg-bg-soft/40 transition-all text-left cursor-pointer"
+                                      >
+                                        <div className={cn(
+                                          "w-4 h-4 rounded border border-line flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors",
+                                          checked ? "bg-success border-success text-white" : "bg-background"
+                                        )}>
+                                          {checked && <IconCheck className="w-2.5 h-2.5" />}
+                                        </div>
+                                        <span className={cn(
+                                          "text-xs leading-relaxed transition-all",
+                                          checked ? "line-through text-muted-foreground/60" : "text-muted-foreground hover:text-foreground"
+                                        )}>
+                                          {feat}
+                                        </span>
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              </>
+                            );
+                          })()}
                         </div>
 
                         {/* Libraries */}
@@ -1409,11 +1466,22 @@ export function AIRoadmap() {
                           <h4 className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-muted-foreground mb-2.5 flex items-center gap-1.5">
                             <IconLink className="w-3.5 h-3.5" style={{ color: accent.color }} /> Key Third-party Libraries
                           </h4>
-                          <div className="space-y-2">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             {selectedPythonProject.libraries.map((lib, i) => (
-                              <div key={i} className="p-3 border border-line bg-bg-soft/30 rounded-xl hover:border-accent/30 transition-colors">
-                                <p className="text-[10px] font-bold text-accent font-mono mb-1">pip install {lib.name}</p>
-                                <p className="text-[10px] text-muted-foreground leading-normal">{lib.desc}</p>
+                              <div key={i} className="p-4 border border-line bg-gradient-to-br from-bg-soft/10 to-background rounded-xl hover:border-accent/30 transition-all duration-200 group relative">
+                                <div className="flex items-center justify-between mb-1.5">
+                                  <p className="text-[10px] font-bold text-accent font-mono">pip install {lib.name}</p>
+                                  <button
+                                    onClick={() => {
+                                      navigator.clipboard.writeText(`pip install ${lib.name}`);
+                                      toast.success(`Copied "pip install ${lib.name}"`);
+                                    }}
+                                    className="opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-bg-soft border border-line transition-all text-muted-foreground hover:text-foreground cursor-pointer absolute right-3 top-3"
+                                  >
+                                    <IconCopy className="w-2.5 h-2.5" />
+                                  </button>
+                                </div>
+                                <p className="text-[10px] text-muted-foreground leading-normal mt-1 pr-6">{lib.desc}</p>
                               </div>
                             ))}
                           </div>
@@ -1421,26 +1489,111 @@ export function AIRoadmap() {
                       </div>
                     )}
 
-                    {pythonDetailTab === "prompt" && (
+                    {pythonDetailTab === "blueprint" && (
                       <div className="space-y-6">
-                        {/* Phases */}
                         <div>
                           <h4 className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-muted-foreground mb-3 flex items-center gap-1.5">
-                            <IconMap className="w-3.5 h-3.5" style={{ color: accent.color }} /> Suggested Execution Phases
+                            <IconMap className="w-3.5 h-3.5" style={{ color: accent.color }} /> Step-by-Step Blueprint Walkthrough
                           </h4>
                           <div className="space-y-3">
-                            {selectedPythonProject.milestones.map((step, idx) => (
-                              <div key={idx} className="flex gap-3 items-start p-3 border border-line bg-bg-soft/10 rounded-xl">
-                                <div className="w-5 h-5 rounded-full text-[9px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5 text-white"
-                                  style={{ background: accent.color }}>
-                                  {idx + 1}
+                            {(pythonProjectDetails[selectedPythonProject.id] || []).map((step, idx) => {
+                              const isExpanded = activeStepIndex === idx;
+                              return (
+                                <div key={idx} className={cn(
+                                  "border rounded-xl overflow-hidden transition-all duration-200",
+                                  isExpanded ? "border-accent bg-bg-soft/5 shadow-sm" : "border-line bg-background hover:bg-bg-soft/20"
+                                )}>
+                                  <button
+                                    onClick={() => setActiveStepIndex(isExpanded ? null : idx)}
+                                    className="w-full flex items-center justify-between p-4 text-left cursor-pointer select-none"
+                                  >
+                                    <div className="flex items-center gap-3">
+                                      <div className={cn(
+                                        "w-6 h-6 rounded-full text-xs font-black flex items-center justify-center flex-shrink-0 transition-colors",
+                                        isExpanded ? "bg-accent text-white" : "bg-bg-soft border border-line text-muted-foreground"
+                                      )}
+                                      style={isExpanded ? { backgroundColor: accent.color } : {}}>
+                                        {idx + 1}
+                                      </div>
+                                      <div>
+                                        <p className="text-xs font-bold text-foreground leading-tight">{step.title}</p>
+                                        <p className="text-[9px] text-muted-foreground mt-0.5 max-w-sm truncate">{step.objective}</p>
+                                      </div>
+                                    </div>
+                                    <svg
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      strokeWidth="2.5"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      className={cn("w-4 h-4 text-muted-foreground transition-transform duration-200", isExpanded && "rotate-180")}
+                                    >
+                                      <polyline points="6 9 12 15 18 9" />
+                                    </svg>
+                                  </button>
+
+                                  {isExpanded && (
+                                    <div className="px-4 pb-4 border-t border-line/50 pt-4 space-y-4 bg-background/5">
+                                      <div>
+                                        <h5 className="text-[9px] font-extrabold uppercase tracking-wider text-muted-foreground mb-1.5">Step Objective</h5>
+                                        <p className="text-xs text-muted-foreground leading-relaxed">{step.objective}</p>
+                                      </div>
+
+                                      <div>
+                                        <h5 className="text-[9px] font-extrabold uppercase tracking-wider text-muted-foreground mb-1.5">Action Checklist</h5>
+                                        <ul className="space-y-1.5">
+                                          {step.tasks.map((task, tidx) => (
+                                            <li key={tidx} className="text-xs text-muted-foreground flex items-start gap-2 leading-relaxed">
+                                              <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" style={{ backgroundColor: accent.color }} />
+                                              <span>{task}</span>
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
+
+                                      <div className="p-3 bg-amber-500/5 border border-amber-500/20 rounded-lg flex items-start gap-2.5">
+                                        <IconLightbulb className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5 animate-pulse" />
+                                        <div>
+                                          <p className="text-[9px] font-extrabold text-amber-500 uppercase tracking-wider">Pro Tip</p>
+                                          <p className="text-[10px] text-muted-foreground mt-0.5 leading-relaxed">{step.proTip}</p>
+                                        </div>
+                                      </div>
+
+                                      {step.codeSnippet && (
+                                        <div>
+                                          <div className="flex justify-between items-center mb-2">
+                                            <h5 className="text-[9px] font-extrabold uppercase tracking-wider text-muted-foreground">Starter Code Reference</h5>
+                                            <button
+                                              onClick={() => {
+                                                navigator.clipboard.writeText(step.codeSnippet);
+                                                toast.success("Code snippet copied to clipboard");
+                                              }}
+                                              className="flex items-center gap-1 text-[9px] font-semibold px-2 py-1 border border-line rounded bg-background hover:bg-bg-soft text-muted-foreground hover:text-foreground transition-all cursor-pointer"
+                                            >
+                                              <IconCopy className="w-2.5 h-2.5" />
+                                              Copy Code
+                                            </button>
+                                          </div>
+                                          <div className="border border-line rounded-lg overflow-hidden bg-[#0B0F19]">
+                                            <pre className="p-3.5 text-[10px] font-mono text-emerald-400 leading-relaxed overflow-x-auto">
+                                              {step.codeSnippet}
+                                            </pre>
+                                          </div>
+                                        </div>
+                                      )}
+                                    </div>
+                                  )}
                                 </div>
-                                <p className="text-xs text-muted-foreground leading-relaxed pt-0.5">{step}</p>
-                              </div>
-                            ))}
+                              );
+                            })}
                           </div>
                         </div>
+                      </div>
+                    )}
 
+                    {pythonDetailTab === "mentor" && (
+                      <div className="space-y-6">
                         {/* Prompt Output / Chat Interface */}
                         <div>
                           <h4 className="text-[10px] font-extrabold uppercase tracking-[0.25em] text-muted-foreground mb-2 flex items-center gap-1.5">
