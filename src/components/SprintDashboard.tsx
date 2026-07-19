@@ -67,14 +67,14 @@ export function SprintDashboard() {
       <motion.div 
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="glass-card p-8 md:p-10 border-line relative group overflow-hidden"
+        className="glass-card p-5 sm:p-8 md:p-10 border-line relative group overflow-hidden"
       >
         {/* Tactical Corner Accents */}
         <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-accent opacity-20 group-hover:opacity-60 transition-opacity" />
         <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-accent opacity-20 group-hover:opacity-60 transition-opacity" />
 
         <div className="flex flex-col gap-10 relative z-10">
-          <div className="flex items-start justify-between gap-6">
+          <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
             <div className="space-y-4 min-w-0">
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2 px-2 py-0.5 bg-accent/5 border border-accent/20 text-accent text-[8px] font-black uppercase tracking-widest rounded shadow-[0_0_10px_rgba(var(--accent),0.1)]">
@@ -85,7 +85,7 @@ export function SprintDashboard() {
                 <span className="text-[8px] font-black uppercase tracking-[0.4em] text-muted-foreground italic">Node_Alpha_01</span>
               </div>
               
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black heading-modern tracking-tighter uppercase italic text-foreground leading-[0.8] break-words">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black heading-modern tracking-tighter uppercase italic text-foreground leading-none break-all sm:break-normal">
                 {activeSprint.name}
               </h2>
               
@@ -97,7 +97,7 @@ export function SprintDashboard() {
               </div>
             </div>
             
-            <div className="flex gap-2 shrink-0">
+            <div className="flex gap-2 shrink-0 w-full sm:w-auto justify-start sm:justify-end mt-2 sm:mt-0">
               <button 
                 onClick={fetchSprintAdvice}
                 className="px-4 py-2 bg-accent/10 hover:bg-accent text-accent hover:text-white transition-all text-[9px] font-black uppercase tracking-widest rounded border border-accent/20 flex items-center gap-1.5 cursor-pointer"
@@ -115,7 +115,7 @@ export function SprintDashboard() {
           </div>
 
           {/* HUD Data Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-line pt-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 border-t border-line pt-8 md:pt-10">
             <div className="space-y-4">
               <div className="flex justify-between items-end">
                 <div className="flex items-center gap-2">
@@ -149,8 +149,8 @@ export function SprintDashboard() {
               </div>
             </div>
 
-            <div className="text-right space-y-2">
-              <div className="flex items-center justify-end gap-2">
+            <div className="md:text-right space-y-2">
+              <div className="flex items-center md:justify-end gap-2">
                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground">End log date</span>
                  <Zap className="h-3.5 w-3.5 text-purple-500 opacity-40" />
               </div>

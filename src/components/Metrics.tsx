@@ -2,9 +2,10 @@
 
 import React from 'react';
 import { useSprintStore } from '@/store/useSprintStore';
-import { Zap, Shield, BarChart3, Activity } from 'lucide-react';
+import { Zap, Shield, Activity, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
+import { motion } from 'framer-motion';
 
 export function Metrics() {
   const { dailyTracking, getSprintIntegrity } = useSprintStore();
@@ -17,26 +18,67 @@ export function Metrics() {
   const currentStreak = calculateStreak(dailyTracking);
 
   const stats = [
-    { label: 'Integrity', value: `${integrity}%`, icon: Shield, color: 'text-accent', bg: 'bg-accent/10' },
-    { label: 'Streak', value: currentStreak, icon: Zap, color: 'text-accent-alt', bg: 'bg-accent-alt/10' },
-    { label: 'Today', value: `${dailyScore}%`, icon: Activity, color: 'text-accent-action', bg: 'bg-accent-action/10' },
+    { 
+      label: 'Integrity', 
+      value: `${integrity}%`, 
+      sub: 'Sprint consistency', 
+      icon: Shield, 
+      color: 'text-accent border-accent/20 bg-accent/5', 
+      glow: 'shadow-[0_0_15px_rgba(59,130,246,0.15)]',
+      desc: 'Based on finished daily objectives.'
+    },
+    { 
+      label: 'Streak', 
+      value: `${currentStreak} Days`, 
+      sub: '80%+ Target days', 
+      icon: Zap, 
+      color: 'text-amber-500 border-amber-500/20 bg-amber-500/5', 
+      glow: 'shadow-[0_0_15px_rgba(245,158,11,0.15)]',
+      desc: 'Consecutive high productivity days.'
+    },
+    { 
+      label: 'Today', 
+      value: `${dailyScore}%`, 
+      sub: 'Task completion', 
+      icon: Activity, 
+      color: 'text-emerald-500 border-emerald-500/20 bg-emerald-500/5', 
+      glow: 'shadow-[0_0_15px_rgba(16,185,129,0.15)]',
+      desc: 'Progress on active task checklist.'
+    },
   ];
 
   return (
-    <div className="space-y-4">
+    <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
       {stats.map((stat, i) => (
-        <div
+        <motion.div
           key={stat.label}
-          className="glass-card p-5 flex items-center justify-between group"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: i * 0.05 }}
+          className={cn(
+            "glass-card p-5 flex items-center justify-between border-line relative overflow-hidden group hover:border-accent/30 hover:scale-[1.01] transition-all duration-300",
+            stat.glow
+          )}
         >
-          <div className="space-y-1">
-            <p className="text-xs font-semibold text-muted-foreground">{stat.label}</p>
-            <h3 className="text-2xl font-bold text-foreground">{stat.value}</h3>
+          {/* Tactical Indicators */}
+          <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-line opacity-20 group-hover:opacity-60 transition-opacity" />
+          
+          <div className="space-y-1 relative z-10">
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">{stat.label}</p>
+            <h3 className="text-2xl font-black heading-modern text-foreground italic">{stat.value}</h3>
+            <p className="text-[9px] text-muted-foreground/60 leading-normal">{stat.sub}</p>
           </div>
-          <div className={cn("p-3 rounded-xl transition-all duration-300", stat.bg, stat.color)}>
+          
+          <div className={cn(
+            "p-3 rounded-xl border flex items-center justify-center transition-all duration-300 group-hover:scale-105 shrink-0 relative z-10", 
+            stat.color
+          )}>
             <stat.icon className="h-5 w-5" />
           </div>
-        </div>
+
+          {/* Micro Background Glow */}
+          <div className="absolute -right-6 -bottom-6 w-20 h-20 bg-foreground/[0.01] rounded-full group-hover:bg-foreground/[0.03] transition-colors" />
+        </motion.div>
       ))}
     </div>
   );

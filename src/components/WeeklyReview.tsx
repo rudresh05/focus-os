@@ -99,17 +99,17 @@ export function WeeklyReview() {
 
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 z-[1000] flex items-center justify-center p-6 bg-background/80 backdrop-blur-sm">
+          <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 sm:p-6 bg-background/80 backdrop-blur-sm">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="w-full max-w-4xl bg-background border border-line rounded-2xl shadow-2xl overflow-hidden"
+              className="w-full max-w-4xl bg-background border border-line rounded-2xl shadow-2xl overflow-y-auto max-h-[90vh] md:max-h-[85vh] lg:max-h-none custom-scrollbar"
             >
-              <div className="p-8 sm:p-10 relative">
+              <div className="p-5 sm:p-8 md:p-10 relative">
                 <button 
                   onClick={() => setIsOpen(false)} 
-                  className="absolute top-8 right-8 p-2 text-muted-foreground hover:text-foreground transition-all rounded-full hover:bg-bg-soft cursor-pointer"
+                  className="absolute top-4 right-4 sm:top-8 sm:right-8 p-2 text-muted-foreground hover:text-foreground transition-all rounded-full hover:bg-bg-soft cursor-pointer"
                 >
                   <X className="h-5 w-5" />
                 </button>

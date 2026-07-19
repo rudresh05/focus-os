@@ -32,7 +32,7 @@ export function DailyTracker() {
       <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-accent opacity-20 group-hover:opacity-60 transition-opacity" />
       <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-accent opacity-20 group-hover:opacity-60 transition-opacity" />
 
-      <div className="p-8 border-b border-line flex items-center justify-between bg-foreground/[0.01] shrink-0 relative z-10">
+      <div className="p-5 sm:p-8 border-b border-line flex items-center justify-between bg-foreground/[0.01] shrink-0 relative z-10">
         <div className="space-y-1">
           <div className="flex items-center gap-3">
              <Hash className="h-4 w-4 text-accent opacity-40" />
@@ -62,13 +62,13 @@ export function DailyTracker() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.05 }}
               className={cn(
-                "flex items-center justify-between p-6 px-10 transition-all group/item",
+                "flex items-center justify-between p-4 sm:p-6 px-4 sm:px-10 transition-all group/item",
                 task.isCompleted ? "bg-accent/[0.01]" : "hover:bg-foreground/[0.02]"
               )}
             >
               <div 
                 onClick={() => handleToggle(task.id, task.isCompleted, task.name)}
-                className="flex items-start gap-8 cursor-pointer flex-1 min-w-0"
+                className="flex items-start gap-4 sm:gap-8 cursor-pointer flex-1 min-w-0"
               >
                 <div className="relative shrink-0 mt-1">
                    <div className={cn(
@@ -81,7 +81,7 @@ export function DailyTracker() {
                    </div>
                    {/* Binary Index Marker */}
                    {!task.isCompleted && (
-                     <span className="absolute -left-7 top-1/2 -translate-y-1/2 text-[10px] font-black font-mono text-muted-foreground/20 italic">
+                     <span className="absolute -left-7 top-1/2 -translate-y-1/2 text-[10px] font-black font-mono text-muted-foreground/20 italic hidden sm:inline">
                         {index + 1 < 10 ? `0${index + 1}` : index + 1}
                      </span>
                    )}

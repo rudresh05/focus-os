@@ -60,7 +60,7 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
       {!isLoginPage && isAuthenticated && <Dock />}
 
       <div className={cn(
-        "relative flex flex-col min-h-screen transition-all duration-300",
+        "relative flex flex-col min-h-screen transition-all duration-300 overflow-x-hidden",
         isAuthenticated && !isLoginPage ? "lg:pl-64 pt-16 lg:pt-0" : ""
       )}>
         <Toaster 
@@ -80,7 +80,7 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
         
         <main className={cn(
           "flex-1 w-full relative",
-          isLoginPage ? "" : "p-4 md:p-12 lg:p-16"
+          isLoginPage ? "" : "p-3 sm:p-6 md:p-12 lg:p-16"
         )}>
           {children}
         </main>
